@@ -477,6 +477,7 @@ web网站架构师
 <li><ol>有序列表
   - 有序列表也是一列项目，只是列表项目使用的是数字进行标记。 有序列表始于 `<ol>` 标签。每个列表项始于 `<li> `标签。
 
+
 </li>
 </ul>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">ol</span>&gt;</span><br>   <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>内容一<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>   <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>内容二<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>   <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>内容三<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">ol</span>&gt;</span><br></code></pre></td></tr></table></figure>
@@ -554,13 +555,13 @@ web网站架构师
 </li>
 <li><p>HTML标签 - <code>Action</code>和确认按钮： </p>
 <ul>
-<li>当用户单击确认按钮时，表单的内容会被传送到另一个文件。表单的动作属性定义了目的文件的文件名。由动作属性定义的这个文件通常会对接收到的输入数据进行相关的处理。</li>
+<li>当用户单击确认按钮时，表单的内容会被传送到另一个文件。表单的动作属性定义了目的文件的文件名。由动作属性定义的这个文件通常会对接收到的输入数据进行相关的处理。<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">&lt;form action=&quot;html.do&quot; <span class="hljs-keyword">method</span>=&quot;get&quot;&gt;    <br>        username:  &lt;<span class="hljs-keyword">input</span> <span class="hljs-keyword">type</span>=&quot;text&quot; <span class="hljs-type">name</span>=&quot;user&quot; /&gt;   <br>        &lt;<span class="hljs-keyword">input</span> <span class="hljs-keyword">type</span>=&quot;submit&quot; <span class="hljs-keyword">value</span>=&quot;提  交&quot; /&gt;<br>&lt;/form&gt;<br></code></pre></td></tr></table></figure>
+
+
+</li>
 </ul>
 </li>
 </ul>
-<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">&lt;form action=&quot;html.do&quot; <span class="hljs-keyword">method</span>=&quot;get&quot;&gt;    <br>        username:  &lt;<span class="hljs-keyword">input</span> <span class="hljs-keyword">type</span>=&quot;text&quot; <span class="hljs-type">name</span>=&quot;user&quot; /&gt;   <br>        &lt;<span class="hljs-keyword">input</span> <span class="hljs-keyword">type</span>=&quot;submit&quot; <span class="hljs-keyword">value</span>=&quot;提  交&quot; /&gt;<br>&lt;/form&gt;<br></code></pre></td></tr></table></figure>
-
-
 <ul>
 <li><p><code>HTML</code>标签 - 隐藏域隐藏标签：</p>
 </li>
@@ -652,15 +653,12 @@ web网站架构师
 <ul>
 <li><p><code>&lt;tr&gt;</code>行标签：</p>
 <ul>
-<li><code>&lt;tr&gt;</code>可以定义表格中的一行，一个&lt;<code>tr&gt;&lt;/tr&gt;</code>表示一行。</li>
-</ul>
+<li><code>&lt;tr&gt;</code>可以定义表格中的一行，一个&lt;<code>tr&gt;&lt;/tr&gt;</code>表示一行。<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">table</span> <span class="hljs-attr">border</span>=<span class="hljs-string">&quot;1&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span><br> <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>姓名<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span><br> <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>性别<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span><br> <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>姓名<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span><br> <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>性别<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span><br></code></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
 </ul>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">table</span> <span class="hljs-attr">border</span>=<span class="hljs-string">&quot;1&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span><br> <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>姓名<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span><br> <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>性别<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span><br> <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>姓名<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span><br> <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>性别<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span><br></code></pre></td></tr></table></figure>
-
-<ul>
+</li>
 <li><p><code>&lt;td&gt;</code>单元格标签:</p>
 <ul>
 <li><code>&lt;td&gt;</code>可以定义表格中的一个单元格，<code>&lt;td&gt;&lt;/td&gt;</code>表示一个单元格。<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">table</span> <span class="hljs-attr">border</span>=<span class="hljs-string">&quot;1&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">td</span> &gt;</span>姓名<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>性别<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>爱好<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span><br></code></pre></td></tr></table></figure>
@@ -1798,7 +1796,7 @@ web网站架构师
 <hr>
 <ul>
 <li><p><strong><code>class</code>的命名:</strong></p>
-<ul>
+</li>
 <li><p>颜色:使用颜色的名称或者16进制代码,如</p>
 <ul>
 <li><code>.red &#123; color: red; &#125;</code></li>
@@ -1823,18 +1821,14 @@ web网站架构师
 <li><code> .barnews &#123; &#125;</code></li>
 <li><code>.barproduct &#123; &#125;</code></li>
 </ul>
-</li>
-</ul>
 <hr>
-<ul>
+</li>
 <li><p><strong>注意事项::</strong></p>
 <ul>
 <li>一律小写;</li>
 <li>尽量用英文;</li>
 <li>不加中杠和下划线;</li>
 <li>尽量不缩写，除非一看就明白的单词.</li>
-</ul>
-</li>
 </ul>
 <hr>
 </li>
@@ -1879,28 +1873,29 @@ web网站架构师
 <hr>
 <h4 id="附录三-CSS精灵"><a href="#附录三-CSS精灵" class="headerlink" title="附录三 CSS精灵"></a>附录三 CSS精灵</h4><hr>
 <ul>
-<li><strong>CSS精灵原理以及应用</strong><ul>
+<li><p><strong>CSS精灵原理以及应用</strong></p>
+<ul>
 <li><code>CSS</code>雪碧的基本原理是把你的网站上用到的一些图片整合到一张单独的图片中，从而减少你的网站的HTTP请求数量。<ul>
 <li>该图片使用<code>CSS</code>   <code>background和background-position</code>属性渲染，这也就意味着你的标签变得更加复杂了，图片是在<code>CSS</code>中定义，而非<code>&lt;img&gt;</code>标签。</li>
 </ul>
 </li>
 </ul>
 </li>
-<li><strong>一个简单的例子</strong>：<ul>
+<li><p><strong>一个简单的例子</strong>：</p>
+<ul>
 <li>一张图片作出一个按钮的三个状态</li>
 <li>一个链接用<code>CSS</code>做成按钮的样式，我们可以使用同一张图片，完成按钮的三个状态，<code>a:link</code>，<code>a:hover</code>，<code>a:active</code> <code>&lt;a class=&quot;button&quot; href=&quot;#&quot;&gt;链接&lt;/a&gt;</code></li>
-<li>加入右侧的图片为：<code>200px 65px</code>的三个按钮图拼合而成的图片<code>button.png</code>，从上到下一次为按钮的普通、鼠标滑过、鼠标点击的状态。则可以使用<code>CSS</code>进行定义。</li>
-</ul>
+<li>加入右侧的图片为：<code>200px 65px</code>的三个按钮图拼合而成的图片<code>button.png</code>，从上到下一次为按钮的普通、鼠标滑过、鼠标点击的状态。则可以使用<code>CSS</code>进行定义。<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-tag">a</span> &#123;<br>    <span class="hljs-attribute">display</span>:block; <br>    <span class="hljs-attribute">width</span>:<span class="hljs-number">200px</span>; <br>    <span class="hljs-attribute">height</span>:<span class="hljs-number">65px</span>; <br>    <span class="hljs-attribute">line-height</span>:<span class="hljs-number">65px</span>; <span class="hljs-comment">/*定义状态*/</span><br>    <span class="hljs-attribute">text-indent</span>:-<span class="hljs-number">2015px</span>; <span class="hljs-comment">/*隐藏文字*/</span><br>    <span class="hljs-attribute">background-image</span>:<span class="hljs-built_in">url</span>(button.png); <span class="hljs-comment">/*定义背景图片*/</span><br>    <span class="hljs-attribute">background-position</span>:<span class="hljs-number">0</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-comment">/*定义链接的普通状态，此时图像显示的是顶上的部分*/</span><br>&#125;<br><br><span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:hover</span> &#123;<br>    <span class="hljs-attribute">background-position</span>:<span class="hljs-number">0</span> -<span class="hljs-number">66px</span>;<br>    <span class="hljs-comment">/*定义链接的滑过状态，此时显示的为中间部分，向下取负值*/</span><br>&#125;<br><span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:active</span> &#123;<br>    <span class="hljs-attribute">background-position</span>:<span class="hljs-number">0</span> -<span class="hljs-number">132px</span>;                      <br>    <span class="hljs-comment">/*定 义链接的普通状态，此时显示的是底部的部分，向下取负值*/</span><br>&#125;<br></code></pre></td></tr></table></figure>
 </li>
 </ul>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-tag">a</span> &#123;<br>    <span class="hljs-attribute">display</span>:block; <br>    <span class="hljs-attribute">width</span>:<span class="hljs-number">200px</span>; <br>    <span class="hljs-attribute">height</span>:<span class="hljs-number">65px</span>; <br>    <span class="hljs-attribute">line-height</span>:<span class="hljs-number">65px</span>; <span class="hljs-comment">/*定义状态*/</span><br>    <span class="hljs-attribute">text-indent</span>:-<span class="hljs-number">2015px</span>; <span class="hljs-comment">/*隐藏文字*/</span><br>    <span class="hljs-attribute">background-image</span>:<span class="hljs-built_in">url</span>(button.png); <span class="hljs-comment">/*定义背景图片*/</span><br>    <span class="hljs-attribute">background-position</span>:<span class="hljs-number">0</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-comment">/*定义链接的普通状态，此时图像显示的是顶上的部分*/</span><br>&#125;<br><br><span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:hover</span> &#123;<br>    <span class="hljs-attribute">background-position</span>:<span class="hljs-number">0</span> -<span class="hljs-number">66px</span>;<br>    <span class="hljs-comment">/*定义链接的滑过状态，此时显示的为中间部分，向下取负值*/</span><br>&#125;<br><span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:active</span> &#123;<br>    <span class="hljs-attribute">background-position</span>:<span class="hljs-number">0</span> -<span class="hljs-number">132px</span>;                      <br>    <span class="hljs-comment">/*定 义链接的普通状态，此时显示的是底部的部分，向下取负值*/</span><br>&#125;<br></code></pre></td></tr></table></figure>
-
+</li>
+<li><p>更多的<code>CSS</code>雪碧，图片更复杂，背景定位更精确。可能会用到大量的数值</p>
 <ul>
-<li>更多的<code>CSS</code>雪碧，图片更复杂，背景定位更精确。可能会用到大量的数值<ul>
 <li>如：<code>background:url(nav.png) -180px 24pxno-repeat</code>; 来达到更精确的定位</li>
 </ul>
 </li>
-<li><strong>优点：</strong><ul>
+<li><p><strong>优点：</strong></p>
+<ul>
 <li>减少加载网页图片时对服务器的请求次数</li>
 <li>可以合并多数背景图片和小图标，方便在任何位置使用，这样不同位置的请求只需要调用一个图片，从而减少对服务器的请求次数，降低服务器压力，同时提高了页面的加载速度，节约服务器的流量。</li>
 <li>提高页面的加载速度</li>
@@ -1909,7 +1904,8 @@ web网站架构师
 <li><code>IE6</code>不会主动预加载鼠标滑过即<code>a:hover</code>中的背景图片，所以，如果使用多张图片，鼠标滑过会出现闪白的现象。使用<code>CSS</code>雪碧，由于一张图片即可，所以不会出现这种现象。</li>
 </ul>
 </li>
-<li><strong>不足：</strong><ul>
+<li><p><strong>不足：</strong></p>
+<ul>
 <li><code>CSS</code>雪碧的最大问题是内存使用</li>
 <li>影响浏览器的缩放功能</li>
 <li>拼图维护比较麻烦</li>
@@ -2255,7 +2251,7 @@ web网站架构师
                     
                       <a href="/hexo_blog/2021/03/30/github/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">github及git使用相关</span>
+                        <span class="hidden-mobile"></span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
