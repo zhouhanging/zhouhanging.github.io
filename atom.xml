@@ -3,11 +3,11 @@
   <title>HEllo</title>
   
   <subtitle>It is never too late to learn</subtitle>
-  <link href="https://zhouhanging.github.io/atom.xml" rel="self"/>
+  <link href="https://zhouhanging.github.io/zhouhanging.github.io/atom.xml" rel="self"/>
   
-  <link href="https://zhouhanging.github.io/"/>
+  <link href="https://zhouhanging.github.io/zhouhanging.github.io/"/>
   <updated>2021-05-23T11:53:10.546Z</updated>
-  <id>https://zhouhanging.github.io/</id>
+  <id>https://zhouhanging.github.io/zhouhanging.github.io/</id>
   
   <author>
     <name>hello</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>html知识点总结✌️✌️</title>
-    <link href="https://zhouhanging.github.io/2021/05/23/HTML/"/>
-    <id>https://zhouhanging.github.io/2021/05/23/HTML/</id>
+    <link href="https://zhouhanging.github.io/zhouhanging.github.io/2021/05/23/HTML/"/>
+    <id>https://zhouhanging.github.io/zhouhanging.github.io/2021/05/23/HTML/</id>
     <published>2021-05-23T07:22:08.770Z</published>
     <updated>2021-05-23T11:53:10.546Z</updated>
     
@@ -38,8 +38,8 @@
   
   <entry>
     <title>节流防抖🗽</title>
-    <link href="https://zhouhanging.github.io/2021/05/21/%E8%8A%82%E6%B5%81%E9%98%B2%E6%8A%96/"/>
-    <id>https://zhouhanging.github.io/2021/05/21/%E8%8A%82%E6%B5%81%E9%98%B2%E6%8A%96/</id>
+    <link href="https://zhouhanging.github.io/zhouhanging.github.io/2021/05/21/%E8%8A%82%E6%B5%81%E9%98%B2%E6%8A%96/"/>
+    <id>https://zhouhanging.github.io/zhouhanging.github.io/2021/05/21/%E8%8A%82%E6%B5%81%E9%98%B2%E6%8A%96/</id>
     <published>2021-05-21T08:22:45.422Z</published>
     <updated>2021-05-23T11:55:57.602Z</updated>
     
@@ -61,10 +61,10 @@
   
   <entry>
     <title>github及git使用相关</title>
-    <link href="https://zhouhanging.github.io/2021/03/30/github/"/>
-    <id>https://zhouhanging.github.io/2021/03/30/github/</id>
+    <link href="https://zhouhanging.github.io/zhouhanging.github.io/2021/03/30/github/"/>
+    <id>https://zhouhanging.github.io/zhouhanging.github.io/2021/03/30/github/</id>
     <published>2021-03-30T15:28:59.409Z</published>
-    <updated>2021-05-23T11:55:58.951Z</updated>
+    <updated>2021-05-23T11:57:48.901Z</updated>
     
     <content type="html"><![CDATA[<h3 id="一些-GitHub-的基本概念"><a href="#一些-GitHub-的基本概念" class="headerlink" title="一些 GitHub 的基本概念"></a>一些 GitHub 的基本概念</h3><pre><code>- Repository仓库的意思，即你的项目，你想在 GitHub 上开源一个项目，那就必须要新建一个 Repository ，如果你开源的项目多了，你就拥有了多个 Repositories 。- Issue问题的意思，举个例子，就是你开源了一个项目，别人发现你的项目中有bug，或者哪些地方做的不够好，他就可以给你提个 Issue ，即问题，提的问题多了，也就是 Issues ，然后你看到了这些问题就可以去逐个修复，修复ok了就可以一个个的 Close 掉。- Star这个好理解，就是给项目点赞，但是在 GitHub 上的点赞远比微博、知乎点赞难的多，如果你有一个项目获得100个star都算很不容易了！- Fork这个不好翻译，如果实在要翻译我把他翻译成分叉，什么意思呢？你开源了一个项目，别人想在你这个项目的基础上做些改进，然后应用到自己的项目中，这个时候他就可以 Fork 你的项目，这个时候他的 GitHub 主页上就多了一个项目，只不过这个项目是基于你的项目基础（本质上是在原有项目的基础上新建了一个分支，分支的概念后面会在讲解Git的时候说到），他就可以随心所欲的去改进，但是丝毫不会影响原有项目的代码与结构。- Pull Request发起请求，这个其实是基于 Fork 的，还是上面那个例子，如果别人在你基础上做了改进，后来觉得改进的很不错，应该要把这些改进让更多的人收益，于是就想把自己的改进合并到原有项目里，这个时候他就可以发起一个 Pull Request（简称PR） ，原有项目创建人就可以收到这个请求，这个时候他会仔细review你的代码，并且测试觉得OK了，就会接受你的PR，这个时候你做的改进原有项目就会拥有了。- Watch这个也好理解就是观察，如果你 Watch 了某个项目，那么以后只要这个项目有任何更新，你都会第一时间收到关于这个项目的通知提醒。- Gist有些时候你没有项目可以开源，只是单纯的想分享一些代码片段，那这个时候 Gist 就派上用场了！</code></pre><h4 id="git常用命令"><a href="#git常用命令" class="headerlink" title="git常用命令"></a>git常用命令</h4><pre><code>版本查询 -&gt;    git --version设置当前用户信息      git config --global user.name &quot;xxx&quot;    git config --global user.email &quot;xxx@xxx&quot;显示当前用户信息    git config --list显示git常用指令    git初始化仓库// xxx 代表仓库名/文件夹名    mkdir xxx    cd xxx    git init远程仓库// xx 指远程名称， xxx指远程地址// 如果是git clone得到的仓库，远程名称默认为origin// 添加远程仓库    git remote add xx xxx// 查询远程仓库名    git remote// 查询远程仓库详细信息    git remote -v// 复制远程仓库    git clone// 提交至远程仓库    git push -u xx xxx// 将本地与远程同步    git pull 或 git fetch &amp;&amp; git merge查询仓库状态    git status将文件添加到暂存区    git add.生成“后悔药”    git commit -m &quot;xxx&quot;“后悔药”查询    // 基本查询    git log    // 详细查询，包括修改对比    git log -p    // 以精简模式显示    git log --oneline    // 查看“后悔树”    git log --graph吃“后悔药”，版本回退    // xxx 代表编号或标记，可用git log查询    git checkout xxx    // 回退到最近的版本    git checkout -标记    git tag    // xx 代表标记， xxx代表注释    git tag -a xx -m &quot;xxx&quot;    // 显示标记    git show xx分支    // xxx代表分支名    // 产生分支    git branch xxx    // 分支跳转    git checkout xxx    // 创建并跳转分支    git checkout -b xxx    // 合并分支    git merge</code></pre>]]></content>
     
@@ -81,8 +81,8 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="https://zhouhanging.github.io/2021/03/21/HTML%20&amp;%20CSS/"/>
-    <id>https://zhouhanging.github.io/2021/03/21/HTML%20&amp;%20CSS/</id>
+    <link href="https://zhouhanging.github.io/zhouhanging.github.io/2021/03/21/HTML%20&amp;%20CSS/"/>
+    <id>https://zhouhanging.github.io/zhouhanging.github.io/2021/03/21/HTML%20&amp;%20CSS/</id>
     <published>2021-03-21T07:20:50.090Z</published>
     <updated>2021-05-23T11:51:14.919Z</updated>
     
@@ -107,10 +107,10 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="https://zhouhanging.github.io/2020/10/28/hello-world/"/>
-    <id>https://zhouhanging.github.io/2020/10/28/hello-world/</id>
+    <link href="https://zhouhanging.github.io/zhouhanging.github.io/2020/10/28/hello-world/"/>
+    <id>https://zhouhanging.github.io/zhouhanging.github.io/2020/10/28/hello-world/</id>
     <published>2020-10-28T06:41:02.373Z</published>
-    <updated>2020-10-28T06:41:02.373Z</updated>
+    <updated>2021-05-23T11:57:50.032Z</updated>
     
     <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
     
