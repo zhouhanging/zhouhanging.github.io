@@ -18,7 +18,7 @@
   <meta name="author" content="hello">
   <meta name="keywords" content="HELLO">
   
-  <title>HELLO</title>
+  <title>数模块化✊ - HELLO</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 
@@ -164,7 +164,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="">
+            <span class="h2" id="subtitle" title="数模块化✊">
               
             </span>
 
@@ -226,10 +226,10 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none"></h1>
+            <h1 style="display: none">数模块化✊</h1>
             
             <div class="markdown-body">
-              <h3 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h3><p>模块化的开发方式可以提高代码复用率，方便进行代码的管理。通常一个文件就是一个模块，有自己的作用域，只向外暴露特定的变量和函数。目前流行的js模块化规范有CommonJS、AMD、CMD以及ES6的模块系统。参见阮一峰老师的文章 <a href="https://link.juejin.cn/?target=http://es6.ruanyifeng.com/%23docs/module-loader">module-loader</a> 。</p>
+              <h1 id="模块化🔓"><a href="#模块化🔓" class="headerlink" title="模块化🔓"></a>模块化🔓</h1><p>模块化的开发方式可以提高代码复用率，方便进行代码的管理。通常一个文件就是一个模块，有自己的作用域，只向外暴露特定的变量和函数。目前流行的js模块化规范有CommonJS、AMD、CMD以及ES6的模块系统。参见阮一峰老师的文章 <a href="https://link.juejin.cn/?target=http://es6.ruanyifeng.com/%23docs/module-loader">module-loader</a> 。</p>
 <h2 id="一、CommonJS"><a href="#一、CommonJS" class="headerlink" title="一、CommonJS"></a>一、CommonJS</h2><p>Node.js是commonJS规范的主要实践者，它有四个重要的环境变量为模块化的实现提供支持：<code>module</code>、<code>exports</code>、<code>require</code>、<code>global</code>。实际使用时，用<code>module.exports</code>定义当前模块对外输出的接口（不推荐直接用<code>exports</code>），用<code>require</code>加载模块。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 定义模块math.js</span><br><span class="hljs-keyword">var</span> basicNum = <span class="hljs-number">0</span>;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">add</span>(<span class="hljs-params">a, b</span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> a + b;<br>&#125;<br><span class="hljs-built_in">module</span>.exports = &#123; <span class="hljs-comment">//在这里写上需要向外暴露的函数、变量</span><br>  add: add,<br>  basicNum: basicNum<br>&#125;<br><br><span class="hljs-comment">// 引用自定义的模块时，参数包含路径，可省略.js</span><br><span class="hljs-keyword">var</span> math = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;./math&#x27;</span>);<br>math.add(<span class="hljs-number">2</span>, <span class="hljs-number">5</span>);<br><br><span class="hljs-comment">// 引用核心模块时，不需要带路径</span><br><span class="hljs-keyword">var</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;http&#x27;</span>);<br>http.createService(...).listen(<span class="hljs-number">3000</span>);<br>复制代码<br></code></pre></td></tr></table></figure>
 
@@ -270,6 +270,20 @@
             <div>
               <div class="post-metas mb-3">
                 
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/hexo_blog/categories/js/">js</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/hexo_blog/tags/js/">js</a>
+                    
+                  </div>
                 
               </div>
               
@@ -286,7 +300,7 @@
                     
                       <a href="/hexo_blog/2021/08/06/%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile"></span>
+                        <span class="hidden-mobile">数组去重💪</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -294,8 +308,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/hexo_blog/2021/08/06/evenloop/">
-                        <span class="hidden-mobile"></span>
+                      <a href="/hexo_blog/2021/08/06/BFC/">
+                        <span class="hidden-mobile">BFC🚓</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
