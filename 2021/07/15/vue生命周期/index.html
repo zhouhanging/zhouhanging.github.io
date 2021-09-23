@@ -1,0 +1,566 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/hexo_blog/img/favicon.jpg">
+  <link rel="icon" href="/hexo_blog/img/favicon.jpg">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="happy every day">
+  <meta name="author" content="hello">
+  <meta name="keywords" content="HELLO">
+  
+  <title>let和const - HELLO</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/hexo_blog/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/hexo_blog/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"zhouhang-hello.gitee.io","root":"/hexo_blog/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/hexo_blog/js/utils.js" ></script>
+  <script  src="/hexo_blog/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/hexo_blog/atom.xml" title="HELLO" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/hexo_blog/">&nbsp;<strong>HELLO</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/hexo_blog/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/hexo_blog/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/hexo_blog/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/hexo_blog/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/hexo_blog/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/hexo_blog/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/hexo_blog/img/about.webp') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="let和const">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-07-15 08:08" pubdate>
+        2021年7月15日 早上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.2k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      14
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-page-views"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">let和const</h1>
+            
+            <div class="markdown-body">
+              <h1 id="let和const"><a href="#let和const" class="headerlink" title="let和const"></a>let和const</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本章涉及3个知识点，var，let，const</p>
+<h3 id="var-命令"><a href="#var-命令" class="headerlink" title="var 命令"></a>var 命令</h3><blockquote>
+<p>​    JavaScript中，我们通常说的作用域是函数作用域，使用var声明的变量，无论是在代码的哪个地方声明的，都会提升到当前作用域的最顶部，这种行为叫做<strong>变量提升（Hoisting）</strong></p>
+<p>也就是说，如果在函数内部声明的变量，都会被提升到该函数开头，而在全局声明的变量，就会提升到全局作用域的顶部。</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">test</span>(<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;1: &#x27;</span>, a) <span class="hljs-comment">//undefined</span><br>    <span class="hljs-keyword">if</span> (<span class="hljs-literal">false</span>) &#123;<br>      <span class="hljs-keyword">var</span> a = <span class="hljs-number">1</span><br>    &#125;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;3: &#x27;</span>, a) <span class="hljs-comment">//undefined</span><br>&#125;<br><br>test()<br></code></pre></div></td></tr></table></figure>
+
+<blockquote>
+<p>实际执行时，上面的代码中的变量a会提升到函数顶部声明，即使if语句的条件是false，也一样不影响a变量提升。</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">test</span>(<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-keyword">var</span> a<br>    <span class="hljs-comment">//a声明没有赋值</span><br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;1: &#x27;</span>, a) <span class="hljs-comment">//undefined</span><br>    <span class="hljs-keyword">if</span> (<span class="hljs-literal">false</span>) &#123;<br>      a = <span class="hljs-number">1</span><br>    &#125;<br>    <span class="hljs-comment">//a声明没有赋值</span><br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;3: &#x27;</span>, a) <span class="hljs-comment">//undefined</span><br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<blockquote>
+<p>在函数嵌套函数的场景下，变量只会提升到最近的一个函数顶部，而不会提升到外部函数。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">//b提升到函数a顶部，但不会提升到函数test。</span><br>    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">test</span>(<span class="hljs-params"></span>) </span>&#123;<br>        <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">a</span>(<span class="hljs-params"></span>) </span>&#123;<br>          <span class="hljs-keyword">if</span> (<span class="hljs-literal">false</span>) &#123;<br>            <span class="hljs-keyword">var</span> b = <span class="hljs-number">2</span><br>          &#125;<br>        &#125;<br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;b: &#x27;</span>, b)<br>    &#125;<br>    <br>    test() <span class="hljs-comment">//b is not defined</span><br></code></pre></div></td></tr></table></figure>
+
+<blockquote>
+<p>如果a没有声明，那么就会报错，<strong>没有声明和声明后没有赋值是不一样的</strong>，这点一定要区分开，有助于我们找bug。</p>
+</blockquote>
+<figure class="highlight actionscript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs actionscript"><span class="hljs-comment">//a没有声明的情况</span><br>   a <span class="hljs-keyword">is</span> not defined<br></code></pre></div></td></tr></table></figure>
+
+<h3 id="let"><a href="#let" class="headerlink" title="let"></a>let</h3><blockquote>
+<p>let和const都能够声明块级作用域，用法和var是类似的，let的特点是不会变量提升，而是被锁在当前块中。</p>
+<p>一个非常简单的例子：</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">test</span>(<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-function"><span class="hljs-title">if</span>(<span class="hljs-params"><span class="hljs-literal">true</span></span>)</span> &#123;<br>      <span class="hljs-built_in">console</span>.log(a)<span class="hljs-comment">//TDZ，俗称临时死区，用来描述变量不提升的现象</span><br>      <span class="hljs-keyword">let</span> a = <span class="hljs-number">1</span><br>    &#125;<br>&#125;<br>test()  <span class="hljs-comment">// a is not defined</span><br><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">test</span>(<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-function"><span class="hljs-title">if</span>(<span class="hljs-params"><span class="hljs-literal">true</span></span>)</span> &#123;<br>      <span class="hljs-keyword">let</span> a = <span class="hljs-number">1</span><br>    &#125;<br>    <span class="hljs-built_in">console</span>.log(a)<br>&#125;    <br>test() <span class="hljs-comment">// a is not defined</span><br></code></pre></div></td></tr></table></figure>
+
+<blockquote>
+<p>唯一正确的使用方法：<strong>先声明，再访问。</strong></p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">test</span>(<span class="hljs-params"></span>) </span>&#123;<br>        <span class="hljs-function"><span class="hljs-title">if</span>(<span class="hljs-params"><span class="hljs-literal">true</span></span>)</span> &#123;<br>          <span class="hljs-keyword">let</span> a = <span class="hljs-number">1</span><br>          <span class="hljs-built_in">console</span>.log(a)<br>        &#125;<br>    &#125;<br>    test() <span class="hljs-comment">// 1</span><br></code></pre></div></td></tr></table></figure>
+
+<blockquote>
+<p>声明常量，一旦声明，不可更改，而且常量必须初始化赋值。</p>
+</blockquote>
+<figure class="highlight routeros"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs routeros">const<span class="hljs-built_in"> type </span>= <span class="hljs-string">&quot;ACTION&quot;</span><br></code></pre></div></td></tr></table></figure>
+
+<blockquote>
+<p>我们试试重新声明type，看看会报什么错：</p>
+</blockquote>
+<figure class="highlight vim"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs vim">const <span class="hljs-built_in">type</span> = <span class="hljs-string">&quot;ACTION&quot;</span><br>    <span class="hljs-built_in">type</span> = <span class="hljs-number">1</span><br>    console.<span class="hljs-built_in">log</span>(<span class="hljs-built_in">type</span>) //<span class="hljs-string">&quot;type&quot;</span> <span class="hljs-keyword">is</span> <span class="hljs-keyword">read</span>-<span class="hljs-keyword">only</span><br>    <br>    const <span class="hljs-built_in">type</span> = <span class="hljs-string">&quot;ACTION&quot;</span><br>    <span class="hljs-keyword">let</span> <span class="hljs-built_in">type</span> = <span class="hljs-number">1</span><br>    console.<span class="hljs-built_in">log</span>(<span class="hljs-built_in">type</span>) //Duplicate declaration <span class="hljs-string">&quot;type&quot;</span><br></code></pre></div></td></tr></table></figure>
+
+<blockquote>
+<p>​    const虽然是常量，不允许修改默认赋值，但如果定义的是对象Object，那么可以修改对象内部的属性值包括新增删除键值对也是可以的。</p>
+</blockquote>
+<figure class="highlight scala"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs scala">const <span class="hljs-class"><span class="hljs-keyword">type</span> </span>= &#123;<br>      a: <span class="hljs-number">1</span><br>    &#125;<br>    <span class="hljs-keyword">type</span>.a = <span class="hljs-number">2</span> <span class="hljs-comment">//没有直接修改type的值，而是修改type.a的属性值，这是允许的。</span><br>    console.log(<span class="hljs-class"><span class="hljs-keyword">type</span>) <span class="hljs-comment">// &#123;a: 2&#125;</span></span><br><span class="hljs-class">    </span><br><span class="hljs-class">    <span class="hljs-title">type</span>.<span class="hljs-title">b</span> </span>= <span class="hljs-number">3</span> <span class="hljs-comment">//拓展Object也是没有问题的</span><br>    console.log(<span class="hljs-class"><span class="hljs-keyword">type</span>) <span class="hljs-comment">// &#123;a: 2 , b: 3&#125;</span></span><br><span class="hljs-class">    </span><br><span class="hljs-class">    <span class="hljs-title">delete</span> <span class="hljs-title">type</span>.<span class="hljs-title">b=3</span> <span class="hljs-comment">//删除整个键值对也OK的</span></span><br><span class="hljs-class">    <span class="hljs-title">console</span>.<span class="hljs-title">log</span>(<span class="hljs-params">type</span>) <span class="hljs-comment">// &#123;a: 2&#125;</span></span><br><span class="hljs-class">    </span><br><span class="hljs-class">    <span class="hljs-comment">//如果重新定义数据结构~常量的内存地址值发生改变,这个是不可行的。</span></span><br><span class="hljs-class">    <span class="hljs-title">type=</span></span>&#123;&#125;; <span class="hljs-comment">//Assignment to constant variable.</span><br>    <span class="hljs-class"><span class="hljs-keyword">type</span></span>=[]; <span class="hljs-comment">//Assignment to constant variable.</span><br></code></pre></div></td></tr></table></figure>
+
+<h3 id="const和let的异同点"><a href="#const和let的异同点" class="headerlink" title="const和let的异同点"></a>const和let的异同点</h3><blockquote>
+<p><strong>相同点：</strong>const和let都是在当前块内有效，执行到块外会被销毁，也不存在变量提升，不能重复声明。</p>
+<p><strong>不同点：</strong>const不能再赋值，let声明的变量可以重复赋值。</p>
+</blockquote>
+<h3 id="块级作用域的使用场景"><a href="#块级作用域的使用场景" class="headerlink" title="块级作用域的使用场景"></a>块级作用域的使用场景</h3><blockquote>
+<p>​    除了上面提到的常用声明方式，我们还可以在循环中使用，最出名的一道面试题：循环中定时器闭包的考题</p>
+<p>在for循环中使用var声明的循环变量，会跳出循环体污染当前的函数。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-title">for</span>(<span class="hljs-params"><span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">5</span>; i++</span>)</span> &#123;<br>      <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>        <span class="hljs-built_in">console</span>.log(i) <span class="hljs-comment">//5, 5, 5, 5, 5</span><br>      &#125;, <span class="hljs-number">0</span>)<br>    &#125;<br>    <span class="hljs-built_in">console</span>.log(i) <span class="hljs-comment">//5 i跳出循环体污染外部函数</span><br>    <br>    <span class="hljs-comment">//将var改成let之后</span><br>    <span class="hljs-function"><span class="hljs-title">for</span>(<span class="hljs-params"><span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">5</span>; i++</span>)</span> &#123;<br>      <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>        <span class="hljs-built_in">console</span>.log(i) <span class="hljs-comment">// 0,1,2,3,4</span><br>      &#125;, <span class="hljs-number">0</span>)<br>    &#125;<br>    <span class="hljs-built_in">console</span>.log(i)<span class="hljs-comment">//i is not defined i无法污染外部函数</span><br></code></pre></div></td></tr></table></figure>
+
+<p><code>const实际上保证的，并不是变量的值不得改动，而是变量指向的那个内存地址所保存的数据不得改动。对于简单类型的数据（数值、字符串、布尔值），值就保存在变量指向的那个内存地址，因此等同于常量。但对于复合类型的数据（主要是对象和数组），变量指向的内存地址，保存的只是一个指向实际数据的指针，const只能保证这个指针是固定的（即总是指向另一个固定的地址），至于它指向的数据结构是不是可变的，就完全不能控制了</code></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/hexo_blog/categories/%E7%BD%91%E7%BB%9C/">网络</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/hexo_blog/tags/%E7%BD%91%E7%BB%9C/">网络</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/hexo_blog/2021/08/06/%E6%95%B0%E7%BB%84%E5%B8%B8%E7%94%A8api/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">数组常用api🎇</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/hexo_blog/2021/05/21/%E8%8A%82%E6%B5%81%E9%98%B2%E6%8A%96/">
+                        <span class="hidden-mobile">节流防抖🗽</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/hexo_blog/js/events.js" ></script>
+<script  src="/hexo_blog/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/hexo_blog/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/hexo_blog/js/local-search.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/hexo_blog/js/boot.js" ></script>
+
+
+</body>
+</html>

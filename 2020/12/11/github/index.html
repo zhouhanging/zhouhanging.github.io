@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/hexo_blog/img/favicon.png">
-  <link rel="icon" href="/hexo_blog/img/favicon.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/hexo_blog/img/favicon.jpg">
+  <link rel="icon" href="/hexo_blog/img/favicon.jpg">
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -56,7 +56,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"zhouhang-hello.gitee.io","root":"/hexo_blog/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"zhouhang-hello.gitee.io","root":"/hexo_blog/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
   </script>
   <script  src="/hexo_blog/js/utils.js" ></script>
   <script  src="/hexo_blog/js/color-schema.js" ></script>
@@ -141,6 +141,18 @@
             </li>
           
         
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/hexo_blog/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
         
           <li class="nav-item" id="search-btn">
             <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
@@ -159,7 +171,7 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/hexo_blog/img/hello.jpg') no-repeat center center;
+         style="background: url('/hexo_blog/img/about.webp') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -186,7 +198,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      989 字
+      1.3k 字
     </span>
   
 
@@ -196,7 +208,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      11
+      15
        分钟
     </span>
   
@@ -237,27 +249,106 @@
             <h1 style="display: none">github使用总结📣</h1>
             
             <div class="markdown-body">
-              <h3 id="一些-GitHub-的基本概念"><a href="#一些-GitHub-的基本概念" class="headerlink" title="一些 GitHub 的基本概念"></a>一些 GitHub 的基本概念</h3><pre><code>- Repository
-仓库的意思，即你的项目，你想在 GitHub 上开源一个项目，那就必须要新建一个 Repository ，如果你开源的项目多了，你就拥有了多个 Repositories 。
-
-- Issue
-问题的意思，举个例子，就是你开源了一个项目，别人发现你的项目中有bug，或者哪些地方做的不够好，他就可以给你提个 Issue ，即问题，提的问题多了，也就是 Issues ，然后你看到了这些问题就可以去逐个修复，修复ok了就可以一个个的 Close 掉。
-
-- Star
-这个好理解，就是给项目点赞，但是在 GitHub 上的点赞远比微博、知乎点赞难的多，如果你有一个项目获得100个star都算很不容易了！
-
-- Fork
-这个不好翻译，如果实在要翻译我把他翻译成分叉，什么意思呢？你开源了一个项目，别人想在你这个项目的基础上做些改进，然后应用到自己的项目中，这个时候他就可以 Fork 你的项目，这个时候他的 GitHub 主页上就多了一个项目，只不过这个项目是基于你的项目基础（本质上是在原有项目的基础上新建了一个分支，分支的概念后面会在讲解Git的时候说到），他就可以随心所欲的去改进，但是丝毫不会影响原有项目的代码与结构。
-
-- Pull Request
-发起请求，这个其实是基于 Fork 的，还是上面那个例子，如果别人在你基础上做了改进，后来觉得改进的很不错，应该要把这些改进让更多的人收益，于是就想把自己的改进合并到原有项目里，这个时候他就可以发起一个 Pull Request（简称PR） ，原有项目创建人就可以收到这个请求，这个时候他会仔细review你的代码，并且测试觉得OK了，就会接受你的PR，这个时候你做的改进原有项目就会拥有了。
-
-- Watch
-这个也好理解就是观察，如果你 Watch 了某个项目，那么以后只要这个项目有任何更新，你都会第一时间收到关于这个项目的通知提醒。
-
-- Gist
-有些时候你没有项目可以开源，只是单纯的想分享一些代码片段，那这个时候 Gist 就派上用场了！</code></pre>
-<h4 id="git常用命令"><a href="#git常用命令" class="headerlink" title="git常用命令"></a>git常用命令</h4><pre><code>版本查询 -&gt;
+              <h1 id="一些-GitHub-的基本概念"><a href="#一些-GitHub-的基本概念" class="headerlink" title="一些 GitHub 的基本概念"></a>一些 GitHub 的基本概念</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>记录一些常用的git操作</p>
+<p><img src="https://img-blog.csdnimg.cn/20190628180240306.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1YW5zaHVqaW43Nw==,size_16,color_FFFFFF,t_70" srcset="/hexo_blog/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<h3 id="获取与创建项目"><a href="#获取与创建项目" class="headerlink" title="获取与创建项目"></a>获取与创建项目</h3><blockquote>
+<p>​    </p>
+<ul>
+<li>创建仓库的途径有：<ol>
+<li>在本地已有的目录，初始化一个新的；</li>
+<li>克隆复制一份别人的项目。</li>
+</ol>
+</li>
+</ul>
+<h2 id="git-init"><a href="#git-init" class="headerlink" title="git init"></a>git init</h2><ul>
+<li>在当前目录下创建.git目录，同时当前目录成为一个Git仓库。</li>
+</ul>
+<h2 id="git-clone"><a href="#git-clone" class="headerlink" title="git clone"></a>git clone</h2><ul>
+<li><code>git clone Git仓库url</code>：将http或ssh链接指向的Git仓库拷贝到本地。</li>
+<li><code>git clone Git仓库url 本地目录路径</code>：将远程Git仓库拷贝到本地指定目录。</li>
+</ul>
+</blockquote>
+<h3 id="添加与提交"><a href="#添加与提交" class="headerlink" title="添加与提交"></a>添加与提交</h3><blockquote>
+<p>​    基本流程</p>
+<ol>
+<li>使用<code>git add</code>添加需要追踪的新文件和待提交的更改；</li>
+<li>使用<code>git status</code>和<code>git diff</code>查看有何改动；</li>
+<li>使用<code>git commit</code>提交快照。</li>
+</ol>
+<h2 id="git-add"><a href="#git-add" class="headerlink" title="git add"></a>git add</h2><ul>
+<li><code>git add 文件</code>：将文件添加到缓存区，该文件被标记为被追踪。</li>
+<li><code>git add .</code>：缓存当前目录下所有文件，不包括已删除的文件。</li>
+</ul>
+<hr>
+<ul>
+<li>注意，git add只是复制一份当前状态下的该文件到缓存区，该文件之后的修改若不重新git add，则提交的时候，只会将上次git add的缓存提交给仓库。</li>
+</ul>
+<h2 id="git-commit"><a href="#git-commit" class="headerlink" title="git commit"></a>git commit</h2><ul>
+<li>将缓存写入仓库中。</li>
+<li><code>git add</code>是<strong>工作区-&gt;缓存区</strong>，<code>git commit</code>是<strong>缓存区-&gt;仓库</strong>。</li>
+<li><code>git commit -m &quot;本次提交说明&quot;</code>：一次性将缓存区所有文件修改提交到仓库的当前分支。</li>
+<li><code>git commit -am &quot;本次提交说明&quot;</code>：自动把所有<strong>已经跟踪过</strong>的文件缓存，并提交到仓库。常用于跳过<code>git add</code>步骤快速提交。</li>
+<li><code>git commit --amend &quot;本次提交说明&quot;</code>：重新提交。此次提交代替上一次提交的结果。尤其适用于提交完了才发现漏掉了几个文件没有添加，或者提交信息写错了的情况。</li>
+</ul>
+<h2 id="git-status"><a href="#git-status" class="headerlink" title="git status"></a>git status</h2><ul>
+<li><p><code>git status</code>：显示当前仓库的最新状态。</p>
+</li>
+<li><p><code>git status -s</code>：当前仓库的最新状态的简介。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1291453-ea460a22aae2bf76.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/170/format/webp" srcset="/hexo_blog/img/loading.gif" lazyload alt="img"></p>
+<p>git status -s</p>
+<ul>
+<li>状态值第一栏是关于缓存区的（绿色），第二栏是关于工作区的（红色）。<ul>
+<li>??表示该文件仅是本地文件。</li>
+<li>绿色A表示该文件以前没被提交过，添加到缓存；（提交时会告知仓库添加此快照）。</li>
+<li>绿色M表示该文件以前被提交过后，又添加到缓存；（提交时会告知仓库修改此快照）。</li>
+<li>绿色D表示该文件以前被提交过后，被本地删除了，又删除缓存；（提交时会告知仓库删除此快照）。</li>
+<li>绿色R表示该文件添加到快照时，系统发现某个D快照与其相同，并将D文件名改为该文件名。</li>
+<li>红色M表示该文件被本地修改过。</li>
+<li>红色D表示该文件被本地删除了。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="git-diff"><a href="#git-diff" class="headerlink" title="git diff"></a>git diff</h2><ul>
+<li><code>git diff</code>：比较工作区和缓存区的不同。</li>
+<li><code>git diff --cached</code>：比较缓存区和仓库的不同。</li>
+<li><code>git diff 文件</code>：比较指定文件在工作区和缓存区的不同。</li>
+<li><code>git diff 文件 --cached</code>：比较指定文件在缓存区和仓库的不同。</li>
+</ul>
+<hr>
+<ul>
+<li><code>git diff 提交版本号1 提交版本号2</code>：比较两次提交之间的区别。</li>
+<li><code>git diff 分支1 分支2</code>：比较两个分支之间的区别。</li>
+</ul>
+<hr>
+<ul>
+<li>注意：只会比较那些跟踪文件(即<code>git add</code>过的文件)。</li>
+</ul>
+<h2 id="git-show"><a href="#git-show" class="headerlink" title="git show"></a>git show</h2><ul>
+<li><code>git show</code>：查看最后一个提交的内容。</li>
+<li><code>git show HEAD~1</code>：查看倒数第二个提交的内容。</li>
+<li><code>git show 提交版本号</code>：查看指定提交的内容。</li>
+</ul>
+</blockquote>
+<h3 id="删除与恢复"><a href="#删除与恢复" class="headerlink" title="删除与恢复"></a>删除与恢复</h3><blockquote>
+<p>​    </p>
+</blockquote>
+<h3 id="版本控制"><a href="#版本控制" class="headerlink" title="版本控制"></a>版本控制</h3><blockquote>
+<p>​    </p>
+</blockquote>
+<h3 id="远程项目"><a href="#远程项目" class="headerlink" title="远程项目"></a>远程项目</h3><blockquote>
+<p>​    </p>
+</blockquote>
+<h3 id="合并冲突"><a href="#合并冲突" class="headerlink" title="合并冲突"></a>合并冲突</h3><blockquote>
+<p>​    </p>
+</blockquote>
+<h3 id="子模块"><a href="#子模块" class="headerlink" title="子模块"></a>子模块</h3><blockquote>
+<p>​    </p>
+</blockquote>
+<h3 id="配置用户名和邮箱"><a href="#配置用户名和邮箱" class="headerlink" title="配置用户名和邮箱"></a>配置用户名和邮箱</h3><p><code>git config --global user.name &lt;your_name&gt;</code></p>
+<p><code>git config --global user.email &lt;your_email@example.com&gt;</code></p>
+<h4 id="git常用命令"><a href="#git常用命令" class="headerlink" title="git常用命令"></a>git常用命令</h4><div class="hljs code-wrapper"><pre><code>版本查询 -&gt;
     git --version
 设置当前用户信息  
     git config --global user.name &quot;xxx&quot;
@@ -323,7 +414,8 @@
     // 创建并跳转分支
     git checkout -b xxx
     // 合并分支
-    git merge</code></pre>
+    git merge</code></pre></div>
+<p><img src="https://img-blog.csdn.net/20180801143428728?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2Njg0NjY1/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" srcset="/hexo_blog/img/loading.gif" lazyload alt="img"></p>
 
             </div>
             <hr>
@@ -379,6 +471,15 @@
               
             </div>
 
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+
+              </article>
             
           </article>
         </div>
@@ -439,6 +540,30 @@
      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
   </div>
   
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
 
   
 
@@ -498,6 +623,8 @@
 
 
 
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
 
 
 
@@ -521,6 +648,19 @@
 
 
 
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 

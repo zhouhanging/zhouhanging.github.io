@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/hexo_blog/img/favicon.png">
-  <link rel="icon" href="/hexo_blog/img/favicon.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/hexo_blog/img/favicon.jpg">
+  <link rel="icon" href="/hexo_blog/img/favicon.jpg">
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -56,7 +56,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"zhouhang-hello.gitee.io","root":"/hexo_blog/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"zhouhang-hello.gitee.io","root":"/hexo_blog/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
   </script>
   <script  src="/hexo_blog/js/utils.js" ></script>
   <script  src="/hexo_blog/js/color-schema.js" ></script>
@@ -141,6 +141,18 @@
             </li>
           
         
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/hexo_blog/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
         
           <li class="nav-item" id="search-btn">
             <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
@@ -159,7 +171,7 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/hexo_blog/img/hello.jpg') no-repeat center center;
+         style="background: url('/hexo_blog/img/about.webp') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -244,16 +256,16 @@
 </ul>
 </li>
 </ul>
-<pre><code><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> timer = flase;<br><span class="hljs-built_in">document</span>.addEventListener(<span class="hljs-string">&#x27;scroll&#x27;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">clearTimeout</span>(timer); <span class="hljs-comment">// 清除未执行的定时器（如果之前已经触发过不到300毫秒又触发了一次则清除之前的）重置回初始化状态</span><br>  timer = <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;函数防抖&quot;</span>)<br>  &#125;, <span class="hljs-number">300</span>)<br>&#125;)<br></code></pre></td></tr></table></figure></code></pre>
+<div class="hljs code-wrapper"><pre><code><figure class="highlight js"><table><tr><td class="gutter hljs"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-keyword">let</span> timer = flase;<br><span class="hljs-built_in">document</span>.addEventListener(<span class="hljs-string">&#x27;scroll&#x27;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">clearTimeout</span>(timer); <span class="hljs-comment">// 清除未执行的定时器（如果之前已经触发过不到300毫秒又触发了一次则清除之前的）重置回初始化状态</span><br>  timer = <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;函数防抖&quot;</span>)<br>  &#125;, <span class="hljs-number">300</span>)<br>&#125;)<br></code></pre></div></td></tr></table></figure></code></pre>
 <ul>
 <li><p><strong>节流：</strong>在制定间隔内任务只执行1次。节流的原理是不管你在一段时间内如何不停地触发事件，只要设置了节流，就会每隔一段时间执行一次。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> canRun = <span class="hljs-literal">true</span>;<br><span class="hljs-built_in">document</span>.addEventListener(<span class="hljs-string">&#x27;scroll&#x27;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-keyword">if</span> (!canRun) <span class="hljs-keyword">return</span>;<br>  canRun = <span class="hljs-literal">false</span>;<br>  <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;函数节流&#x27;</span>)<br>    canRun = <span class="hljs-literal">true</span><br>  &#125;, <span class="hljs-number">300</span>)<br>&#125;)<br></code></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-keyword">let</span> canRun = <span class="hljs-literal">true</span>;<br><span class="hljs-built_in">document</span>.addEventListener(<span class="hljs-string">&#x27;scroll&#x27;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-keyword">if</span> (!canRun) <span class="hljs-keyword">return</span>;<br>  canRun = <span class="hljs-literal">false</span>;<br>  <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;函数节流&#x27;</span>)<br>    canRun = <span class="hljs-literal">true</span><br>  &#125;, <span class="hljs-number">300</span>)<br>&#125;)<br></code></pre></div></td></tr></table></figure>
 
 
 
 </li>
 </ul>
-<pre><code>&lt;img src=&quot;C:\Users\l&#39;x\AppData\Roaming\Typora\typora-user-images\image-20210521162630790.png&quot; alt=&quot;image-20210521162630790&quot; style=&quot;zoom:50%;&quot; /&gt;</code></pre>
+<div class="hljs code-wrapper"><pre><code>&lt;img src=&quot;C:\Users\l&#39;x\AppData\Roaming\Typora\typora-user-images\image-20210521162630790.png&quot; alt=&quot;image-20210521162630790&quot; style=&quot;zoom:50%;&quot; /&gt;</code></pre></div>
 <h3 id="原理📣"><a href="#原理📣" class="headerlink" title="原理📣"></a>原理📣</h3><blockquote>
 <p>防抖函数原理：在事件被触发n秒后再执行回调，如果在这n秒内又被触发，则重新计时</p>
 <p>防抖动和节流本质是不一样的。防抖动是将多次执行变为最后一次执行，节流是将多次执行变成每隔一段时间执行</p>
@@ -262,7 +274,7 @@
 <p>如： 像仿百度搜索，就应该用防抖，当我连续不断输入时，不会发送请求；当我一段时间内不输入了，才会发送一次请求；如果小于这段时间继续输入的话，时间会重新计算，也不会发送请求。</p>
 </blockquote>
 <p>  <strong>手写简化版🚔</strong></p>
-  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// func是用户传入需要防抖的函数</span><br><span class="hljs-comment">// wait是等待时间</span><br><span class="hljs-keyword">const</span> debounce = <span class="hljs-function">(<span class="hljs-params">func, wait = <span class="hljs-number">50</span></span>) =&gt;</span> &#123;<br>  <span class="hljs-comment">// 缓存一个定时器id</span><br>  <span class="hljs-keyword">let</span> timer = <span class="hljs-number">0</span><br>  <span class="hljs-comment">// 这里返回的函数是每次用户实际调用的防抖函数</span><br>  <span class="hljs-comment">// 如果已经设定过定时器了就清空上一次的定时器</span><br>  <span class="hljs-comment">// 开始一个新的定时器，延迟执行用户传入的方法</span><br>  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">...args</span>) </span>&#123;<br>    <span class="hljs-keyword">if</span> (timer) <span class="hljs-built_in">clearTimeout</span>(timer)<br>    timer = <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>      func.apply(<span class="hljs-built_in">this</span>, args)<br>    &#125;, wait)<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+  <figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">// func是用户传入需要防抖的函数</span><br><span class="hljs-comment">// wait是等待时间</span><br><span class="hljs-keyword">const</span> debounce = <span class="hljs-function">(<span class="hljs-params">func, wait = <span class="hljs-number">50</span></span>) =&gt;</span> &#123;<br>  <span class="hljs-comment">// 缓存一个定时器id</span><br>  <span class="hljs-keyword">let</span> timer = <span class="hljs-number">0</span><br>  <span class="hljs-comment">// 这里返回的函数是每次用户实际调用的防抖函数</span><br>  <span class="hljs-comment">// 如果已经设定过定时器了就清空上一次的定时器</span><br>  <span class="hljs-comment">// 开始一个新的定时器，延迟执行用户传入的方法</span><br>  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">...args</span>) </span>&#123;<br>    <span class="hljs-keyword">if</span> (timer) <span class="hljs-built_in">clearTimeout</span>(timer)<br>    timer = <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>      func.apply(<span class="hljs-built_in">this</span>, args)<br>    &#125;, wait)<br>  &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
 
 <blockquote>
 <p>节流函数原理:规定在一个单位时间内，只能触发一次函数。如果这个单位时间内触发多次函数，只有一次生效</p>
@@ -271,7 +283,7 @@
 <p>例:（连续不断动都需要调用时用，设一时间间隔），像dom的拖拽，如果用消抖的话，就会出现卡顿的感觉，因为只在停止的时候执行了一次，这个时候就应该用节流，在一定时间内多次执行，会流畅很多</p>
 </blockquote>
 <p>  <strong>手写简版🚔</strong></p>
-  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// func是用户传入需要防抖的函数</span><br><span class="hljs-comment">// wait是等待时间</span><br><span class="hljs-keyword">const</span> throttle = <span class="hljs-function">(<span class="hljs-params">func, wait = <span class="hljs-number">50</span></span>) =&gt;</span> &#123;<br>  <span class="hljs-comment">// 上一次执行该函数的时间</span><br>  <span class="hljs-keyword">let</span> lastTime = <span class="hljs-number">0</span><br>  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">...args</span>) </span>&#123;<br>    <span class="hljs-comment">// 当前时间</span><br>    <span class="hljs-keyword">let</span> now = +<span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>()<br>    <span class="hljs-comment">// 将当前时间和上一次执行函数时间对比</span><br>    <span class="hljs-comment">// 如果差值大于设置的等待时间就执行函数</span><br>    <span class="hljs-keyword">if</span> (now - lastTime &gt; wait) &#123;<br>      lastTime = now<br>      func.apply(<span class="hljs-built_in">this</span>, args)<br>    &#125;<br>  &#125;<br>&#125;<br><br><span class="hljs-built_in">setInterval</span>(<br>  throttle(<span class="hljs-function">() =&gt;</span> &#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-number">1</span>)<br>  &#125;, <span class="hljs-number">500</span>),<br>  <span class="hljs-number">1</span><br>)<br></code></pre></td></tr></table></figure>
+  <figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">// func是用户传入需要防抖的函数</span><br><span class="hljs-comment">// wait是等待时间</span><br><span class="hljs-keyword">const</span> throttle = <span class="hljs-function">(<span class="hljs-params">func, wait = <span class="hljs-number">50</span></span>) =&gt;</span> &#123;<br>  <span class="hljs-comment">// 上一次执行该函数的时间</span><br>  <span class="hljs-keyword">let</span> lastTime = <span class="hljs-number">0</span><br>  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">...args</span>) </span>&#123;<br>    <span class="hljs-comment">// 当前时间</span><br>    <span class="hljs-keyword">let</span> now = +<span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>()<br>    <span class="hljs-comment">// 将当前时间和上一次执行函数时间对比</span><br>    <span class="hljs-comment">// 如果差值大于设置的等待时间就执行函数</span><br>    <span class="hljs-keyword">if</span> (now - lastTime &gt; wait) &#123;<br>      lastTime = now<br>      func.apply(<span class="hljs-built_in">this</span>, args)<br>    &#125;<br>  &#125;<br>&#125;<br><br><span class="hljs-built_in">setInterval</span>(<br>  throttle(<span class="hljs-function">() =&gt;</span> &#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-number">1</span>)<br>  &#125;, <span class="hljs-number">500</span>),<br>  <span class="hljs-number">1</span><br>)<br></code></pre></div></td></tr></table></figure>
 
 
 
@@ -325,9 +337,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/hexo_blog/2021/08/06/%E6%95%B0%E7%BB%84%E5%B8%B8%E7%94%A8api/">
+                      <a href="/hexo_blog/2021/07/15/vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">数组常用api🎇</span>
+                        <span class="hidden-mobile">let和const</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -335,8 +347,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/hexo_blog/2021/05/11/evenloop/">
-                        <span class="hidden-mobile">github使用总结🎟️</span>
+                      <a href="/hexo_blog/2021/05/11/let%E5%92%8Cconst%E5%91%BD%E4%BB%A4/">
+                        <span class="hidden-mobile">get和post请求🍺</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -346,6 +358,15 @@
               
             </div>
 
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+
+              </article>
             
           </article>
         </div>
@@ -406,6 +427,30 @@
      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
   </div>
   
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
 
   
 
@@ -465,6 +510,8 @@
 
 
 
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
 
 
 
@@ -488,6 +535,19 @@
 
 
 
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 
