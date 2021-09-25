@@ -18,7 +18,7 @@
   <meta name="author" content="hello">
   <meta name="keywords" content="HELLO">
   
-  <title>vue双向绑定💻 - HELLO</title>
+  <title>二维数组的查找 🤺 - HELLO</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 
@@ -176,7 +176,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="vue双向绑定💻">
+            <span class="h2" id="subtitle" title="二维数组的查找 🤺">
               
             </span>
 
@@ -186,8 +186,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-08-11 08:08" pubdate>
-        2021年8月11日 早上
+      <time datetime="2021-09-17 09:39" pubdate>
+        2021年9月17日 上午
       </time>
     </span>
   
@@ -198,7 +198,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      22 字
+      787 字
     </span>
   
 
@@ -208,7 +208,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1
+      10
        分钟
     </span>
   
@@ -246,10 +246,38 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">vue双向绑定💻</h1>
+            <h1 style="display: none">二维数组的查找 🤺</h1>
             
             <div class="markdown-body">
-              <h1 id="vue双向绑定"><a href="#vue双向绑定" class="headerlink" title="vue双向绑定"></a>vue双向绑定</h1><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>vue的双向绑定&amp;响应式原理是框架的</p>
+              <h1 id="axios拦截器接口配置与使用"><a href="#axios拦截器接口配置与使用" class="headerlink" title="axios拦截器接口配置与使用"></a>axios拦截器接口配置与使用</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>实习期间遇到了一个axios拦截器接口配置的问题，这里总结一下相关使用</p>
+<p>附上官方文档(<a target="_blank" rel="noopener" href="http://axios-js.com/zh-cn/docs/index.html">http://axios-js.com/zh-cn/docs/index.html</a>)</p>
+<p> ▉ 什么是axios拦截器、为什么要使用axios拦截器？</p>
+<blockquote>
+<ul>
+<li><p> Axios 是一个基于 promise 的 HTTP 库，可以用在浏览器和 node.js 中。</p>
+</li>
+<li><p>页面发送http请求，很多情况我们要对请求和其响应进行特定的处理；如果请求数非常多，单独对每一个请求进行处理会变得非常麻烦，程序的优雅性也会大打折扣。好在强大的axios为开发者提供了这样一个API：拦截器。拦截器分为 请求（request）拦截器和 响应（response）拦截器。</p>
+</li>
+<li><p>它有很多优秀的特性，例如拦截请求和响应、取消请求、转换json、客户端防御XSRF等</p>
+</li>
+</ul>
+</blockquote>
+<img src="C:/Users/l%27x/AppData/Roaming/Typora/typora-user-images/image-20210917154842286.png" srcset="/hexo_blog/img/loading.gif" lazyload alt="image-20210917154842286" style="zoom:50%;" />
+
+
+
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">//   在http.js中引入axios</span><br><span class="hljs-keyword">import</span> axios <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;axios&#x27;</span>   <span class="hljs-comment">//引入 axios</span><br><span class="hljs-keyword">import</span> QS <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;qs&#x27;</span>; <span class="hljs-comment">// 引入qs模块，用来序列化post类型的数据，某些请求会用得到</span><br><span class="hljs-keyword">import</span> &#123; Message &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;element-ui&#x27;</span>    <span class="hljs-comment">//引入 element-ui 的 Message 模块，用于信息提示</span><br><span class="hljs-keyword">import</span> store <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@/store&#x27;</span>     <span class="hljs-comment">//引入 vuex 中的数据</span><br><span class="hljs-keyword">import</span> &#123; getToken &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@/utils/auth&#x27;</span>   <span class="hljs-comment">//引入拿到的权限tocken</span><br><br><span class="hljs-comment">// create an axios instance   创建axios实例</span><br><span class="hljs-keyword">const</span> service = axios.create(&#123;<br>	配置信息...<br>&#125;)<br><br></code></pre></div></td></tr></table></figure>
+
+<figure class="highlight awk"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs awk">`配置引入`<br>import Qs from <span class="hljs-string">&#x27;qs&#x27;</span>;<br>export default&#123;<br>  <span class="hljs-regexp">//</span> 请求的接口，在请求的时候，如axios.get(url,config);这里的url会覆盖掉config中的url<br>  url: <span class="hljs-string">&#x27;&#x27;</span>,<br>  <span class="hljs-regexp">//</span> 请求的接口<br>  baseURL: <br>  <span class="hljs-regexp">//</span> 默认请求方法<br>  title: <span class="hljs-string">&#x27;&#x27;</span>,<br>  method: <span class="hljs-string">&#x27;post&#x27;</span>,<br>  <span class="hljs-regexp">//</span> 在发送请求之前对请求数据做处理<br>  transformRequest: [<br>    <span class="hljs-keyword">function</span>(data) &#123;<br>      <span class="hljs-regexp">//</span> 为了避免qs格式化时对内层对象的格式化先把内层的对象转为<br>      <span class="hljs-regexp">//</span> data.strSQL = base64encode(data.strSQL)<br>      <span class="hljs-regexp">//</span> 由于使用的form-data传数据所以要格式化<br>      data = Qs.stringify(data);<br>      return data;<br>    &#125;,<br>  ],<br><br>  <span class="hljs-regexp">//</span> 提前处理返回的数据=<br>  transformResponse: [<br>    <span class="hljs-keyword">function</span>(data) &#123;<br>      return data;<br>    &#125;,<br>  ],<br>  <span class="hljs-regexp">//</span> 请求头信息<br>  headers: &#123;<br>    <br>  &#125;,<br><br>  <span class="hljs-regexp">//</span> 默认parameter参数<br>  params: &#123;<br><br>  &#125;,<br><br>  <span class="hljs-regexp">//</span> 序列化param<br>  paramsSerializer: <span class="hljs-keyword">function</span>(params) &#123;<br>    return Qs.stringify(params);<br>  &#125;,<br><br>  <span class="hljs-regexp">//</span> 默认post参数，使用axios.post(url,&#123;&#125;,config);如果没有额外的也必须要用一个空对象，否则会报错<br>  data: &#123;<br>  &#125;,<br><br>  <span class="hljs-regexp">//</span> 设置超时时间<br>  timeout: <span class="hljs-number">500000000</span>,<br><br>  <span class="hljs-regexp">//</span> 是否跨站点访问控制请求<br>  <span class="hljs-regexp">//</span> withCredentials: false, <span class="hljs-regexp">//</span> default<br>  withCredentials: true, <span class="hljs-regexp">//</span> 自动携带cookie<br><br>  <span class="hljs-regexp">//</span> 返回数据类型<br>  responseType: <span class="hljs-string">&#x27;json&#x27;</span>, <span class="hljs-regexp">//</span> default<br><br>  <span class="hljs-regexp">//</span> 将upload事件注释掉，防止跨域状态下发起option请求<br><br>  <span class="hljs-regexp">//</span> onUploadProgress: <span class="hljs-keyword">function</span>(progressEvent) &#123;<br>  <span class="hljs-regexp">//</span>   <span class="hljs-regexp">//</span> Do whatever you want with the native progress event<br>  <span class="hljs-regexp">//</span> &#125;,<br>  <span class="hljs-regexp">//</span> onDownloadProgress: <span class="hljs-keyword">function</span>(progressEvent) &#123;<br>  <span class="hljs-regexp">//</span>   <span class="hljs-regexp">//</span> Do whatever you want with the native progress event<br>  <span class="hljs-regexp">//</span> &#125;,<br>  maxContentLength: <span class="hljs-number">2000</span>,<br>  validateStatus: <span class="hljs-keyword">function</span>(status) &#123;<br>    return status &gt;= <span class="hljs-number">200</span> &amp;&amp; status &lt; <span class="hljs-number">300</span>; <span class="hljs-regexp">//</span> default<br>  &#125;,<br>  <span class="hljs-regexp">//</span> `maxRedirects` 定义在 node.js 中 follow 的最大重定向数目<br>  <span class="hljs-regexp">//</span> 如果设置为<span class="hljs-number">0</span>，将不会 follow 任何重定向<br>  maxRedirects: <span class="hljs-number">5</span>,<br>&#125;;<br></code></pre></div></td></tr></table></figure>
+
+<p> ▉ 请求拦截器</p>
+<blockquote>
+<figure class="highlight ada"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs ada">axios.interceptors.request.<span class="hljs-keyword">use</span>(<span class="hljs-keyword">function</span> <span class="hljs-title"></span>(config) &#123;<br>    // 在发起请求请做一些业务处理<br>    <span class="hljs-keyword">return</span> <span class="hljs-type">config</span>;<br>  &#125;, <span class="hljs-keyword">function</span> <span class="hljs-title"></span>(error) &#123;<br>    // 对请求失败做处理<br>    <span class="hljs-keyword">return</span> <span class="hljs-type">Promise.reject(error)</span>;<br>  &#125;);<br></code></pre></div></td></tr></table></figure>
+</blockquote>
+<p> ▉ 响应拦截器</p>
+<blockquote>
+<figure class="highlight ada"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs ada">axios.interceptors.response.<span class="hljs-keyword">use</span>(<span class="hljs-keyword">function</span> <span class="hljs-title"></span>(response) &#123;<br>    // 对响应数据做处理<br>    <span class="hljs-keyword">return</span> <span class="hljs-type">response</span>;<br>  &#125;, <span class="hljs-keyword">function</span> <span class="hljs-title"></span>(error) &#123;<br>    // 对响应错误做处理<br>    <span class="hljs-keyword">return</span> <span class="hljs-type">Promise.reject(error)</span>;<br>  &#125;);<br></code></pre></div></td></tr></table></figure>
+</blockquote>
 
             </div>
             <hr>
@@ -259,7 +287,7 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/hexo_blog/categories/%E7%BD%91%E7%BB%9C/">网络</a>
+                      <a class="hover-with-bg" href="/hexo_blog/categories/vue/">vue</a>
                     
                   </div>
                 
@@ -267,7 +295,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/hexo_blog/tags/%E7%BD%91%E7%BB%9C/">网络</a>
+                      <a class="hover-with-bg" href="/hexo_blog/tags/vue/">vue</a>
                     
                   </div>
                 
@@ -284,9 +312,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/hexo_blog/2021/08/11/vue%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A/">
+                      <a href="/hexo_blog/2021/09/23/vuex%E4%BD%BF%E7%94%A8/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">vue双向绑定💻</span>
+                        <span class="hidden-mobile">vuex使用</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -294,8 +322,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/hexo_blog/2021/08/06/%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D/">
-                        <span class="hidden-mobile">数组去重💪</span>
+                      <a href="/hexo_blog/2021/09/15/%E4%BA%8C%E5%8F%89%E6%A0%91/">
+                        <span class="hidden-mobile">二叉树</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

@@ -198,7 +198,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.3k 字
+      1.9k 字
     </span>
   
 
@@ -208,7 +208,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      15
+      24
        分钟
     </span>
   
@@ -251,104 +251,29 @@
             <div class="markdown-body">
               <h1 id="一些-GitHub-的基本概念"><a href="#一些-GitHub-的基本概念" class="headerlink" title="一些 GitHub 的基本概念"></a>一些 GitHub 的基本概念</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>记录一些常用的git操作</p>
 <p><img src="https://img-blog.csdnimg.cn/20190628180240306.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3l1YW5zaHVqaW43Nw==,size_16,color_FFFFFF,t_70" srcset="/hexo_blog/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
-<h3 id="获取与创建项目"><a href="#获取与创建项目" class="headerlink" title="获取与创建项目"></a>获取与创建项目</h3><blockquote>
-<p>​    </p>
-<ul>
-<li>创建仓库的途径有：<ol>
-<li>在本地已有的目录，初始化一个新的；</li>
-<li>克隆复制一份别人的项目。</li>
-</ol>
-</li>
-</ul>
-<h2 id="git-init"><a href="#git-init" class="headerlink" title="git init"></a>git init</h2><ul>
-<li>在当前目录下创建.git目录，同时当前目录成为一个Git仓库。</li>
-</ul>
-<h2 id="git-clone"><a href="#git-clone" class="headerlink" title="git clone"></a>git clone</h2><ul>
-<li><code>git clone Git仓库url</code>：将http或ssh链接指向的Git仓库拷贝到本地。</li>
-<li><code>git clone Git仓库url 本地目录路径</code>：将远程Git仓库拷贝到本地指定目录。</li>
-</ul>
-</blockquote>
-<h3 id="添加与提交"><a href="#添加与提交" class="headerlink" title="添加与提交"></a>添加与提交</h3><blockquote>
-<p>​    基本流程</p>
-<ol>
-<li>使用<code>git add</code>添加需要追踪的新文件和待提交的更改；</li>
-<li>使用<code>git status</code>和<code>git diff</code>查看有何改动；</li>
-<li>使用<code>git commit</code>提交快照。</li>
-</ol>
-<h2 id="git-add"><a href="#git-add" class="headerlink" title="git add"></a>git add</h2><ul>
-<li><code>git add 文件</code>：将文件添加到缓存区，该文件被标记为被追踪。</li>
-<li><code>git add .</code>：缓存当前目录下所有文件，不包括已删除的文件。</li>
-</ul>
-<hr>
-<ul>
-<li>注意，git add只是复制一份当前状态下的该文件到缓存区，该文件之后的修改若不重新git add，则提交的时候，只会将上次git add的缓存提交给仓库。</li>
-</ul>
-<h2 id="git-commit"><a href="#git-commit" class="headerlink" title="git commit"></a>git commit</h2><ul>
-<li>将缓存写入仓库中。</li>
-<li><code>git add</code>是<strong>工作区-&gt;缓存区</strong>，<code>git commit</code>是<strong>缓存区-&gt;仓库</strong>。</li>
-<li><code>git commit -m &quot;本次提交说明&quot;</code>：一次性将缓存区所有文件修改提交到仓库的当前分支。</li>
-<li><code>git commit -am &quot;本次提交说明&quot;</code>：自动把所有<strong>已经跟踪过</strong>的文件缓存，并提交到仓库。常用于跳过<code>git add</code>步骤快速提交。</li>
-<li><code>git commit --amend &quot;本次提交说明&quot;</code>：重新提交。此次提交代替上一次提交的结果。尤其适用于提交完了才发现漏掉了几个文件没有添加，或者提交信息写错了的情况。</li>
-</ul>
-<h2 id="git-status"><a href="#git-status" class="headerlink" title="git status"></a>git status</h2><ul>
-<li><p><code>git status</code>：显示当前仓库的最新状态。</p>
-</li>
-<li><p><code>git status -s</code>：当前仓库的最新状态的简介。</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/1291453-ea460a22aae2bf76.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/170/format/webp" srcset="/hexo_blog/img/loading.gif" lazyload alt="img"></p>
-<p>git status -s</p>
-<ul>
-<li>状态值第一栏是关于缓存区的（绿色），第二栏是关于工作区的（红色）。<ul>
-<li>??表示该文件仅是本地文件。</li>
-<li>绿色A表示该文件以前没被提交过，添加到缓存；（提交时会告知仓库添加此快照）。</li>
-<li>绿色M表示该文件以前被提交过后，又添加到缓存；（提交时会告知仓库修改此快照）。</li>
-<li>绿色D表示该文件以前被提交过后，被本地删除了，又删除缓存；（提交时会告知仓库删除此快照）。</li>
-<li>绿色R表示该文件添加到快照时，系统发现某个D快照与其相同，并将D文件名改为该文件名。</li>
-<li>红色M表示该文件被本地修改过。</li>
-<li>红色D表示该文件被本地删除了。</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="git-diff"><a href="#git-diff" class="headerlink" title="git diff"></a>git diff</h2><ul>
-<li><code>git diff</code>：比较工作区和缓存区的不同。</li>
-<li><code>git diff --cached</code>：比较缓存区和仓库的不同。</li>
-<li><code>git diff 文件</code>：比较指定文件在工作区和缓存区的不同。</li>
-<li><code>git diff 文件 --cached</code>：比较指定文件在缓存区和仓库的不同。</li>
-</ul>
-<hr>
-<ul>
-<li><code>git diff 提交版本号1 提交版本号2</code>：比较两次提交之间的区别。</li>
-<li><code>git diff 分支1 分支2</code>：比较两个分支之间的区别。</li>
-</ul>
-<hr>
-<ul>
-<li>注意：只会比较那些跟踪文件(即<code>git add</code>过的文件)。</li>
-</ul>
-<h2 id="git-show"><a href="#git-show" class="headerlink" title="git show"></a>git show</h2><ul>
-<li><code>git show</code>：查看最后一个提交的内容。</li>
-<li><code>git show HEAD~1</code>：查看倒数第二个提交的内容。</li>
-<li><code>git show 提交版本号</code>：查看指定提交的内容。</li>
-</ul>
-</blockquote>
-<h3 id="删除与恢复"><a href="#删除与恢复" class="headerlink" title="删除与恢复"></a>删除与恢复</h3><blockquote>
+<blockquote>
 <p>​    </p>
 </blockquote>
-<h3 id="版本控制"><a href="#版本控制" class="headerlink" title="版本控制"></a>版本控制</h3><blockquote>
-<p>​    </p>
-</blockquote>
-<h3 id="远程项目"><a href="#远程项目" class="headerlink" title="远程项目"></a>远程项目</h3><blockquote>
-<p>​    </p>
-</blockquote>
-<h3 id="合并冲突"><a href="#合并冲突" class="headerlink" title="合并冲突"></a>合并冲突</h3><blockquote>
-<p>​    </p>
-</blockquote>
-<h3 id="子模块"><a href="#子模块" class="headerlink" title="子模块"></a>子模块</h3><blockquote>
-<p>​    </p>
-</blockquote>
-<h3 id="配置用户名和邮箱"><a href="#配置用户名和邮箱" class="headerlink" title="配置用户名和邮箱"></a>配置用户名和邮箱</h3><p><code>git config --global user.name &lt;your_name&gt;</code></p>
-<p><code>git config --global user.email &lt;your_email@example.com&gt;</code></p>
-<h4 id="git常用命令"><a href="#git常用命令" class="headerlink" title="git常用命令"></a>git常用命令</h4><div class="hljs code-wrapper"><pre><code>版本查询 -&gt;
+<h3 id="一、新建代码库"><a href="#一、新建代码库" class="headerlink" title="一、新建代码库"></a>一、新建代码库</h3><figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash"><span class="hljs-comment"># 在当前目录新建一个Git代码库</span><br>$ git init<br><br><span class="hljs-comment"># 新建一个目录，将其初始化为Git代码库</span><br>$ git init [project-name]<br><br><span class="hljs-comment"># 下载一个项目和它的整个代码历史</span><br>$ git <span class="hljs-built_in">clone</span> [url]<br></code></pre></div></td></tr></table></figure>
+
+<h3 id="二、配置"><a href="#二、配置" class="headerlink" title="二、配置"></a>二、配置</h3><p>Git的设置文件为<code>.gitconfig</code>，它可以在用户主目录下（全局配置），也可以在项目目录下（项目配置）。</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash"><span class="hljs-comment"># 显示当前的Git配置</span><br>$ git config --list<br><br><span class="hljs-comment"># 编辑Git配置文件</span><br>$ git config -e [--global]<br><br><span class="hljs-comment"># 设置提交代码时的用户信息</span><br>$ git config [--global] user.name <span class="hljs-string">&quot;[name]&quot;</span><br>$ git config [--global] user.email <span class="hljs-string">&quot;[email address]&quot;</span><br></code></pre></div></td></tr></table></figure>
+
+<h3 id="三、增加-删除文件"><a href="#三、增加-删除文件" class="headerlink" title="三、增加/删除文件"></a>三、增加/删除文件</h3><figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash"><span class="hljs-comment"># 添加指定文件到暂存区</span><br>$ git add [file1] [file2] ...<br><br><span class="hljs-comment"># 添加指定目录到暂存区，包括子目录</span><br>$ git add [dir]<br><br><span class="hljs-comment"># 添加当前目录的所有文件到暂存区</span><br>$ git add .<br><br><span class="hljs-comment"># 添加每个变化前，都会要求确认</span><br><span class="hljs-comment"># 对于同一个文件的多处变化，可以实现分次提交</span><br>$ git add -p<br><br><span class="hljs-comment"># 删除工作区文件，并且将这次删除放入暂存区</span><br>$ git rm [file1] [file2] ...<br><br><span class="hljs-comment"># 停止追踪指定文件，但该文件会保留在工作区</span><br>$ git rm --cached [file]<br><br><span class="hljs-comment"># 改名文件，并且将这个改名放入暂存区</span><br>$ git mv [file-original] [file-renamed]<br></code></pre></div></td></tr></table></figure>
+
+<h3 id="代码提交"><a href="#代码提交" class="headerlink" title="代码提交"></a>代码提交</h3><figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash"><span class="hljs-comment"># 提交暂存区到仓库区</span><br>$ git commit -m [message]<br><br><span class="hljs-comment"># 提交暂存区的指定文件到仓库区</span><br>$ git commit [file1] [file2] ... -m [message]<br><br><span class="hljs-comment"># 提交工作区自上次commit之后的变化，直接到仓库区</span><br>$ git commit -a<br><br><span class="hljs-comment"># 提交时显示所有diff信息</span><br>$ git commit -v<br><br><span class="hljs-comment"># 使用一次新的commit，替代上一次提交</span><br><span class="hljs-comment"># 如果代码没有任何新变化，则用来改写上一次commit的提交信息</span><br>$ git commit --amend -m [message]<br><br><span class="hljs-comment"># 重做上一次commit，并包括指定文件的新变化</span><br>$ git commit --amend [file1] [file2] ...<br><br></code></pre></div></td></tr></table></figure>
+
+<h3 id="五、分支"><a href="#五、分支" class="headerlink" title="五、分支"></a>五、分支</h3><figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash"><span class="hljs-comment"># 列出所有本地分支</span><br>$ git branch<br><br><span class="hljs-comment"># 列出所有远程分支</span><br>$ git branch -r<br><br><span class="hljs-comment"># 列出所有本地分支和远程分支</span><br>$ git branch -a<br><br><span class="hljs-comment"># 新建一个分支，但依然停留在当前分支</span><br>$ git branch [branch-name]<br><br><span class="hljs-comment"># 新建一个分支，并切换到该分支</span><br>$ git checkout -b [branch]<br><br><span class="hljs-comment"># 新建一个分支，指向指定commit</span><br>$ git branch [branch] [commit]<br><br><span class="hljs-comment"># 新建一个分支，与指定的远程分支建立追踪关系</span><br>$ git branch --track [branch] [remote-branch]<br><br><span class="hljs-comment"># 切换到指定分支，并更新工作区</span><br>$ git checkout [branch-name]<br><br><span class="hljs-comment"># 切换到上一个分支</span><br>$ git checkout -<br><br><span class="hljs-comment"># 建立追踪关系，在现有分支与指定的远程分支之间</span><br>$ git branch --set-upstream [branch] [remote-branch]<br><br><span class="hljs-comment"># 合并指定分支到当前分支</span><br>$ git merge [branch]<br><br><span class="hljs-comment"># 选择一个commit，合并进当前分支</span><br>$ git cherry-pick [commit]<br><br><span class="hljs-comment"># 删除分支</span><br>$ git branch -d [branch-name]<br><br><span class="hljs-comment"># 删除远程分支</span><br>$ git push origin --delete [branch-name]<br>$ git branch -dr [remote/branch]<br></code></pre></div></td></tr></table></figure>
+
+<h3 id="六、标签"><a href="#六、标签" class="headerlink" title="六、标签"></a>六、标签</h3><figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash"><span class="hljs-comment"># 列出所有tag</span><br>$ git tag<br><br><span class="hljs-comment"># 新建一个tag在当前commit</span><br>$ git tag [tag]<br><br><span class="hljs-comment"># 新建一个tag在指定commit</span><br>$ git tag [tag] [commit]<br><br><span class="hljs-comment"># 删除本地tag</span><br>$ git tag -d [tag]<br><br><span class="hljs-comment"># 删除远程tag</span><br>$ git push origin :refs/tags/[tagName]<br><br><span class="hljs-comment"># 查看tag信息</span><br>$ git show [tag]<br><br><span class="hljs-comment"># 提交指定tag</span><br>$ git push [remote] [tag]<br><br><span class="hljs-comment"># 提交所有tag</span><br>$ git push [remote] --tags<br><br><span class="hljs-comment"># 新建一个分支，指向某个tag</span><br>$ git checkout -b [branch] [tag]<br></code></pre></div></td></tr></table></figure>
+
+<h3 id="七、查看信息"><a href="#七、查看信息" class="headerlink" title="七、查看信息"></a>七、查看信息</h3><figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash"><span class="hljs-comment"># 显示有变更的文件</span><br>$ git status<br><br><span class="hljs-comment"># 显示当前分支的版本历史</span><br>$ git <span class="hljs-built_in">log</span><br><br><span class="hljs-comment"># 显示commit历史，以及每次commit发生变更的文件</span><br>$ git <span class="hljs-built_in">log</span> --<span class="hljs-built_in">stat</span><br><br><span class="hljs-comment"># 搜索提交历史，根据关键词</span><br>$ git <span class="hljs-built_in">log</span> -S [keyword]<br><br><span class="hljs-comment"># 显示某个commit之后的所有变动，每个commit占据一行</span><br>$ git <span class="hljs-built_in">log</span> [tag] HEAD --pretty=format:%s<br><br><span class="hljs-comment"># 显示某个commit之后的所有变动，其&quot;提交说明&quot;必须符合搜索条件</span><br>$ git <span class="hljs-built_in">log</span> [tag] HEAD --grep feature<br><br><span class="hljs-comment"># 显示某个文件的版本历史，包括文件改名</span><br>$ git <span class="hljs-built_in">log</span> --follow [file]<br>$ git whatchanged [file]<br><br><span class="hljs-comment"># 显示指定文件相关的每一次diff</span><br>$ git <span class="hljs-built_in">log</span> -p [file]<br><br><span class="hljs-comment"># 显示过去5次提交</span><br>$ git <span class="hljs-built_in">log</span> -5 --pretty --oneline<br><br><span class="hljs-comment"># 显示所有提交过的用户，按提交次数排序</span><br>$ git shortlog -sn<br><br><span class="hljs-comment"># 显示指定文件是什么人在什么时间修改过</span><br>$ git blame [file]<br><br><span class="hljs-comment"># 显示暂存区和工作区的差异</span><br>$ git diff<br><br><span class="hljs-comment"># 显示暂存区和上一个commit的差异</span><br>$ git diff --cached [file]<br><br><span class="hljs-comment"># 显示工作区与当前分支最新commit之间的差异</span><br>$ git diff HEAD<br><br><span class="hljs-comment"># 显示两次提交之间的差异</span><br>$ git diff [first-branch]...[second-branch]<br><br><span class="hljs-comment"># 显示今天你写了多少行代码</span><br>$ git diff --shortstat <span class="hljs-string">&quot;@&#123;0 day ago&#125;&quot;</span><br><br><span class="hljs-comment"># 显示某次提交的元数据和内容变化</span><br>$ git show [commit]<br><br><span class="hljs-comment"># 显示某次提交发生变化的文件</span><br>$ git show --name-only [commit]<br><br><span class="hljs-comment"># 显示某次提交时，某个文件的内容</span><br>$ git show [commit]:[filename]<br><br><span class="hljs-comment"># 显示当前分支的最近几次提交</span><br>$ git reflog<br></code></pre></div></td></tr></table></figure>
+
+<h3 id="八、远程同步"><a href="#八、远程同步" class="headerlink" title="八、远程同步"></a>八、远程同步</h3><figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash"><span class="hljs-comment"># 下载远程仓库的所有变动</span><br>$ git fetch [remote]<br><br><span class="hljs-comment"># 显示所有远程仓库</span><br>$ git remote -v<br><br><span class="hljs-comment"># 显示某个远程仓库的信息</span><br>$ git remote show [remote]<br><br><span class="hljs-comment"># 增加一个新的远程仓库，并命名</span><br>$ git remote add [shortname] [url]<br><br><span class="hljs-comment"># 取回远程仓库的变化，并与本地分支合并</span><br>$ git pull [remote] [branch]<br><br><span class="hljs-comment"># 上传本地指定分支到远程仓库</span><br>$ git push [remote] [branch]<br><br><span class="hljs-comment"># 强行推送当前分支到远程仓库，即使有冲突</span><br>$ git push [remote] --force<br><br><span class="hljs-comment"># 推送所有分支到远程仓库</span><br>$ git push [remote] --all<br></code></pre></div></td></tr></table></figure>
+
+<h3 id="九、撤销"><a href="#九、撤销" class="headerlink" title="九、撤销"></a>九、撤销</h3><figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash"><span class="hljs-comment"># 恢复暂存区的指定文件到工作区</span><br>$ git checkout [file]<br><br><span class="hljs-comment"># 恢复某个commit的指定文件到暂存区和工作区</span><br>$ git checkout [commit] [file]<br><br><span class="hljs-comment"># 恢复暂存区的所有文件到工作区</span><br>$ git checkout .<br><br><span class="hljs-comment"># 重置暂存区的指定文件，与上一次commit保持一致，但工作区不变</span><br>$ git reset [file]<br><br><span class="hljs-comment"># 重置暂存区与工作区，与上一次commit保持一致</span><br>$ git reset --hard<br><br><span class="hljs-comment"># 重置当前分支的指针为指定commit，同时重置暂存区，但工作区不变</span><br>$ git reset [commit]<br><br><span class="hljs-comment"># 重置当前分支的HEAD为指定commit，同时重置暂存区和工作区，与指定commit一致</span><br>$ git reset --hard [commit]<br><br><span class="hljs-comment"># 重置当前HEAD为指定commit，但保持暂存区和工作区不变</span><br>$ git reset --keep [commit]<br><br><span class="hljs-comment"># 新建一个commit，用来撤销指定commit</span><br><span class="hljs-comment"># 后者的所有变化都将被前者抵消，并且应用到当前分支</span><br>$ git revert [commit]<br><br><span class="hljs-comment"># 暂时将未提交的变化移除，稍后再移入</span><br>$ git stash<br>$ git stash pop<br></code></pre></div></td></tr></table></figure>
+
+<h3 id="git常用命令"><a href="#git常用命令" class="headerlink" title="git常用命令"></a>git常用命令</h3><div class="hljs code-wrapper"><pre><code>版本查询 -&gt;
     git --version
 设置当前用户信息  
     git config --global user.name &quot;xxx&quot;
@@ -357,6 +282,8 @@
     git config --list
 显示git常用指令
     git
+生成一个可供发布的压缩包
+git archive
 初始化仓库
 // xxx 代表仓库名/文件夹名
     mkdir xxx
@@ -415,7 +342,7 @@
     git checkout -b xxx
     // 合并分支
     git merge</code></pre></div>
-<p><img src="https://img-blog.csdn.net/20180801143428728?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2Njg0NjY1/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" srcset="/hexo_blog/img/loading.gif" lazyload alt="img"></p>
+<p><code>摘自阮一峰博客</code></p>
 
             </div>
             <hr>

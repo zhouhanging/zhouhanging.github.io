@@ -18,7 +18,7 @@
   <meta name="author" content="hello">
   <meta name="keywords" content="HELLO">
   
-  <title>HELLO</title>
+  <title>闭包 - HELLO</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 
@@ -176,7 +176,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="">
+            <span class="h2" id="subtitle" title="闭包">
               
             </span>
 
@@ -198,7 +198,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      80 字
+      1.6k 字
     </span>
   
 
@@ -208,7 +208,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1
+      17
        分钟
     </span>
   
@@ -246,15 +246,80 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none"></h1>
+            <h1 style="display: none">闭包</h1>
             
             <div class="markdown-body">
-              <h1 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h1><h2 id="闭包-1"><a href="#闭包-1" class="headerlink" title="闭包"></a>闭包</h2><p>闭包相关的知识点总结</p>
-<h3 id="闭包形成的原因"><a href="#闭包形成的原因" class="headerlink" title="闭包形成的原因"></a>闭包形成的原因</h3><blockquote>
-<p>​     了解闭包前先来了解一下上级作用域和堆栈内存释放问题。</p>
+              <h1 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>对于初学者来说，闭包似乎有一点神秘，当了解过js的执行期上下文之后，或许就会豁然开朗，在理解闭包之前，有个重要的概念需要先了解一下，就是 js 执行上下文。</p>
+<h3 id="变量作用域"><a href="#变量作用域" class="headerlink" title="变量作用域"></a>变量作用域</h3><blockquote>
+<p>在javascript中，Javascript有着特殊的变量作用域，–全局变量和局部变量</p>
 <ul>
-<li>没个javascript函数都是对象，对象中有些数据我们可以访问，但是有是提供给javascript引擎存取，</li>
-<li></li>
+<li><p>就在于函数内部可以直接读取全局变量</p>
+<figure class="highlight delphi"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs delphi">  　<span class="hljs-keyword">var</span> n=<span class="hljs-number">999</span>;<br>  <br>  　　<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f1</span><span class="hljs-params">()</span><span class="hljs-comment">&#123;</span></span><br><span class="hljs-function"><span class="hljs-comment">  　　　　alert(n);</span></span><br><span class="hljs-function"><span class="hljs-comment">  　　&#125;</span></span><br><span class="hljs-function">  </span><br><span class="hljs-function">  　　<span class="hljs-title">f1</span><span class="hljs-params">()</span>;</span> <span class="hljs-comment">// 999</span><br></code></pre></div></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<ul>
+<li><p>在函数外部自然无法读取函数内的局部变量</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs actionscript">  　　<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f1</span><span class="hljs-params">()</span></span>&#123;<br>  　　　　<span class="hljs-keyword">var</span> n=<span class="hljs-number">999</span>; <span class="hljs-comment">// 使用var--如果不用的话，你实际上声明了一个全局变量！</span><br>  　　&#125;<br>  <br>  　　alert(n); <span class="hljs-comment">// error</span><br></code></pre></div></td></tr></table></figure>
+</li>
+</ul>
+</blockquote>
+<h3 id="作用域链"><a href="#作用域链" class="headerlink" title="作用域链"></a>作用域链</h3><blockquote>
+<ul>
+<li><p>[[scope]] : 每个JavaScript函数都是一个对象。对象中有些属性我们可以访问，但有些不可以，这些属性仅提供JavaScript引擎存取，[[scope]]就是其中一个。[[scope]]指的就是我们所说的作用域，其中存储了运行期上下文的集合</p>
+</li>
+<li><p>作用域链 ： [[scope]]中存储的执行期上下文对象的集合，这个集合呈链式链接，我们把这种链式链接叫做作用域链</p>
+</li>
+<li><p>运行期上下文 ： 当函数执行的前一刻，会创建一个称为执行期上下文的内部对象。一个执行期上下文定义了一个函数执行时的环境，函数每次执行时对应的执行上下文都是独一无二的，所以多次调用一个函数会导致创建多个执行期上下文，当函数执行完毕，它所产生的执行上下文被销毁</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs actionscript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">test</span><span class="hljs-params">()</span></span>&#123;<br>	<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p>第一次执行 test()   -&gt; AO{} // AO用完就不用了</p>
+<p>第二次执行 test()   -&gt; AO{} // 另外的AO</p>
+<p>……</p>
+</li>
+<li><p>查找变量 ：在哪个函数里面查找变量，就从哪个函数的作用域链的顶端依次向下查找函数类对象，</p>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">a</span>(<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">b</span>(<span class="hljs-params"></span>)</span>&#123;<br>        <span class="hljs-keyword">var</span> bb = <span class="hljs-number">234</span>;<br>        aa = <span class="hljs-number">0</span><br>    &#125;<br>    <br>    <span class="hljs-keyword">var</span> aa = <span class="hljs-number">123</span>;<br>    b();<br>    <span class="hljs-built_in">console</span>.log(aa)<br>&#125;<br><br><span class="hljs-keyword">var</span> glob = <span class="hljs-number">100</span>;<br>a();<br></code></pre></div></td></tr></table></figure>
+
+<p>0是最顶端，1次之，查找顺序是从顶端往下</p>
+<p><img src="C:/Users/l%27x/AppData/Roaming/Typora/typora-user-images/image-20210924094318982.png" srcset="/hexo_blog/img/loading.gif" lazyload alt="image-20210924094318982"><img src="C:/Users/l%27x/AppData/Roaming/Typora/typora-user-images/image-20210924094335484.png" srcset="/hexo_blog/img/loading.gif" lazyload alt="image-20210924094335484"></p>
+<p>理解过程：bb的AO是拿到aa的AO，就是同一个AO，bb只是引用了aa的AO，GO也是同一个，<code>function b()&#123;&#125;</code>执行完，干掉的是b自己的AO(销毁执行期上下文)(去掉连接线)，下一次<code>function b</code>执行时，产生全新的b的AO，b执行完只销毁自己的AO，不会销毁a的AO，<code>function a()&#123;&#125;</code>执行完，会把a自己的AO销毁【会把<code>function b</code>也销毁】，只剩GO(回归到a被定义的时候)，等下一次function a再被执行时，会产生一个全新的AO。。。周而复始</p>
+</blockquote>
+<p><img src="C:/Users/l%27x/AppData/Roaming/Typora/typora-user-images/image-20210924152003108.png" srcset="/hexo_blog/img/loading.gif" lazyload alt="image-20210924152003108"></p>
+<h3 id="执行期上下文"><a href="#执行期上下文" class="headerlink" title="执行期上下文"></a>执行期上下文</h3><blockquote>
+<p>每当 Javascript 代码在运行的时候，它都是在执行上下文中运行。</p>
+<p>js执行三部曲：1 语法分析 2 预编译 3 解释执行  </p>
+<p>JavaScript 中有三种执行上下文类型</p>
+<ul>
+<li><p><strong>全局执行上下文</strong> — 这是默认或者说基础的上下文，任何不在函数内部的代码都在全局上下文中。它会执行两件事：创建一个全局的 window 对象（浏览器的情况下），并且设置 <code>this</code> 的值等于这个全局对象。一个程序中只会有一个全局执行上下文。</p>
+</li>
+<li><p><strong>函数执行上下文</strong> — 每当一个函数被调用时, 都会为该函数创建一个新的上下文。每个函数都有它自己的执行上下文，<code>不过是在函数被调用时创建的</code>。函数上下文可以有任意多个。每当一个新的执行上下文被创建。</p>
+</li>
+<li><p><strong>Eval 函数执行上下文</strong> — 执行在 <code>eval</code> 函数内部的代码也会有它属于自己的执行上下文，但由于 JavaScript 开发者并不经常使用 <code>eval</code>。</p>
+<p>在javascript中，使用后进先出数据结构的执行栈来存储代码运行时创建的所有执行上下文，也就是在其它编程语言中所说的“调用栈”，当 JavaScript 引擎第一次遇到你的脚本时，它会创建一个全局的执行上下文并且压入当前执行栈。每当引擎遇到一个函数调用，它会为该函数创建一个新的执行上下文并压入栈的顶部。引擎会执行那些执行上下文位于栈顶的函数。当该函数执行结束时，执行上下文从栈中弹出，控制流程到达当前栈中的下一个上下文。</p>
+</li>
+</ul>
+</blockquote>
+<h3 id="闭包的产生"><a href="#闭包的产生" class="headerlink" title="闭包的产生"></a>闭包的产生</h3><blockquote>
+<p>当内部函数被保存到外部时，将会生成闭包，闭包导致原有作用域链不释放，造成内存泄漏</p>
+<p><code>--内存泄漏就是内存占用，内存被占用的越多，内存就变得越少，就像内存被泄漏了一样</code></p>
+<p>出于种种原因，我们有时候需要得到函数内的局部变量，正常情况下，这是办不到的，只有通过变通方法才能实现。</p>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js">　<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f1</span>(<span class="hljs-params"></span>)</span>&#123;<br><br>　　　　<span class="hljs-keyword">var</span> n=<span class="hljs-number">999</span>;<br><br>　　　　<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f2</span>(<span class="hljs-params"></span>)</span>&#123;<br>　　　　　　alert(n);<br>　　　　&#125;<br><br>　　　　<span class="hljs-keyword">return</span> f2;<br><br>　　&#125;<br><br>　　<span class="hljs-keyword">var</span> result=f1();<br><br>　　result(); <span class="hljs-comment">// 999</span><br></code></pre></div></td></tr></table></figure>
+
+<p>在上面的代码中，函数f2就被包括在函数f1内部，这时f1内部的所有局部变量，对f2都是可见的。但是反过来就不行，f2内部的局部变量，对f1就是不可见的。这就是Javascript语言特有的”链式作用域”结构（chain scope），子对象会一级一级地向上寻找所有父对象的变量。所以，父对象的所有变量，对子对象都是可见的，反之则不成立。</p>
+<p>上一节代码中的f2函数，就是闭包。直观来讲，闭包就是能够读取其他函数内部变量的函数。</p>
+<p>由于在Javascript语言中，只有函数内部的子函数才能读取局部变量，因此可以把闭包简单理解成”定义在一个函数内部的函数”。</p>
+<p><code>但凡是内部的函数被保存到外部，一定生成闭包</code></p>
+</blockquote>
+<h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><blockquote>
+<ul>
+<li>实现公有变量</li>
+<li>可以做缓存</li>
+<li>可以实现封装，属性私有化</li>
+<li>模块化开发，防止污染全局变量</li>
 </ul>
 </blockquote>
 
@@ -263,6 +328,20 @@
             <div>
               <div class="post-metas mb-3">
                 
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/hexo_blog/categories/js/">js</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/hexo_blog/tags/js/">js</a>
+                    
+                  </div>
                 
               </div>
               
@@ -277,9 +356,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/hexo_blog/2021/09/10/H5%E6%98%9F%E7%89%B9%E6%80%A7/">
+                      <a href="/hexo_blog/2021/09/13/MOGU/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">H5新特性 🕸️</span>
+                        <span class="hidden-mobile">MOGu面经</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
