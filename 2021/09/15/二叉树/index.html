@@ -30,7 +30,7 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/monokai-sublime.min.css" />
     
   
 
@@ -52,6 +52,10 @@
 <link  rel="stylesheet" href="/hexo_blog/css/main.css" />
 
 <!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/hexo_blog/css/scrollbar.css">
+
 
 
   <script id="fluid-configs">
@@ -270,13 +274,38 @@
 <blockquote>
 <p>先序递归遍历的思路是先遍历根结点，将值存入数组，然后递归遍历：先左结点，将值存入数组，继续向下遍历，然后再回溯遍历右结点，将值存入数组，这样递归循环。</p>
 </blockquote>
-<figure class="highlight awk"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs awk">var preListRec = []; <span class="hljs-regexp">//</span>定义保存先序遍历结果的数组<br>var preOrderRec = <span class="hljs-keyword">function</span>(node) &#123;<br>    <span class="hljs-keyword">if</span> (node) &#123; <span class="hljs-regexp">//</span>判断二叉树是否为空<br>        preListRec.push(node.value); <span class="hljs-regexp">//</span>将结点的值存入数组中<br>        preOrderRec(node.left); <span class="hljs-regexp">//</span>递归遍历左子树<br>        preOrderRec(node.right); <span class="hljs-regexp">//</span>递归遍历右子树<br>    &#125;<br>&#125;<br>preOrderRec(tree);<br>console.log(preListRec);<br><span class="hljs-regexp">//</span>[ <span class="hljs-string">&#x27;-&#x27;</span>, <span class="hljs-string">&#x27;+&#x27;</span>, <span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">&#x27;*&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>, <span class="hljs-string">&#x27;c&#x27;</span>, <span class="hljs-string">&#x27;/&#x27;</span>, <span class="hljs-string">&#x27;d&#x27;</span>, <span class="hljs-string">&#x27;e&#x27;</span> ]<br><br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code class="hljs awk">var preListRec = []; <span class="hljs-regexp">//</span>定义保存先序遍历结果的数组
+var preOrderRec = <span class="hljs-keyword">function</span>(node) &#123;
+    <span class="hljs-keyword">if</span> (node) &#123; <span class="hljs-regexp">//</span>判断二叉树是否为空
+        preListRec.push(node.value); <span class="hljs-regexp">//</span>将结点的值存入数组中
+        preOrderRec(node.left); <span class="hljs-regexp">//</span>递归遍历左子树
+        preOrderRec(node.right); <span class="hljs-regexp">//</span>递归遍历右子树
+    &#125;
+&#125;
+preOrderRec(tree);
+console.log(preListRec);
+<span class="hljs-regexp">//</span>[ <span class="hljs-string">&#x27;-&#x27;</span>, <span class="hljs-string">&#x27;+&#x27;</span>, <span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">&#x27;*&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>, <span class="hljs-string">&#x27;c&#x27;</span>, <span class="hljs-string">&#x27;/&#x27;</span>, <span class="hljs-string">&#x27;d&#x27;</span>, <span class="hljs-string">&#x27;e&#x27;</span> ]
+</code></pre></div>
 </li>
 <li><p>非递归遍历</p>
 <blockquote>
 <p>先序非递归遍历是利用了栈，将根结点放入栈中，然后再取出来，将值放入结果数组，然后如果存在右子树，将右子树压入栈，如果存在左子树，将左子树压入栈，然后循环判断栈是否为空，重复上述步骤。</p>
 </blockquote>
-<figure class="highlight awk"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs awk">var preListUnRec = []; <span class="hljs-regexp">//</span>定义保存先序遍历结果的数组<br>var preOrderUnRecursion = <span class="hljs-keyword">function</span>(node) &#123;<br>    <span class="hljs-keyword">if</span> (node) &#123; <span class="hljs-regexp">//</span>判断二叉树是否为空<br>        var stack = [node]; <span class="hljs-regexp">//</span>将二叉树压入栈<br>        <span class="hljs-keyword">while</span> (stack.length !== <span class="hljs-number">0</span>) &#123; <span class="hljs-regexp">//</span>如果栈不为空，则循环遍历<br>            node = stack.pop(); <span class="hljs-regexp">//</span>从栈中取出一个结点<br>            preListUnRec.push(node.value); <span class="hljs-regexp">//</span>将取出结点的值存入数组中<br>            <span class="hljs-keyword">if</span> (node.right) stack.push(node.right); <span class="hljs-regexp">//</span>如果存在右子树，将右子树压入栈<br>            <span class="hljs-keyword">if</span> (node.left) stack.push(node.left); <span class="hljs-regexp">//</span>如果存在左子树，将左子树压入栈<br>        &#125;<br>    &#125;<br>&#125;<br>preOrderUnRecursion(tree);<br>console.log(preListUnRec);<br><br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code class="hljs awk">var preListUnRec = []; <span class="hljs-regexp">//</span>定义保存先序遍历结果的数组
+var preOrderUnRecursion = <span class="hljs-keyword">function</span>(node) &#123;
+    <span class="hljs-keyword">if</span> (node) &#123; <span class="hljs-regexp">//</span>判断二叉树是否为空
+        var stack = [node]; <span class="hljs-regexp">//</span>将二叉树压入栈
+        <span class="hljs-keyword">while</span> (stack.length !== <span class="hljs-number">0</span>) &#123; <span class="hljs-regexp">//</span>如果栈不为空，则循环遍历
+            node = stack.pop(); <span class="hljs-regexp">//</span>从栈中取出一个结点
+            preListUnRec.push(node.value); <span class="hljs-regexp">//</span>将取出结点的值存入数组中
+            <span class="hljs-keyword">if</span> (node.right) stack.push(node.right); <span class="hljs-regexp">//</span>如果存在右子树，将右子树压入栈
+            <span class="hljs-keyword">if</span> (node.left) stack.push(node.left); <span class="hljs-regexp">//</span>如果存在左子树，将左子树压入栈
+        &#125;
+    &#125;
+&#125;
+preOrderUnRecursion(tree);
+console.log(preListUnRec);
+</code></pre></div>
 
 
 
@@ -295,13 +324,42 @@
 <blockquote>
 <p>中序递归遍历的思路是先递归遍历左子树，从最后一个左子树开始存入数组，然后回溯遍历双亲结点，再是右子树，这样递归循环</p>
 </blockquote>
-<figure class="highlight awk"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs awk">var inListRec = []; <span class="hljs-regexp">//</span>定义保存中序遍历结果的数组<br>var inOrderRec = <span class="hljs-keyword">function</span>(node) &#123;<br>    <span class="hljs-keyword">if</span> (node) &#123; <span class="hljs-regexp">//</span>判断二叉树是否为空<br>        inOrderRec(node.left); <span class="hljs-regexp">//</span>递归遍历左子树<br>        inListRec.push(node.value); <span class="hljs-regexp">//</span>将结点的值存入数组中<br>        inOrderRec(node.right); <span class="hljs-regexp">//</span>递归遍历右子树<br>    &#125;<br>&#125;<br>inOrderRec(tree);<br>console.log(inListRec);<br><span class="hljs-regexp">//</span>[ <span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">&#x27;+&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>, <span class="hljs-string">&#x27;*&#x27;</span>, <span class="hljs-string">&#x27;c&#x27;</span>, <span class="hljs-string">&#x27;-&#x27;</span>, <span class="hljs-string">&#x27;d&#x27;</span>, <span class="hljs-string">&#x27;/&#x27;</span>, <span class="hljs-string">&#x27;e&#x27;</span> ]<br><br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code class="hljs awk">var inListRec = []; <span class="hljs-regexp">//</span>定义保存中序遍历结果的数组
+var inOrderRec = <span class="hljs-keyword">function</span>(node) &#123;
+    <span class="hljs-keyword">if</span> (node) &#123; <span class="hljs-regexp">//</span>判断二叉树是否为空
+        inOrderRec(node.left); <span class="hljs-regexp">//</span>递归遍历左子树
+        inListRec.push(node.value); <span class="hljs-regexp">//</span>将结点的值存入数组中
+        inOrderRec(node.right); <span class="hljs-regexp">//</span>递归遍历右子树
+    &#125;
+&#125;
+inOrderRec(tree);
+console.log(inListRec);
+<span class="hljs-regexp">//</span>[ <span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">&#x27;+&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>, <span class="hljs-string">&#x27;*&#x27;</span>, <span class="hljs-string">&#x27;c&#x27;</span>, <span class="hljs-string">&#x27;-&#x27;</span>, <span class="hljs-string">&#x27;d&#x27;</span>, <span class="hljs-string">&#x27;/&#x27;</span>, <span class="hljs-string">&#x27;e&#x27;</span> ]
+</code></pre></div>
 
 <p>非递归遍历</p>
 <blockquote>
 <p>非递归遍历的思路是将当前结点压入栈，然后将左子树当做当前结点，如果当前结点为空，将双亲结点取出来，将值保存进数组，然后将右子树当做当前结点，进行循环。</p>
 </blockquote>
-<figure class="highlight awk"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs awk">var inListUnRec = []; <span class="hljs-regexp">//</span>定义保存中序遍历结果的数组<br>var inOrderUnRec = <span class="hljs-keyword">function</span>(node) &#123;<br>    <span class="hljs-keyword">if</span> (node) &#123; <span class="hljs-regexp">//</span>判断二叉树是否为空<br>        var stack = []; <span class="hljs-regexp">//</span>建立一个栈<br>        <span class="hljs-keyword">while</span> (stack.length !== <span class="hljs-number">0</span> || node) &#123; <span class="hljs-regexp">//</span>如果栈不为空或结点不为空，则循环遍历<br>            <span class="hljs-keyword">if</span> (node) &#123; <span class="hljs-regexp">//</span>如果结点不为空<br>                stack.push(node); <span class="hljs-regexp">//</span>将结点压入栈<br>                node = node.left; <span class="hljs-regexp">//</span>将左子树作为当前结点<br>            &#125; <span class="hljs-keyword">else</span> &#123; <span class="hljs-regexp">//</span>左子树为空，即没有左子树的情况<br>                node = stack.pop(); <span class="hljs-regexp">//</span>将结点取出来<br>                inListUnRec.push(node.value); <span class="hljs-regexp">//</span>将取出结点的值存入数组中<br>                node = node.right; <span class="hljs-regexp">//</span>将右结点作为当前结点<br>            &#125;<br>        &#125;<br>    &#125;<br>&#125;<br>inOrderUnRec(tree);<br>console.log(inListUnRec);<br><span class="hljs-regexp">//</span>[ <span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">&#x27;+&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>, <span class="hljs-string">&#x27;*&#x27;</span>, <span class="hljs-string">&#x27;c&#x27;</span>, <span class="hljs-string">&#x27;-&#x27;</span>, <span class="hljs-string">&#x27;d&#x27;</span>, <span class="hljs-string">&#x27;/&#x27;</span>, <span class="hljs-string">&#x27;e&#x27;</span> ]<br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code class="hljs awk">var inListUnRec = []; <span class="hljs-regexp">//</span>定义保存中序遍历结果的数组
+var inOrderUnRec = <span class="hljs-keyword">function</span>(node) &#123;
+    <span class="hljs-keyword">if</span> (node) &#123; <span class="hljs-regexp">//</span>判断二叉树是否为空
+        var stack = []; <span class="hljs-regexp">//</span>建立一个栈
+        <span class="hljs-keyword">while</span> (stack.length !== <span class="hljs-number">0</span> || node) &#123; <span class="hljs-regexp">//</span>如果栈不为空或结点不为空，则循环遍历
+            <span class="hljs-keyword">if</span> (node) &#123; <span class="hljs-regexp">//</span>如果结点不为空
+                stack.push(node); <span class="hljs-regexp">//</span>将结点压入栈
+                node = node.left; <span class="hljs-regexp">//</span>将左子树作为当前结点
+            &#125; <span class="hljs-keyword">else</span> &#123; <span class="hljs-regexp">//</span>左子树为空，即没有左子树的情况
+                node = stack.pop(); <span class="hljs-regexp">//</span>将结点取出来
+                inListUnRec.push(node.value); <span class="hljs-regexp">//</span>将取出结点的值存入数组中
+                node = node.right; <span class="hljs-regexp">//</span>将右结点作为当前结点
+            &#125;
+        &#125;
+    &#125;
+&#125;
+inOrderUnRec(tree);
+console.log(inListUnRec);
+<span class="hljs-regexp">//</span>[ <span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">&#x27;+&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>, <span class="hljs-string">&#x27;*&#x27;</span>, <span class="hljs-string">&#x27;c&#x27;</span>, <span class="hljs-string">&#x27;-&#x27;</span>, <span class="hljs-string">&#x27;d&#x27;</span>, <span class="hljs-string">&#x27;/&#x27;</span>, <span class="hljs-string">&#x27;e&#x27;</span> ]</code></pre></div>
 
 
 
@@ -318,7 +376,17 @@
 <blockquote>
 <p>递归遍历也是和上面的差不多，先走左子树，当左子树没有孩子结点时，将此结点的值放入数组中，然后回溯遍历双亲结点的右结点，递归遍历。</p>
 </blockquote>
-<figure class="highlight awk"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs awk">var postListRec = []; <span class="hljs-regexp">//</span>定义保存后序遍历结果的数组<br>var postOrderRec = <span class="hljs-keyword">function</span>(node) &#123;<br>    <span class="hljs-keyword">if</span> (node) &#123; <span class="hljs-regexp">//</span>判断二叉树是否为空<br>        postOrderRec(node.left); <span class="hljs-regexp">//</span>递归遍历左子树<br>        postOrderRec(node.right); <span class="hljs-regexp">//</span>递归遍历右子树<br>        postListRec.push(node.value); <span class="hljs-regexp">//</span>将结点的值存入数组中<br>    &#125;<br>&#125;<br>postOrderRec(tree);<br>console.log(postListRec);<br><span class="hljs-regexp">//</span>[ <span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>, <span class="hljs-string">&#x27;c&#x27;</span>, <span class="hljs-string">&#x27;*&#x27;</span>, <span class="hljs-string">&#x27;+&#x27;</span>, <span class="hljs-string">&#x27;d&#x27;</span>, <span class="hljs-string">&#x27;e&#x27;</span>, <span class="hljs-string">&#x27;/&#x27;</span>, <span class="hljs-string">&#x27;-&#x27;</span> ]<br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code class="hljs awk">var postListRec = []; <span class="hljs-regexp">//</span>定义保存后序遍历结果的数组
+var postOrderRec = <span class="hljs-keyword">function</span>(node) &#123;
+    <span class="hljs-keyword">if</span> (node) &#123; <span class="hljs-regexp">//</span>判断二叉树是否为空
+        postOrderRec(node.left); <span class="hljs-regexp">//</span>递归遍历左子树
+        postOrderRec(node.right); <span class="hljs-regexp">//</span>递归遍历右子树
+        postListRec.push(node.value); <span class="hljs-regexp">//</span>将结点的值存入数组中
+    &#125;
+&#125;
+postOrderRec(tree);
+console.log(postListRec);
+<span class="hljs-regexp">//</span>[ <span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>, <span class="hljs-string">&#x27;c&#x27;</span>, <span class="hljs-string">&#x27;*&#x27;</span>, <span class="hljs-string">&#x27;+&#x27;</span>, <span class="hljs-string">&#x27;d&#x27;</span>, <span class="hljs-string">&#x27;e&#x27;</span>, <span class="hljs-string">&#x27;/&#x27;</span>, <span class="hljs-string">&#x27;-&#x27;</span> ]</code></pre></div>
 
 
 
@@ -326,13 +394,47 @@
 <blockquote>
 <p>这里使用了一个tmp变量来记录上一次出栈、入栈的结点。思路是先把根结点和左树推入栈，然后取出左树，再推入右树，取出，最后取根结点</p>
 </blockquote>
-<figure class="highlight awk"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs awk">var postListUnRec = []; <span class="hljs-regexp">//</span>定义保存后序遍历结果的数组<br>var postOrderUnRec = <span class="hljs-keyword">function</span>(node) &#123;<br>    <span class="hljs-keyword">if</span> (node) &#123; <span class="hljs-regexp">//</span>判断二叉树是否为空<br>        var stack = [node]; <span class="hljs-regexp">//</span>将二叉树压入栈<br>        var tmp = null; <span class="hljs-regexp">//</span>定义缓存变量<br>        <span class="hljs-keyword">while</span> (stack.length !== <span class="hljs-number">0</span>) &#123; <span class="hljs-regexp">//</span>如果栈不为空，则循环遍历<br>            tmp = stack[stack.length - <span class="hljs-number">1</span>]; <span class="hljs-regexp">//</span>将栈顶的值保存在tmp中<br>            <span class="hljs-keyword">if</span> (tmp.left &amp;&amp; node !== tmp.left &amp;&amp; node !== tmp.right) &#123; <span class="hljs-regexp">//</span>如果存在左子树<br>                stack.push(tmp.left); <span class="hljs-regexp">//</span>将左子树结点压入栈<br>            &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (tmp.right &amp;&amp; node !== tmp.right) &#123; <span class="hljs-regexp">//</span>如果结点存在右子树<br>                stack.push(tmp.right); <span class="hljs-regexp">//</span>将右子树压入栈中<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                postListUnRec.push(stack.pop().value);<br>                node = tmp;<br>            &#125;<br>        &#125;<br>    &#125;<br>&#125;<br>postOrderUnRec(tree);<br>console.log(postListUnRec);<br><span class="hljs-regexp">//</span>[ <span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>, <span class="hljs-string">&#x27;c&#x27;</span>, <span class="hljs-string">&#x27;*&#x27;</span>, <span class="hljs-string">&#x27;+&#x27;</span>, <span class="hljs-string">&#x27;d&#x27;</span>, <span class="hljs-string">&#x27;e&#x27;</span>, <span class="hljs-string">&#x27;/&#x27;</span>, <span class="hljs-string">&#x27;-&#x27;</span> ]<br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code class="hljs awk">var postListUnRec = []; <span class="hljs-regexp">//</span>定义保存后序遍历结果的数组
+var postOrderUnRec = <span class="hljs-keyword">function</span>(node) &#123;
+    <span class="hljs-keyword">if</span> (node) &#123; <span class="hljs-regexp">//</span>判断二叉树是否为空
+        var stack = [node]; <span class="hljs-regexp">//</span>将二叉树压入栈
+        var tmp = null; <span class="hljs-regexp">//</span>定义缓存变量
+        <span class="hljs-keyword">while</span> (stack.length !== <span class="hljs-number">0</span>) &#123; <span class="hljs-regexp">//</span>如果栈不为空，则循环遍历
+            tmp = stack[stack.length - <span class="hljs-number">1</span>]; <span class="hljs-regexp">//</span>将栈顶的值保存在tmp中
+            <span class="hljs-keyword">if</span> (tmp.left &amp;&amp; node !== tmp.left &amp;&amp; node !== tmp.right) &#123; <span class="hljs-regexp">//</span>如果存在左子树
+                stack.push(tmp.left); <span class="hljs-regexp">//</span>将左子树结点压入栈
+            &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (tmp.right &amp;&amp; node !== tmp.right) &#123; <span class="hljs-regexp">//</span>如果结点存在右子树
+                stack.push(tmp.right); <span class="hljs-regexp">//</span>将右子树压入栈中
+            &#125; <span class="hljs-keyword">else</span> &#123;
+                postListUnRec.push(stack.pop().value);
+                node = tmp;
+            &#125;
+        &#125;
+    &#125;
+&#125;
+postOrderUnRec(tree);
+console.log(postListUnRec);
+<span class="hljs-regexp">//</span>[ <span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>, <span class="hljs-string">&#x27;c&#x27;</span>, <span class="hljs-string">&#x27;*&#x27;</span>, <span class="hljs-string">&#x27;+&#x27;</span>, <span class="hljs-string">&#x27;d&#x27;</span>, <span class="hljs-string">&#x27;e&#x27;</span>, <span class="hljs-string">&#x27;/&#x27;</span>, <span class="hljs-string">&#x27;-&#x27;</span> ]</code></pre></div>
 
 <p>▉广度遍历</p>
 <blockquote>
 <p>广度遍历是从二叉树的根结点开始，自上而下逐层遍历；在同一层中，按照从左到右的顺序对结点逐一访问。<br>实现原理：使用数组模拟队列，首先将根结点归入队列。当队列不为空时，执行循环：取出队列的一个结点，如果该节点有左子树，则将该节点的左子树存入队列；如果该节点有右子树，则将该节点的右子树存入队列。</p>
 </blockquote>
-<figure class="highlight awk"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs awk">var breadthList = []; <span class="hljs-regexp">//</span>定义保存广度遍历结果的数组<br>var breadthTraversal = <span class="hljs-keyword">function</span>(node) &#123;<br>    <span class="hljs-keyword">if</span> (node) &#123; <span class="hljs-regexp">//</span>判断二叉树是否为空<br>        var que = [node]; <span class="hljs-regexp">//</span>将二叉树放入队列<br>        <span class="hljs-keyword">while</span> (que.length !== <span class="hljs-number">0</span>) &#123; <span class="hljs-regexp">//</span>判断队列是否为空<br>            node = que.shift(); <span class="hljs-regexp">//</span>从队列中取出一个结点<br>            breadthList.push(node.value); <span class="hljs-regexp">//</span>将取出结点的值保存到数组<br>            <span class="hljs-keyword">if</span> (node.left) que.push(node.left); <span class="hljs-regexp">//</span>如果存在左子树，将左子树放入队列<br>            <span class="hljs-keyword">if</span> (node.right) que.push(node.right); <span class="hljs-regexp">//</span>如果存在右子树，将右子树放入队列<br>        &#125;<br>    &#125;<br>&#125;<br>breadthTraversal(tree);<br>console.log(breadthList);<br><span class="hljs-regexp">//</span>[ <span class="hljs-string">&#x27;-&#x27;</span>, <span class="hljs-string">&#x27;+&#x27;</span>, <span class="hljs-string">&#x27;/&#x27;</span>, <span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">&#x27;*&#x27;</span>, <span class="hljs-string">&#x27;d&#x27;</span>, <span class="hljs-string">&#x27;e&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>, <span class="hljs-string">&#x27;c&#x27;</span> ]<br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code class="hljs awk">var breadthList = []; <span class="hljs-regexp">//</span>定义保存广度遍历结果的数组
+var breadthTraversal = <span class="hljs-keyword">function</span>(node) &#123;
+    <span class="hljs-keyword">if</span> (node) &#123; <span class="hljs-regexp">//</span>判断二叉树是否为空
+        var que = [node]; <span class="hljs-regexp">//</span>将二叉树放入队列
+        <span class="hljs-keyword">while</span> (que.length !== <span class="hljs-number">0</span>) &#123; <span class="hljs-regexp">//</span>判断队列是否为空
+            node = que.shift(); <span class="hljs-regexp">//</span>从队列中取出一个结点
+            breadthList.push(node.value); <span class="hljs-regexp">//</span>将取出结点的值保存到数组
+            <span class="hljs-keyword">if</span> (node.left) que.push(node.left); <span class="hljs-regexp">//</span>如果存在左子树，将左子树放入队列
+            <span class="hljs-keyword">if</span> (node.right) que.push(node.right); <span class="hljs-regexp">//</span>如果存在右子树，将右子树放入队列
+        &#125;
+    &#125;
+&#125;
+breadthTraversal(tree);
+console.log(breadthList);
+<span class="hljs-regexp">//</span>[ <span class="hljs-string">&#x27;-&#x27;</span>, <span class="hljs-string">&#x27;+&#x27;</span>, <span class="hljs-string">&#x27;/&#x27;</span>, <span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">&#x27;*&#x27;</span>, <span class="hljs-string">&#x27;d&#x27;</span>, <span class="hljs-string">&#x27;e&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>, <span class="hljs-string">&#x27;c&#x27;</span> ]</code></pre></div>
 
 <h3 id="常见思路"><a href="#常见思路" class="headerlink" title="常见思路"></a>常见思路</h3><blockquote>
 <p>第一步：先考虑用递归的方式解决问题，注意递归的终止条件。有的递归需要用到回溯法和全局变量</p>
@@ -378,9 +480,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/hexo_blog/2021/09/17/axios%E6%8B%A6%E6%88%AA%E5%99%A8/">
+                      <a href="/hexo_blog/2021/09/15/H5%E6%96%B0%E7%89%B9%E6%80%A7/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">二维数组的查找 🤺</span>
+                        <span class="hidden-mobile">H5新特性</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     

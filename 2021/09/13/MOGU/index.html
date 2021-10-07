@@ -30,7 +30,7 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/monokai-sublime.min.css" />
     
   
 
@@ -52,6 +52,10 @@
 <link  rel="stylesheet" href="/hexo_blog/css/main.css" />
 
 <!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/hexo_blog/css/scrollbar.css">
+
 
 
   <script id="fluid-configs">
@@ -353,12 +357,22 @@
 <p>面试准备</p>
 <blockquote>
 <p>1.const<br>2.let var 之间的区别<br>4、es6中的const解释解释<br>9.em和rem区别<br>3.js部分，const，let和 var 的区别。<br>4.js部分，数组遍历map和forEach的区别。</p>
-<figure class="highlight gcode"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs gcode">能用forEach<span class="hljs-comment">()</span>做到的，map<span class="hljs-comment">()</span>同样可以。反过来也是如此。<br>map<span class="hljs-comment">()</span>会分配内存空间存储新数组并返回，forEach<span class="hljs-comment">()</span>不会返回数据。<br>forEach<span class="hljs-comment">()</span>允许callback更改原始数组的元素。map<span class="hljs-comment">()</span>返回新的数组。<br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code class="hljs gcode">能用forEach<span class="hljs-comment">()</span>做到的，map<span class="hljs-comment">()</span>同样可以。反过来也是如此。
+map<span class="hljs-comment">()</span>会分配内存空间存储新数组并返回，forEach<span class="hljs-comment">()</span>不会返回数据。
+forEach<span class="hljs-comment">()</span>允许callback更改原始数组的元素。map<span class="hljs-comment">()</span>返回新的数组。</code></pre></div>
 
 
 
 <p>5.css部分，em和rem怎么做自适应。<br>8.函数提升和变量提升优先级</p>
-<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript">函数提升 优于变量<br>解析器在向执行环境中加载数据时会率先读取函数声明，并使其在执行任何代码之前可用(可访问)，即函数声明提升、JavaScript上卷中第<span class="hljs-number">40</span>页提到函数声明是优于变量提升的。可见代码<br><span class="hljs-built_in">console</span>.log(getName)<br><span class="hljs-keyword">var</span> getName = <span class="hljs-number">1</span>;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getName</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-number">2</span>)<br>&#125;<br><span class="hljs-comment">// 输出为函数getName</span><br>注意:不要学了一点就忘记别的了啊，如果两个函数名一样，后面的会覆盖前面的(认为是在函数解析的时候覆盖，即提升的时候就覆盖了)<br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript">函数提升 优于变量
+解析器在向执行环境中加载数据时会率先读取函数声明，并使其在执行任何代码之前可用(可访问)，即函数声明提升、JavaScript上卷中第<span class="hljs-number">40</span>页提到函数声明是优于变量提升的。可见代码
+<span class="hljs-built_in">console</span>.log(getName)
+<span class="hljs-keyword">var</span> getName = <span class="hljs-number">1</span>;
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getName</span>(<span class="hljs-params"></span>) </span>&#123;
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-number">2</span>)
+&#125;
+<span class="hljs-comment">// 输出为函数getName</span>
+注意:不要学了一点就忘记别的了啊，如果两个函数名一样，后面的会覆盖前面的(认为是在函数解析的时候覆盖，即提升的时候就覆盖了)</code></pre></div>
 
 
 
@@ -367,44 +381,214 @@
 <p>浅拷贝<br>深拷贝</p>
 </blockquote>
 <p>7、闭包以及带来问题<br>闭包知道吗？它可能出现的问题呢<br>10、css有哪些布局（一开始理解错了说了一大堆，后来面试官带回来了，是关于position、float）<br>11、flex实现水平垂直居中<br>12、align-items:center是不是只针对垂直<br>css布局都用过啥，flex布局，想让我说flex布局的原理的。。。想想还是算了，感觉面试官对原理情有独钟<br>CSS布局技巧<br>跨域的几种方式，有答jsonp，然后又问了 jsonp 的原理是啥？<br>6.跨域问题<br>6.常用的跨域方式。<br>项目有没跨域问题<br>5.作用域链<br><a target="_blank" rel="noopener" href="https://juejin.im/post/58ed9c0ea0bb9f006a4c28cd">JavaScript深入之作用域链</a><br><a target="_blank" rel="noopener" href="https://juejin.im/post/5c8290455188257e5d0ec64f">深入理解JavaScript作用域和作用域链</a></p>
-<figure class="highlight gcode"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs gcode">作用域链，是由当前环境与上层环境的一系列变量对象组成，<br>它保证了当前执行环境对符合访问权限的变量和函数的有序访问。<br><br>当查找变量的时候，会先从当前上下文的变量对象中查找，如果没有找到，<br>就会从父级<span class="hljs-comment">(词法层面上的父级)</span>执行上下文的变量对象中查找，一直找到<br>全局上下文的变量对象，也就是全局对象。这样由多个执行上下文的变量对<br>象构成的链表就叫做作用域链。<br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code class="hljs gcode">作用域链，是由当前环境与上层环境的一系列变量对象组成，
+它保证了当前执行环境对符合访问权限的变量和函数的有序访问。
+
+当查找变量的时候，会先从当前上下文的变量对象中查找，如果没有找到，
+就会从父级<span class="hljs-comment">(词法层面上的父级)</span>执行上下文的变量对象中查找，一直找到
+全局上下文的变量对象，也就是全局对象。这样由多个执行上下文的变量对
+象构成的链表就叫做作用域链。</code></pre></div>
 
 
 
 <p>第一个问题是讲一下原型链，这个我先推了一下，讲了个小插曲，promise的状态和蘑菇街面试的状态吻合，只有pending、resolved、rejected三种状态，算是个破冰吧，今天看promise想到的。<br>然后继续回答原型链。</p>
 <p>2、Promise了解多少</p>
-<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-built_in">Promise</span> 是异步编程的一种解决方案：<br>从语法上讲，promise是一个对象，从它可以获取异步操作的消息；<br>从本意上讲，它是承诺，承诺它过一段时间会给你一个结果。<br>promise有三种状态：pending(等待态)，fulfiled(成功态)，rejected(失败态)；<br>状态一旦改变，就不会再变。创造promise实例后，它会立即执行。<br><br>pending，异步任务正在进行。<br>resolved (也可以叫fulfilled)，异步任务执行成功。<br>rejected，异步任务执行失败。<br><br>回调地狱，代码难以维护， 常常第一个的函数的输出是第二个函数的输入这种现象<br>promise可以支持多个并发的请求，获取并发请求中的数据<br>这个promise可以解决异步的问题，本身不能说promise是异步的<br><br><span class="hljs-built_in">Promise</span>.resolve(value)<br>类方法，该方法返回一个以 value 值解析后的 <span class="hljs-built_in">Promise</span> 对象<br><span class="hljs-number">1</span>、如果这个值是个 thenable（即带有 then 方法），返回的 <span class="hljs-built_in">Promise</span> <br>对象会“跟随”这个 thenable 的对象，采用它的最终状态<br>（指 resolved/rejected/pending/settled）<br><span class="hljs-number">2</span>、如果传入的 value 本身就是 <span class="hljs-built_in">Promise</span> 对象，<br>  则该对象作为 <span class="hljs-built_in">Promise</span>.resolve 方法的返回值返回。<br><span class="hljs-number">3</span>、其他情况以该值为成功状态返回一个 <span class="hljs-built_in">Promise</span> 对象。<br><br><span class="hljs-built_in">Promise</span>.all的用法：谁跑的慢，以谁为准执行回调。<br>  all接收一个数组参数，里面的值最终都算返回<span class="hljs-built_in">Promise</span>对象<br>  all方法可以说是<span class="hljs-built_in">Promise</span>中很常用的方法了，它的作用就是将一个数组的<span class="hljs-built_in">Promise</span>对象放在其中，当全部resolve的时候就会执行then方法，当有一个reject的时候就会执行<span class="hljs-keyword">catch</span>，并且他们的结果也是按着数组中的顺序来排放的，那么我们来实现一下。<br><span class="hljs-built_in">Promise</span>.race的用法：谁跑的快，以谁为准执行回调<br>它的作用是将一个<span class="hljs-built_in">Promise</span>数组放入race中，哪个先执行完，race就直接执行完，并从then中取值。<br><span class="hljs-built_in">Promise</span>.prototype.catch<br>  实例方法，捕获异常，函数形式：<span class="hljs-function"><span class="hljs-title">fn</span>(<span class="hljs-params">err</span>)</span>&#123;&#125;, err 是 <span class="hljs-keyword">catch</span> 注册 之前的回调抛出的异常信息。<br><span class="hljs-built_in">Promise</span>.prototype.then<br>  实例方法，为 <span class="hljs-built_in">Promise</span> 注册回调函数，函数形式：<span class="hljs-function"><span class="hljs-title">fn</span>(<span class="hljs-params">vlaue</span>)</span>&#123;&#125;，value 是上一个任务的返回结果，then 中的函数一定要 <span class="hljs-keyword">return</span> 一个结果或者一个新的 <span class="hljs-built_in">Promise</span> 对象，才可以让之后的then 回调接收。<br><span class="hljs-built_in">Promise</span>.reject<br>类方法，且与 resolve 唯一的不同是，返回的 promise 对象的状态为 rejected。<br><br><span class="hljs-built_in">Promise</span>的立即执行性<br><span class="hljs-built_in">Promise</span> 三种状态<br><span class="hljs-built_in">Promise</span> 状态的不可逆性<br>then方法链式调用<br><br><span class="hljs-keyword">async</span>/<span class="hljs-keyword">await</span><br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-built_in">Promise</span> 是异步编程的一种解决方案：
+从语法上讲，promise是一个对象，从它可以获取异步操作的消息；
+从本意上讲，它是承诺，承诺它过一段时间会给你一个结果。
+promise有三种状态：pending(等待态)，fulfiled(成功态)，rejected(失败态)；
+状态一旦改变，就不会再变。创造promise实例后，它会立即执行。
+
+pending，异步任务正在进行。
+resolved (也可以叫fulfilled)，异步任务执行成功。
+rejected，异步任务执行失败。
+
+回调地狱，代码难以维护， 常常第一个的函数的输出是第二个函数的输入这种现象
+promise可以支持多个并发的请求，获取并发请求中的数据
+这个promise可以解决异步的问题，本身不能说promise是异步的
+
+<span class="hljs-built_in">Promise</span>.resolve(value)
+类方法，该方法返回一个以 value 值解析后的 <span class="hljs-built_in">Promise</span> 对象
+<span class="hljs-number">1</span>、如果这个值是个 thenable（即带有 then 方法），返回的 <span class="hljs-built_in">Promise</span> 
+对象会“跟随”这个 thenable 的对象，采用它的最终状态
+（指 resolved/rejected/pending/settled）
+<span class="hljs-number">2</span>、如果传入的 value 本身就是 <span class="hljs-built_in">Promise</span> 对象，
+  则该对象作为 <span class="hljs-built_in">Promise</span>.resolve 方法的返回值返回。
+<span class="hljs-number">3</span>、其他情况以该值为成功状态返回一个 <span class="hljs-built_in">Promise</span> 对象。
+
+<span class="hljs-built_in">Promise</span>.all的用法：谁跑的慢，以谁为准执行回调。
+  all接收一个数组参数，里面的值最终都算返回<span class="hljs-built_in">Promise</span>对象
+  all方法可以说是<span class="hljs-built_in">Promise</span>中很常用的方法了，它的作用就是将一个数组的<span class="hljs-built_in">Promise</span>对象放在其中，当全部resolve的时候就会执行then方法，当有一个reject的时候就会执行<span class="hljs-keyword">catch</span>，并且他们的结果也是按着数组中的顺序来排放的，那么我们来实现一下。
+<span class="hljs-built_in">Promise</span>.race的用法：谁跑的快，以谁为准执行回调
+它的作用是将一个<span class="hljs-built_in">Promise</span>数组放入race中，哪个先执行完，race就直接执行完，并从then中取值。
+<span class="hljs-built_in">Promise</span>.prototype.catch
+  实例方法，捕获异常，函数形式：<span class="hljs-function"><span class="hljs-title">fn</span>(<span class="hljs-params">err</span>)</span>&#123;&#125;, err 是 <span class="hljs-keyword">catch</span> 注册 之前的回调抛出的异常信息。
+<span class="hljs-built_in">Promise</span>.prototype.then
+  实例方法，为 <span class="hljs-built_in">Promise</span> 注册回调函数，函数形式：<span class="hljs-function"><span class="hljs-title">fn</span>(<span class="hljs-params">vlaue</span>)</span>&#123;&#125;，value 是上一个任务的返回结果，then 中的函数一定要 <span class="hljs-keyword">return</span> 一个结果或者一个新的 <span class="hljs-built_in">Promise</span> 对象，才可以让之后的then 回调接收。
+<span class="hljs-built_in">Promise</span>.reject
+类方法，且与 resolve 唯一的不同是，返回的 promise 对象的状态为 rejected。
+
+<span class="hljs-built_in">Promise</span>的立即执行性
+<span class="hljs-built_in">Promise</span> 三种状态
+<span class="hljs-built_in">Promise</span> 状态的不可逆性
+then方法链式调用
+
+<span class="hljs-keyword">async</span>/<span class="hljs-keyword">await</span></code></pre></div>
 
 
 
 <p>promise有了解吗<br>Promise.all promise.race 有了解吗（当时一直听成Promise.out ，我就纳闷了说哪儿来的这个方法。。）</p>
 <p>3.React 生命周期，如果要合并 props 和 state 在哪进行<br>4.React 组件想用函数调用的方式使用，怎么设计<br>react如果更新了父组件，子组件没有更新，会都重新渲染吗？<br>react的原理，他的内部是怎么构建DOM的，比如p标签的子元素放在哪个属性里。。。没看过源码着实不知道<br>react相关的redux的原理？<br>7.你印象比较深的项目或者代码<br>我觉得是像 antd 里面的 message 模块，使用 ReactDOM.render<br>挂载组件到指定节点，然后通过更新 props 使用<br>html css js擅长哪部分？<br>我回答擅长js，但他居然没有继续问下去了</p>
 <p>3、es5和es6了解多少<br>es5,es6哪个用的多点？<br>3、es5和es6了解多少</p>
-<figure class="highlight livescript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs livescript">变量声明：<span class="hljs-keyword">let</span> <span class="hljs-keyword">const</span><br>字符串模板<br>解构赋值 对象对对象 数组对数组<br>扩展运算符<br>箭头函数<br>  不需要 <span class="hljs-keyword">function</span> 关键字来创建函数<br>  省略 <span class="hljs-keyword">return</span> 关键字<br>  继承当前上下文的 <span class="hljs-built_in">this</span> 关键字<br><span class="hljs-keyword">import</span>导入模块、<span class="hljs-keyword">export</span>导出模块<br><span class="hljs-built_in">Promise</span><br>数组常用方法：<br><span class="hljs-built_in">Array</span>.isArray<br><span class="hljs-keyword">map</span><br>filter<br>forEach<br>every<br>reduce<br>splice<br>indexOf<br>slice<br>concat<br>reverse()<br>join()<br><br><span class="hljs-built_in">Array</span>.<span class="hljs-keyword">from</span>()<br><span class="hljs-built_in">Array</span>.<span class="hljs-keyword">of</span>()<br>copyWitch<br>find<br>findIndex<br>keys()<br>values()<br><span class="hljs-class"><span class="hljs-keyword">class</span> 静态、私有、共有</span><br><br>生成器（ generator）是能返回一个迭代器的函数。<br>生成器函数也是一种函数，最直观的表现就是比普通的<span class="hljs-keyword">function</span>多了个星号*，<br>在其函数体内可以使用<span class="hljs-keyword">yield</span>关键字,有意思的是函数会在每个<span class="hljs-keyword">yield</span>后暂停。<br><br>可以暂停并重新开始执行的函数<br><br>generators 可以扮演三种角色<br>  迭代器(数据生产者)<br>  观察者(数据消费者)<br>  协作程序(数据生产者和消费者)<br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code class="hljs livescript">变量声明：<span class="hljs-keyword">let</span> <span class="hljs-keyword">const</span>
+字符串模板
+解构赋值 对象对对象 数组对数组
+扩展运算符
+箭头函数
+  不需要 <span class="hljs-keyword">function</span> 关键字来创建函数
+  省略 <span class="hljs-keyword">return</span> 关键字
+  继承当前上下文的 <span class="hljs-built_in">this</span> 关键字
+<span class="hljs-keyword">import</span>导入模块、<span class="hljs-keyword">export</span>导出模块
+<span class="hljs-built_in">Promise</span>
+数组常用方法：
+<span class="hljs-built_in">Array</span>.isArray
+<span class="hljs-keyword">map</span>
+filter
+forEach
+every
+reduce
+splice
+indexOf
+slice
+concat
+reverse()
+join()
+
+<span class="hljs-built_in">Array</span>.<span class="hljs-keyword">from</span>()
+<span class="hljs-built_in">Array</span>.<span class="hljs-keyword">of</span>()
+copyWitch
+find
+findIndex
+keys()
+values()
+<span class="hljs-class"><span class="hljs-keyword">class</span> 静态、私有、共有</span>
+
+生成器（ generator）是能返回一个迭代器的函数。
+生成器函数也是一种函数，最直观的表现就是比普通的<span class="hljs-keyword">function</span>多了个星号*，
+在其函数体内可以使用<span class="hljs-keyword">yield</span>关键字,有意思的是函数会在每个<span class="hljs-keyword">yield</span>后暂停。
+
+可以暂停并重新开始执行的函数
+
+generators 可以扮演三种角色
+  迭代器(数据生产者)
+  观察者(数据消费者)
+  协作程序(数据生产者和消费者)</code></pre></div>
 
 
 
 <p><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000012358863">es6 Generators详解</a></p>
 <p>2.CSS sprite(雪碧图或者精灵图)<br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/evenyao/p/9262371.html">CSS Sprite “精灵图”</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/CamilleZJ/article/details/80406645">CSS Sprite雪碧图</a></p>
-<figure class="highlight arduino"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs arduino">用CSS的<span class="hljs-string">&quot;background-image&quot;</span>，<span class="hljs-string">&quot;background-repeat&quot;</span>，<span class="hljs-string">&quot;background-position&quot;</span><br>的组合进行背景定位，<span class="hljs-built_in">background</span>-<span class="hljs-built_in">position</span>可以用数字精确的定位出背景图片的位置。<br>CSS Sprites 的优点：<br>减少图片字节<br>减少网页HTTP请求，提高网页性能<br>减少命名难的问题<br>缺点<br>图片合并的时候要把图片合理的合并成一张图片，防止板块内出现不必要的背景<br>在高分辨率下的自适应如果图片宽度不够，容易造成背景断裂<br>维护的时候比较困难，如果背景图有少许改动，需要改动合并图片。<br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code class="hljs arduino">用CSS的<span class="hljs-string">&quot;background-image&quot;</span>，<span class="hljs-string">&quot;background-repeat&quot;</span>，<span class="hljs-string">&quot;background-position&quot;</span>
+的组合进行背景定位，<span class="hljs-built_in">background</span>-<span class="hljs-built_in">position</span>可以用数字精确的定位出背景图片的位置。
+CSS Sprites 的优点：
+减少图片字节
+减少网页HTTP请求，提高网页性能
+减少命名难的问题
+缺点
+图片合并的时候要把图片合理的合并成一张图片，防止板块内出现不必要的背景
+在高分辨率下的自适应如果图片宽度不够，容易造成背景断裂
+维护的时候比较困难，如果背景图有少许改动，需要改动合并图片。</code></pre></div>
 
 
 
 <p>事件节流？刚看过，没印象了，哭。<br>情景题，往下滚动，加载更多，有什么优化方案，图片懒加载？提示了可以滚轮事件是个比较频繁的操作，但是还是没想出来。防抖</p>
 <p>vue和react差别，<br>8、问了vue有没有做过项目，然后就没有了<br>1.vue生命周期，没有问详细的，就是顺着生命周期说了一遍。英文捉急。<br>2.vue源码部分，几个重要的部分，compile，数据劫持，依赖收集，虚拟DOM。<br>问了一个异步加载组件，不用标签引入的方法。<br>让你实现vue你怎么实现……<br>说说vue的双向绑定（顺带把响应式说了）<br>说说Vue的diff过程</p>
-<figure class="highlight maxima"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs maxima">如果不了解virtual dom，要理解<span class="hljs-built_in">diff</span>的过程是比较困难的。虚拟dom对应的是真实dom， 使用document.CreateElement 和 document.CreateTextNode创建的就是真实节点。<br><br>我们先根据真实DOM生成一颗virtual DOM，当virtual DOM某个节点的数据改变后会生成一个新的Vnode，然后Vnode和oldVnode作对比，发现有不一样的地方就直接修改在真实的DOM上，然后使oldVnode的值为Vnode。<br><span class="hljs-built_in">diff</span>的过程就是调用名为patch的函数，比较新旧节点，一边比较一边给真实的DOM打补丁。<br><br>在采取<span class="hljs-built_in">diff</span>算法比较新旧节点的时候，比较只会在同层级进行, 不会跨层级比较。<br><span class="hljs-built_in">diff</span>流程图<br>当数据发生改变时，set方法会让调用Dep.notify通知所有订阅者Watcher，<br>订阅者就会调用patch给真实的DOM打补丁，更新相应的视图。<br><br>patch函数接收两个参数oldVnode和Vnode分别代表新的节点和之前的旧节点<br>判断两节点是否值得比较，值得比较则执行patchVnode<br>不值得比较则用Vnode替换oldVnode<br>如果两个节点都是一样的，那么就深入检查他们的子节点。如果两个节点不一样那就说明Vnode完全被改变了，就可以直接替换oldVnode。<br><br>当我们确定两个节点值得比较之后我们会对两个节点指定patchVnode方法<br>这个函数做了以下事情：<br>  找到对应的真实dom，称为el<br>  判断Vnode和oldVnode是否指向同一个对象，如果是，那么直接<span class="hljs-built_in">return</span><br>  如果他们都有文本节点并且不相等，那么将el的文本节点设置为Vnode的文本节点。<br>  如果oldVnode有子节点而Vnode没有，则删除el的子节点<br>  如果oldVnode没有子节点而Vnode有，则将Vnode的子节点真实化之后添加到el<br>  如果两者都有子节点，则执行updateChildren函数比较子节点，这一步很重要<br>updateChildren<br>先说一下这个函数做了什么<br>  将Vnode的子节点Vch和oldVnode的子节点oldCh提取出来<br>  oldCh和vCh各有两个头尾的变量StartIdx和EndIdx，它们的<span class="hljs-number">2</span>个变量相互比较，一共有<span class="hljs-number">4</span>种比较方式。如果<span class="hljs-number">4</span>种比较都没匹配，如果设置了<span class="hljs-built_in">key</span>，就会用<span class="hljs-built_in">key</span>进行比较，在比较的过程中，变量会往中间靠，一旦StartIdx&gt;EndIdx表明oldCh和vCh至少有一个已经遍历完了，就会结束比较。<br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code class="hljs maxima">如果不了解virtual dom，要理解<span class="hljs-built_in">diff</span>的过程是比较困难的。虚拟dom对应的是真实dom， 使用document.CreateElement 和 document.CreateTextNode创建的就是真实节点。
+
+我们先根据真实DOM生成一颗virtual DOM，当virtual DOM某个节点的数据改变后会生成一个新的Vnode，然后Vnode和oldVnode作对比，发现有不一样的地方就直接修改在真实的DOM上，然后使oldVnode的值为Vnode。
+<span class="hljs-built_in">diff</span>的过程就是调用名为patch的函数，比较新旧节点，一边比较一边给真实的DOM打补丁。
+
+在采取<span class="hljs-built_in">diff</span>算法比较新旧节点的时候，比较只会在同层级进行, 不会跨层级比较。
+<span class="hljs-built_in">diff</span>流程图
+当数据发生改变时，set方法会让调用Dep.notify通知所有订阅者Watcher，
+订阅者就会调用patch给真实的DOM打补丁，更新相应的视图。
+
+patch函数接收两个参数oldVnode和Vnode分别代表新的节点和之前的旧节点
+判断两节点是否值得比较，值得比较则执行patchVnode
+不值得比较则用Vnode替换oldVnode
+如果两个节点都是一样的，那么就深入检查他们的子节点。如果两个节点不一样那就说明Vnode完全被改变了，就可以直接替换oldVnode。
+
+当我们确定两个节点值得比较之后我们会对两个节点指定patchVnode方法
+这个函数做了以下事情：
+  找到对应的真实dom，称为el
+  判断Vnode和oldVnode是否指向同一个对象，如果是，那么直接<span class="hljs-built_in">return</span>
+  如果他们都有文本节点并且不相等，那么将el的文本节点设置为Vnode的文本节点。
+  如果oldVnode有子节点而Vnode没有，则删除el的子节点
+  如果oldVnode没有子节点而Vnode有，则将Vnode的子节点真实化之后添加到el
+  如果两者都有子节点，则执行updateChildren函数比较子节点，这一步很重要
+updateChildren
+先说一下这个函数做了什么
+  将Vnode的子节点Vch和oldVnode的子节点oldCh提取出来
+  oldCh和vCh各有两个头尾的变量StartIdx和EndIdx，它们的<span class="hljs-number">2</span>个变量相互比较，一共有<span class="hljs-number">4</span>种比较方式。如果<span class="hljs-number">4</span>种比较都没匹配，如果设置了<span class="hljs-built_in">key</span>，就会用<span class="hljs-built_in">key</span>进行比较，在比较的过程中，变量会往中间靠，一旦StartIdx&gt;EndIdx表明oldCh和vCh至少有一个已经遍历完了，就会结束比较。</code></pre></div>
 
 
 
 <p>v-model，v-bind 和v-click</p>
-<figure class="highlight dart"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs dart">v-bind  动态地绑定一个或多个特性、或一个组件 prop 到表达式。<br><span class="hljs-number">1</span>:v-bind动态绑定指令，默认情况下标签自带属性的值是固定的，<br>在为了能够动态的给这些属性添加值，可以使用v-bind:你要动态变化的值=<span class="hljs-string">&quot;表达式&quot;</span><br><br>v-model 在表单控件或者组件上创建双向绑定。<br>v-<span class="hljs-keyword">on</span> 指令用于监听DOM事件 形式如：v-<span class="hljs-keyword">on</span>:click  缩写为 <span class="hljs-meta">@click</span>;<br><br><br>[VUE中的v-<span class="hljs-keyword">if</span>与v-<span class="hljs-keyword">show</span>](http:<span class="hljs-comment">//www.cnblogs.com/wmhuang/p/5420344.html)</span><br>手段：v-<span class="hljs-keyword">if</span>是动态的向DOM树内添加或者删除DOM元素；<br>v-<span class="hljs-keyword">show</span>是通过设置DOM元素的display样式属性控制显隐；<br>编译过程<br>：v-<span class="hljs-keyword">if</span>切换有一个局部编译/卸载的过程，切换过程中合适地销毁和重建内部的事件监听和子组件；<br>v-<span class="hljs-keyword">show</span>只是简单的基于css切换；<br>编译条件：<br>v-<span class="hljs-keyword">if</span>是惰性的，如果初始条件为假，则什么也不做；<br>只有在条件第一次变为真时才开始局部编译(编译被缓存？编译被缓存后，然后再切换的时候进行局部卸载)<br>v-<span class="hljs-keyword">if</span>是动态的向DOM树内添加或者删除DOM元素；<br>v-<span class="hljs-keyword">show</span>是通过设置DOM元素的display样式属性控制显隐；<br>v-<span class="hljs-keyword">show</span>是在任何条件下（首次条件是否为真）都被编译，然后被缓存，而且DOM元素保留；<br>性能消耗：<br>v-<span class="hljs-keyword">if</span>有更高的切换消耗；v-<span class="hljs-keyword">show</span>有更高的初始渲染消耗；<br>使用场景：<br>v-<span class="hljs-keyword">if</span>适合运营条件不大可能改变；v-<span class="hljs-keyword">show</span>适合频繁切换。<br><br><br>v-<span class="hljs-keyword">if</span> 是“真正的”条件渲染，因为它会确保在切换过程中条件块内的事件监听器和子组件适当地被销毁和重建。<br>v-<span class="hljs-keyword">if</span> 也是惰性的：<br>如果在初始渲染时条件为假，则什么也不做——直到条件第一次变为真时，才会开始渲染条件块。<br>相比之下，v-<span class="hljs-keyword">show</span> 就简单得多——不管初始条件是什么，<br>元素总是会被渲染，并且只是简单地基于 CSS 进行切换。<br>一般来说， v-<span class="hljs-keyword">if</span> 有更高的切换开销，而 v-<span class="hljs-keyword">show</span> 有更高的初始渲染开销。因此，如果需要非常频繁地切换，则使用 v-<span class="hljs-keyword">show</span> 较好；<br>如果在运行时条件不太可能改变，则使用 v-<span class="hljs-keyword">if</span> 较好。<br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code class="hljs dart">v-bind  动态地绑定一个或多个特性、或一个组件 prop 到表达式。
+<span class="hljs-number">1</span>:v-bind动态绑定指令，默认情况下标签自带属性的值是固定的，
+在为了能够动态的给这些属性添加值，可以使用v-bind:你要动态变化的值=<span class="hljs-string">&quot;表达式&quot;</span>
+
+v-model 在表单控件或者组件上创建双向绑定。
+v-<span class="hljs-keyword">on</span> 指令用于监听DOM事件 形式如：v-<span class="hljs-keyword">on</span>:click  缩写为 <span class="hljs-meta">@click</span>;
+
+
+[VUE中的v-<span class="hljs-keyword">if</span>与v-<span class="hljs-keyword">show</span>](http:<span class="hljs-comment">//www.cnblogs.com/wmhuang/p/5420344.html)</span>
+手段：v-<span class="hljs-keyword">if</span>是动态的向DOM树内添加或者删除DOM元素；
+v-<span class="hljs-keyword">show</span>是通过设置DOM元素的display样式属性控制显隐；
+编译过程
+：v-<span class="hljs-keyword">if</span>切换有一个局部编译/卸载的过程，切换过程中合适地销毁和重建内部的事件监听和子组件；
+v-<span class="hljs-keyword">show</span>只是简单的基于css切换；
+编译条件：
+v-<span class="hljs-keyword">if</span>是惰性的，如果初始条件为假，则什么也不做；
+只有在条件第一次变为真时才开始局部编译(编译被缓存？编译被缓存后，然后再切换的时候进行局部卸载)
+v-<span class="hljs-keyword">if</span>是动态的向DOM树内添加或者删除DOM元素；
+v-<span class="hljs-keyword">show</span>是通过设置DOM元素的display样式属性控制显隐；
+v-<span class="hljs-keyword">show</span>是在任何条件下（首次条件是否为真）都被编译，然后被缓存，而且DOM元素保留；
+性能消耗：
+v-<span class="hljs-keyword">if</span>有更高的切换消耗；v-<span class="hljs-keyword">show</span>有更高的初始渲染消耗；
+使用场景：
+v-<span class="hljs-keyword">if</span>适合运营条件不大可能改变；v-<span class="hljs-keyword">show</span>适合频繁切换。
+
+
+v-<span class="hljs-keyword">if</span> 是“真正的”条件渲染，因为它会确保在切换过程中条件块内的事件监听器和子组件适当地被销毁和重建。
+v-<span class="hljs-keyword">if</span> 也是惰性的：
+如果在初始渲染时条件为假，则什么也不做——直到条件第一次变为真时，才会开始渲染条件块。
+相比之下，v-<span class="hljs-keyword">show</span> 就简单得多——不管初始条件是什么，
+元素总是会被渲染，并且只是简单地基于 CSS 进行切换。
+一般来说， v-<span class="hljs-keyword">if</span> 有更高的切换开销，而 v-<span class="hljs-keyword">show</span> 有更高的初始渲染开销。因此，如果需要非常频繁地切换，则使用 v-<span class="hljs-keyword">show</span> 较好；
+如果在运行时条件不太可能改变，则使用 v-<span class="hljs-keyword">if</span> 较好。</code></pre></div>
 
 
 
 <p>function a(){}，a的<strong>proto</strong> 指向哪，Function呢？Object呢？<br>js异步都有哪些？答了onclick之类的、setTimeout/setInterval/requestAnimation、Generator、promise、async/await，讲了promise和async/await的优缺点。</p>
 <p>1.就我这次面试表现而言，有哪方面需要提升或者欠缺的<br>3.团队技术栈？<br>然后项目……照着你简历上的问，<br>技术选型，遇到的困难，解决思路，</p>
 <p>面试中印象最深的问题<br>场面试官自己先介绍了三分钟..然后让我也介绍一下基本情况，项目经历难点之类的。<br>然后开始面试，很少技术问题<br>项目难点，如何解决的<br>有没有想过进入一个团队实习之后会有哪些压力大的事情？<br>有没有了解前端的新技术<br>有没有参加线下前端活动<br>会去看哪些博客或者社区<br>CSS动画和JS动画。</p>
-<figure class="highlight angelscript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs angelscript"> (<span class="hljs-number">1</span>)浏览器可以对动画进行优化。<br>  <span class="hljs-number">1</span>、 浏览器使用与 requestAnimationFrame 类似的机制，requestAnimationFrame比起setTimeout，setInterval设置动画的优势主要是:<span class="hljs-number">1</span>)requestAnimationFrame 会把每一帧中的所有DOM操作集中起来，在一次重绘或回流中就完成,并且重绘或回流的时间间隔紧紧跟随浏览器的刷新频率,一般来说,这个频率为每秒<span class="hljs-number">60</span>帧。<span class="hljs-number">2</span>)在隐藏或不可见的元素中requestAnimationFrame不会进行重绘或回流，这当然就意味着更少的的cpu，gpu和内存使用量。<br>  <span class="hljs-number">2</span>、强制使用硬件加速 （通过 GPU 来提高动画性能）<br>  (<span class="hljs-number">2</span>)代码相对简单,性能调优方向固定<br>  (<span class="hljs-number">3</span>)对于帧速表现不好的低版本浏览器，CSS3可以做到自然降级，而JS则需要撰写额外代码<br>缺点：<br>　　<span class="hljs-number">1</span>、 运行过程控制较弱,无法附加事件绑定回调函数。CSS动画只能暂停,不能在动画中寻找一个特定的时间点，不能在半路反转动画，不能变换时间尺度，不能在特定的位置添加回调函数或是绑定回放事件,无进度报告<br> 　  <span class="hljs-number">2</span>、  代码冗长。想用 CSS 实现稍微复杂一点动画,最后CSS代码都会变得非常笨重。<br><br>JavaScript<br>  (<span class="hljs-number">1</span>)JavaScript动画控制能力很强, 可以在动画播放过程中对动画进行控制：开始、暂停、回放、终止、取消都是可以做到的。<br>  (<span class="hljs-number">2</span>)动画效果比css3动画丰富,有些动画效果，比如曲线运动,冲击闪烁,视差滚动效果，只有JavaScript动画才能完成<br>  (<span class="hljs-number">3</span>)CSS3有兼容性问题，而JS大多时候没有兼容性问题<br>缺点：<br>　　　(<span class="hljs-number">1</span>)JavaScript在浏览器的主线程中运行，而主线程中还有其它需要运行的JavaScript脚本、样式计算、布局、绘制任务等,对其干扰导致线程可能出现阻塞，从而造成丢帧的情况。<br>  (<span class="hljs-number">2</span>)代码的复杂度高于CSS动画<br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code class="hljs angelscript"> (<span class="hljs-number">1</span>)浏览器可以对动画进行优化。
+  <span class="hljs-number">1</span>、 浏览器使用与 requestAnimationFrame 类似的机制，requestAnimationFrame比起setTimeout，setInterval设置动画的优势主要是:<span class="hljs-number">1</span>)requestAnimationFrame 会把每一帧中的所有DOM操作集中起来，在一次重绘或回流中就完成,并且重绘或回流的时间间隔紧紧跟随浏览器的刷新频率,一般来说,这个频率为每秒<span class="hljs-number">60</span>帧。<span class="hljs-number">2</span>)在隐藏或不可见的元素中requestAnimationFrame不会进行重绘或回流，这当然就意味着更少的的cpu，gpu和内存使用量。
+  <span class="hljs-number">2</span>、强制使用硬件加速 （通过 GPU 来提高动画性能）
+  (<span class="hljs-number">2</span>)代码相对简单,性能调优方向固定
+  (<span class="hljs-number">3</span>)对于帧速表现不好的低版本浏览器，CSS3可以做到自然降级，而JS则需要撰写额外代码
+缺点：
+　　<span class="hljs-number">1</span>、 运行过程控制较弱,无法附加事件绑定回调函数。CSS动画只能暂停,不能在动画中寻找一个特定的时间点，不能在半路反转动画，不能变换时间尺度，不能在特定的位置添加回调函数或是绑定回放事件,无进度报告
+ 　  <span class="hljs-number">2</span>、  代码冗长。想用 CSS 实现稍微复杂一点动画,最后CSS代码都会变得非常笨重。
+
+JavaScript
+  (<span class="hljs-number">1</span>)JavaScript动画控制能力很强, 可以在动画播放过程中对动画进行控制：开始、暂停、回放、终止、取消都是可以做到的。
+  (<span class="hljs-number">2</span>)动画效果比css3动画丰富,有些动画效果，比如曲线运动,冲击闪烁,视差滚动效果，只有JavaScript动画才能完成
+  (<span class="hljs-number">3</span>)CSS3有兼容性问题，而JS大多时候没有兼容性问题
+缺点：
+　　　(<span class="hljs-number">1</span>)JavaScript在浏览器的主线程中运行，而主线程中还有其它需要运行的JavaScript脚本、样式计算、布局、绘制任务等,对其干扰导致线程可能出现阻塞，从而造成丢帧的情况。
+  (<span class="hljs-number">2</span>)代码的复杂度高于CSS动画</code></pre></div>
 
 
 
@@ -415,7 +599,17 @@
 <p>块级元素、行内元素、inline-block 的区别<br>水平居中的方法<br>String、Array 常用的方法<br>输入一个 URL 到呈现页面的过程<br>Vue.js 组件的生命周期<br>Git 怎么合并提交记录<br>Linux 常用的命令<br>HTTP2 新特性</p>
 <p>常见的 Web 攻击手段以及防范措施<br>对 Ajax 的理解<br>对闭包的理解<br>对事件机制的理解<br>对 HTTP 的理解<br>GET &amp; POST 的区别<br>HTTP2 和 HTTP1 有什么不同<br>对 JavaScript 各大框架的理解<br>对 jQuery 的理解<br>页面性能优化<br>计算机网络分层<br>输入 <a target="_blank" rel="noopener" href="http://www.qq.com/">www.qq.com</a> 到呈现页面的过程<br>事件机制（W3C 标准）<br>事件代理<br>XSS、CSRF 的防范<br>token 的实现原理<br>熟练使用JS实现Json、XML格式的数据发送与数据解析；<br>3、熟悉各种web标准，了解各主流浏览器特性，使页面兼容主浏览器；</p>
 <p>自我介绍<br>事件流<br>vue nextTick原理<br>vue react区别<br>web优化<br>移动端的优化有特别了解过吗<br>css flex了解过吗<br>如何前端监控错误，<br>koa有学过吗<br>事件循环说一说<br>web新技术了解过哪些，最近有去学习哪些东西<br>PWA你能详细说说吗<br>service worker<br>h5 worker<br>非受控组件 与受控组件<br>const let var区别<br>三道题<br>有自己写过webpack插件吗<br>webpack loader 和plugin区别<br>实现promise<br>大数相加<br>纯js写一个动画，5s由快到慢，速度自定义<br>（这里特别感谢以前发过面筋的同学，前两道题因为碰到过，自己下去做了一下 10多分钟给做完了 然后又让我补了一道= =）<br>自我介绍，说一下怎么学习前端的，以及做的项目的亮点<br>web优化<br>缓存（协商，强制说一说）<br>CDN</p>
-<figure class="highlight scss"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs scss">CDN的全称是<span class="hljs-attribute">Content</span> Delivery Network，即内容分发网络。<br>其基本思路是尽可能避开互联网上有可能影响数据传输速度和稳定性的瓶颈和环节，<br>使内容传输的更快、更稳定。通过在网络各处放置节点服务器所构成的在现有的互联<br>网基础之上的一层智能虚拟网络，CDN系统能够实时地根据网络流量和各节点的连接、<br>负载状况以及到用户的距离和响应时间等综合信息将用户的请求重新导向离用户最近<br>的服务节点上。<br><br>其目的是使用户可就近取得所需内容，解决Internet网络拥挤的状况，<br>提高用户访问网站的响应速度。<br>降低核心系统负载 加速用户访问<br>CDN做了两件事，一是让用户访问最近的节点，二是从缓存或者源站获取资源<br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code class="hljs scss">CDN的全称是<span class="hljs-attribute">Content</span> Delivery Network，即内容分发网络。
+其基本思路是尽可能避开互联网上有可能影响数据传输速度和稳定性的瓶颈和环节，
+使内容传输的更快、更稳定。通过在网络各处放置节点服务器所构成的在现有的互联
+网基础之上的一层智能虚拟网络，CDN系统能够实时地根据网络流量和各节点的连接、
+负载状况以及到用户的距离和响应时间等综合信息将用户的请求重新导向离用户最近
+的服务节点上。
+
+其目的是使用户可就近取得所需内容，解决Internet网络拥挤的状况，
+提高用户访问网站的响应速度。
+降低核心系统负载 加速用户访问
+CDN做了两件事，一是让用户访问最近的节点，二是从缓存或者源站获取资源</code></pre></div>
 
 
 
@@ -468,8 +662,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/hexo_blog/2021/09/10/%E9%97%AD%E5%8C%85/">
-                        <span class="hidden-mobile">闭包</span>
+                      <a href="/hexo_blog/2021/09/10/vue%E6%BA%90%E7%A0%81%E8%A7%A3%E8%AF%BB/">
+                        <span class="hidden-mobile">vue源码解读🍺</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

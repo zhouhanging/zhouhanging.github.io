@@ -30,7 +30,7 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/monokai-sublime.min.css" />
     
   
 
@@ -52,6 +52,10 @@
 <link  rel="stylesheet" href="/hexo_blog/css/main.css" />
 
 <!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/hexo_blog/css/scrollbar.css">
+
 
 
   <script id="fluid-configs">
@@ -251,27 +255,148 @@
             <div class="markdown-body">
               <h1 id="模块化🔓"><a href="#模块化🔓" class="headerlink" title="模块化🔓"></a>模块化🔓</h1><p>模块化的开发方式可以提高代码复用率，方便进行代码的管理。通常一个文件就是一个模块，有自己的作用域，只向外暴露特定的变量和函数。目前流行的js模块化规范有CommonJS、AMD、CMD以及ES6的模块系统。参见阮一峰老师的文章 <a href="https://link.juejin.cn/?target=http://es6.ruanyifeng.com/%23docs/module-loader">module-loader</a> 。</p>
 <h2 id="一、CommonJS"><a href="#一、CommonJS" class="headerlink" title="一、CommonJS"></a>一、CommonJS</h2><p>Node.js是commonJS规范的主要实践者，它有四个重要的环境变量为模块化的实现提供支持：<code>module</code>、<code>exports</code>、<code>require</code>、<code>global</code>。实际使用时，用<code>module.exports</code>定义当前模块对外输出的接口（不推荐直接用<code>exports</code>），用<code>require</code>加载模块。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 定义模块math.js</span><br><span class="hljs-keyword">var</span> basicNum = <span class="hljs-number">0</span>;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">add</span>(<span class="hljs-params">a, b</span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> a + b;<br>&#125;<br><span class="hljs-built_in">module</span>.exports = &#123; <span class="hljs-comment">//在这里写上需要向外暴露的函数、变量</span><br>  add: add,<br>  basicNum: basicNum<br>&#125;<br><br><span class="hljs-comment">// 引用自定义的模块时，参数包含路径，可省略.js</span><br><span class="hljs-keyword">var</span> math = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;./math&#x27;</span>);<br>math.add(<span class="hljs-number">2</span>, <span class="hljs-number">5</span>);<br><br><span class="hljs-comment">// 引用核心模块时，不需要带路径</span><br><span class="hljs-keyword">var</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;http&#x27;</span>);<br>http.createService(...).listen(<span class="hljs-number">3000</span>);<br>复制代码<br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 定义模块math.js</span>
+<span class="hljs-keyword">var</span> basicNum = <span class="hljs-number">0</span>;
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">add</span>(<span class="hljs-params">a, b</span>) </span>&#123;
+  <span class="hljs-keyword">return</span> a + b;
+&#125;
+<span class="hljs-built_in">module</span>.exports = &#123; <span class="hljs-comment">//在这里写上需要向外暴露的函数、变量</span>
+  add: add,
+  basicNum: basicNum
+&#125;
+
+<span class="hljs-comment">// 引用自定义的模块时，参数包含路径，可省略.js</span>
+<span class="hljs-keyword">var</span> math = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;./math&#x27;</span>);
+math.add(<span class="hljs-number">2</span>, <span class="hljs-number">5</span>);
+
+<span class="hljs-comment">// 引用核心模块时，不需要带路径</span>
+<span class="hljs-keyword">var</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;http&#x27;</span>);
+http.createService(...).listen(<span class="hljs-number">3000</span>);
+复制代码</code></pre></div>
 
 <p>commonJS用同步的方式加载模块。在服务端，模块文件都存在本地磁盘，读取非常快，所以这样做不会有问题。但是在浏览器端，限于网络原因，更合理的方案是使用异步加载。</p>
 <h2 id="二、AMD和require-js"><a href="#二、AMD和require-js" class="headerlink" title="二、AMD和require.js"></a>二、AMD和require.js</h2><p>AMD规范采用异步方式加载模块，模块的加载不影响它后面语句的运行。所有依赖这个模块的语句，都定义在一个回调函数中，等到加载完成之后，这个回调函数才会运行。这里介绍用require.js实现AMD规范的模块化：用<code>require.config()</code>指定引用路径等，用<code>define()</code>定义模块，用<code>require()</code>加载模块。</p>
 <p>首先我们需要引入require.js文件和一个入口文件main.js。main.js中配置<code>require.config()</code>并规定项目中用到的基础模块。</p>
-<figure class="highlight crystal"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs crystal">/** 网页中引入<span class="hljs-keyword">require</span>.js及main.js **<span class="hljs-regexp">/</span><br><span class="hljs-regexp">&lt;script src=&quot;js/require</span>.js<span class="hljs-string">&quot; data-main=&quot;</span>js/main<span class="hljs-string">&quot;&gt;&lt;/script&gt;</span><br><span class="hljs-string"></span><br><span class="hljs-string">/** main.js 入口文件/主模块 **/</span><br><span class="hljs-string">// 首先用config()指定各模块路径和引用名</span><br><span class="hljs-string">require.config(&#123;</span><br><span class="hljs-string">  baseUrl: &quot;</span>js/<span class="hljs-class"><span class="hljs-keyword">lib</span>&quot;,</span><br>  <span class="hljs-symbol">paths:</span> &#123;<br>    <span class="hljs-string">&quot;jquery&quot;</span>: <span class="hljs-string">&quot;jquery.min&quot;</span>,  <span class="hljs-regexp">//</span>实际路径为js/<span class="hljs-class"><span class="hljs-keyword">lib</span>/<span class="hljs-title">jquery</span>.<span class="hljs-title">min</span>.<span class="hljs-title">js</span></span><br>    <span class="hljs-string">&quot;underscore&quot;</span>: <span class="hljs-string">&quot;underscore.min&quot;</span>,<br>  &#125;<br>&#125;);<br>/<span class="hljs-regexp">/ 执行基本操作</span><br><span class="hljs-regexp">require([&quot;jquery&quot;,&quot;underscore&quot;],function($,_)&#123;</span><br><span class="hljs-regexp">  /</span><span class="hljs-regexp">/ some code here</span><br><span class="hljs-regexp">&#125;);</span><br><span class="hljs-regexp">复制代码</span><br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code class="hljs crystal">/** 网页中引入<span class="hljs-keyword">require</span>.js及main.js **<span class="hljs-regexp">/</span>
+<span class="hljs-regexp">&lt;script src=&quot;js/require</span>.js<span class="hljs-string">&quot; data-main=&quot;</span>js/main<span class="hljs-string">&quot;&gt;&lt;/script&gt;</span>
+<span class="hljs-string"></span>
+<span class="hljs-string">/** main.js 入口文件/主模块 **/</span>
+<span class="hljs-string">// 首先用config()指定各模块路径和引用名</span>
+<span class="hljs-string">require.config(&#123;</span>
+<span class="hljs-string">  baseUrl: &quot;</span>js/<span class="hljs-class"><span class="hljs-keyword">lib</span>&quot;,</span>
+  <span class="hljs-symbol">paths:</span> &#123;
+    <span class="hljs-string">&quot;jquery&quot;</span>: <span class="hljs-string">&quot;jquery.min&quot;</span>,  <span class="hljs-regexp">//</span>实际路径为js/<span class="hljs-class"><span class="hljs-keyword">lib</span>/<span class="hljs-title">jquery</span>.<span class="hljs-title">min</span>.<span class="hljs-title">js</span></span>
+    <span class="hljs-string">&quot;underscore&quot;</span>: <span class="hljs-string">&quot;underscore.min&quot;</span>,
+  &#125;
+&#125;);
+/<span class="hljs-regexp">/ 执行基本操作</span>
+<span class="hljs-regexp">require([&quot;jquery&quot;,&quot;underscore&quot;],function($,_)&#123;</span>
+<span class="hljs-regexp">  /</span><span class="hljs-regexp">/ some code here</span>
+<span class="hljs-regexp">&#125;);</span>
+<span class="hljs-regexp">复制代码</span></code></pre></div>
 
 <p>引用模块的时候，我们将模块名放在<code>[]</code>中作为<code>reqiure()</code>的第一参数；如果我们定义的模块本身也依赖其他模块,那就需要将它们放在<code>[]</code>中作为<code>define()</code>的第一参数。</p>
-<figure class="highlight php"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs php"><span class="hljs-comment">// 定义math.js模块</span><br>define(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-keyword">var</span> basicNum = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">var</span> add = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">x, y</span>) </span>&#123;<br>        <span class="hljs-keyword">return</span> x + y;<br>    &#125;;<br>    <span class="hljs-keyword">return</span> &#123;<br>        add: add,<br>        basicNum :basicNum<br>    &#125;;<br>&#125;);<br><span class="hljs-comment">// 定义一个依赖underscore.js的模块</span><br>define([<span class="hljs-string">&#x27;underscore&#x27;</span>],<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">_</span>)</span>&#123;<br>  <span class="hljs-keyword">var</span> classify = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"><span class="hljs-keyword">list</span></span>)</span>&#123;<br>    _.countBy(<span class="hljs-keyword">list</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">num</span>)</span>&#123;<br>      <span class="hljs-keyword">return</span> num &gt; <span class="hljs-number">30</span> ? <span class="hljs-string">&#x27;old&#x27;</span> : <span class="hljs-string">&#x27;young&#x27;</span>;<br>    &#125;)<br>  &#125;;<br>  <span class="hljs-keyword">return</span> &#123;<br>    classify :classify<br>  &#125;;<br>&#125;)<br><br><span class="hljs-comment">// 引用模块，将模块放在[]内</span><br><span class="hljs-keyword">require</span>([<span class="hljs-string">&#x27;jquery&#x27;</span>, <span class="hljs-string">&#x27;math&#x27;</span>],<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">$, math</span>)</span>&#123;<br>  <span class="hljs-keyword">var</span> sum = math.add(<span class="hljs-number">10</span>,<span class="hljs-number">20</span>);<br>  $(<span class="hljs-string">&quot;#sum&quot;</span>).html(sum);<br>&#125;);<br>复制代码<br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code class="hljs php"><span class="hljs-comment">// 定义math.js模块</span>
+define(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;
+    <span class="hljs-keyword">var</span> basicNum = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">var</span> add = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">x, y</span>) </span>&#123;
+        <span class="hljs-keyword">return</span> x + y;
+    &#125;;
+    <span class="hljs-keyword">return</span> &#123;
+        add: add,
+        basicNum :basicNum
+    &#125;;
+&#125;);
+<span class="hljs-comment">// 定义一个依赖underscore.js的模块</span>
+define([<span class="hljs-string">&#x27;underscore&#x27;</span>],<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">_</span>)</span>&#123;
+  <span class="hljs-keyword">var</span> classify = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"><span class="hljs-keyword">list</span></span>)</span>&#123;
+    _.countBy(<span class="hljs-keyword">list</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">num</span>)</span>&#123;
+      <span class="hljs-keyword">return</span> num &gt; <span class="hljs-number">30</span> ? <span class="hljs-string">&#x27;old&#x27;</span> : <span class="hljs-string">&#x27;young&#x27;</span>;
+    &#125;)
+  &#125;;
+  <span class="hljs-keyword">return</span> &#123;
+    classify :classify
+  &#125;;
+&#125;)
+
+<span class="hljs-comment">// 引用模块，将模块放在[]内</span>
+<span class="hljs-keyword">require</span>([<span class="hljs-string">&#x27;jquery&#x27;</span>, <span class="hljs-string">&#x27;math&#x27;</span>],<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">$, math</span>)</span>&#123;
+  <span class="hljs-keyword">var</span> sum = math.add(<span class="hljs-number">10</span>,<span class="hljs-number">20</span>);
+  $(<span class="hljs-string">&quot;#sum&quot;</span>).html(sum);
+&#125;);
+复制代码</code></pre></div>
 
 <h2 id="三、CMD和sea-js"><a href="#三、CMD和sea-js" class="headerlink" title="三、CMD和sea.js"></a>三、CMD和sea.js</h2><p>require.js在申明依赖的模块时会在第一之间加载并执行模块内的代码：</p>
-<figure class="highlight actionscript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs actionscript">define([<span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-string">&quot;b&quot;</span>, <span class="hljs-string">&quot;c&quot;</span>, <span class="hljs-string">&quot;d&quot;</span>, <span class="hljs-string">&quot;e&quot;</span>, <span class="hljs-string">&quot;f&quot;</span>], <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(a, b, c, d, e, f)</span> </span>&#123; <br>    <span class="hljs-comment">// 等于在最前面声明并初始化了要用到的所有模块</span><br>    <span class="hljs-keyword">if</span> (<span class="hljs-literal">false</span>) &#123;<br>      <span class="hljs-comment">// 即便没用到某个模块 b，但 b 还是提前执行了</span><br>      b.foo()<br>    &#125; <br>&#125;);<br>复制代码<br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code class="hljs actionscript">define([<span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-string">&quot;b&quot;</span>, <span class="hljs-string">&quot;c&quot;</span>, <span class="hljs-string">&quot;d&quot;</span>, <span class="hljs-string">&quot;e&quot;</span>, <span class="hljs-string">&quot;f&quot;</span>], <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(a, b, c, d, e, f)</span> </span>&#123; 
+    <span class="hljs-comment">// 等于在最前面声明并初始化了要用到的所有模块</span>
+    <span class="hljs-keyword">if</span> (<span class="hljs-literal">false</span>) &#123;
+      <span class="hljs-comment">// 即便没用到某个模块 b，但 b 还是提前执行了</span>
+      b.foo()
+    &#125; 
+&#125;);
+复制代码</code></pre></div>
 
 <p>CMD是另一种js模块化方案，它与AMD很类似，不同点在于：AMD 推崇依赖前置、提前执行，CMD推崇依赖就近、延迟执行。此规范其实是在sea.js推广过程中产生的。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">/** AMD写法 **/</span><br>define([<span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-string">&quot;b&quot;</span>, <span class="hljs-string">&quot;c&quot;</span>, <span class="hljs-string">&quot;d&quot;</span>, <span class="hljs-string">&quot;e&quot;</span>, <span class="hljs-string">&quot;f&quot;</span>], <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">a, b, c, d, e, f</span>) </span>&#123; <br>     <span class="hljs-comment">// 等于在最前面声明并初始化了要用到的所有模块</span><br>    a.doSomething();<br>    <span class="hljs-keyword">if</span> (<span class="hljs-literal">false</span>) &#123;<br>        <span class="hljs-comment">// 即便没用到某个模块 b，但 b 还是提前执行了</span><br>        b.doSomething()<br>    &#125; <br>&#125;);<br><br><span class="hljs-comment">/** CMD写法 **/</span><br>define(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"><span class="hljs-built_in">require</span>, <span class="hljs-built_in">exports</span>, <span class="hljs-built_in">module</span></span>) </span>&#123;<br>    <span class="hljs-keyword">var</span> a = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;./a&#x27;</span>); <span class="hljs-comment">//在需要时申明</span><br>    a.doSomething();<br>    <span class="hljs-keyword">if</span> (<span class="hljs-literal">false</span>) &#123;<br>        <span class="hljs-keyword">var</span> b = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;./b&#x27;</span>);<br>        b.doSomething();<br>    &#125;<br>&#125;);<br><br><span class="hljs-comment">/** sea.js **/</span><br><span class="hljs-comment">// 定义模块 math.js</span><br>define(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"><span class="hljs-built_in">require</span>, <span class="hljs-built_in">exports</span>, <span class="hljs-built_in">module</span></span>) </span>&#123;<br>    <span class="hljs-keyword">var</span> $ = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;jquery.js&#x27;</span>);<br>    <span class="hljs-keyword">var</span> add = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">a,b</span>)</span>&#123;<br>        <span class="hljs-keyword">return</span> a+b;<br>    &#125;<br>    <span class="hljs-built_in">exports</span>.add = add;<br>&#125;);<br><span class="hljs-comment">// 加载模块</span><br>seajs.use([<span class="hljs-string">&#x27;math.js&#x27;</span>], <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">math</span>)</span>&#123;<br>    <span class="hljs-keyword">var</span> sum = math.add(<span class="hljs-number">1</span>+<span class="hljs-number">2</span>);<br>&#125;);<br>复制代码<br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">/** AMD写法 **/</span>
+define([<span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-string">&quot;b&quot;</span>, <span class="hljs-string">&quot;c&quot;</span>, <span class="hljs-string">&quot;d&quot;</span>, <span class="hljs-string">&quot;e&quot;</span>, <span class="hljs-string">&quot;f&quot;</span>], <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">a, b, c, d, e, f</span>) </span>&#123; 
+     <span class="hljs-comment">// 等于在最前面声明并初始化了要用到的所有模块</span>
+    a.doSomething();
+    <span class="hljs-keyword">if</span> (<span class="hljs-literal">false</span>) &#123;
+        <span class="hljs-comment">// 即便没用到某个模块 b，但 b 还是提前执行了</span>
+        b.doSomething()
+    &#125; 
+&#125;);
+
+<span class="hljs-comment">/** CMD写法 **/</span>
+define(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"><span class="hljs-built_in">require</span>, <span class="hljs-built_in">exports</span>, <span class="hljs-built_in">module</span></span>) </span>&#123;
+    <span class="hljs-keyword">var</span> a = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;./a&#x27;</span>); <span class="hljs-comment">//在需要时申明</span>
+    a.doSomething();
+    <span class="hljs-keyword">if</span> (<span class="hljs-literal">false</span>) &#123;
+        <span class="hljs-keyword">var</span> b = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;./b&#x27;</span>);
+        b.doSomething();
+    &#125;
+&#125;);
+
+<span class="hljs-comment">/** sea.js **/</span>
+<span class="hljs-comment">// 定义模块 math.js</span>
+define(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"><span class="hljs-built_in">require</span>, <span class="hljs-built_in">exports</span>, <span class="hljs-built_in">module</span></span>) </span>&#123;
+    <span class="hljs-keyword">var</span> $ = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;jquery.js&#x27;</span>);
+    <span class="hljs-keyword">var</span> add = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">a,b</span>)</span>&#123;
+        <span class="hljs-keyword">return</span> a+b;
+    &#125;
+    <span class="hljs-built_in">exports</span>.add = add;
+&#125;);
+<span class="hljs-comment">// 加载模块</span>
+seajs.use([<span class="hljs-string">&#x27;math.js&#x27;</span>], <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">math</span>)</span>&#123;
+    <span class="hljs-keyword">var</span> sum = math.add(<span class="hljs-number">1</span>+<span class="hljs-number">2</span>);
+&#125;);
+复制代码</code></pre></div>
 
 <h2 id="四、ES6-Module"><a href="#四、ES6-Module" class="headerlink" title="四、ES6 Module"></a>四、ES6 Module</h2><p>ES6 在语言标准的层面上，实现了模块功能，而且实现得相当简单，旨在成为浏览器和服务器通用的模块解决方案。其模块功能主要由两个命令构成：<code>export</code>和<code>import</code>。<code>export</code>命令用于规定模块的对外接口，<code>import</code>命令用于输入其他模块提供的功能。</p>
-<figure class="highlight actionscript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs actionscript"><span class="hljs-comment">/** 定义模块 math.js **/</span><br><span class="hljs-keyword">var</span> basicNum = <span class="hljs-number">0</span>;<br><span class="hljs-keyword">var</span> add = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(a, b)</span> </span>&#123;<br>    <span class="hljs-keyword">return</span> a + b;<br>&#125;;<br>export &#123; basicNum, add &#125;;<br><br><span class="hljs-comment">/** 引用模块 **/</span><br><span class="hljs-meta"><span class="hljs-meta-keyword">import</span> &#123; basicNum, add &#125; from &#x27;./math&#x27;;</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">test</span><span class="hljs-params">(ele)</span> </span>&#123;<br>    ele.textContent = add(<span class="hljs-number">99</span> + basicNum);<br>&#125;<br>复制代码<br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code class="hljs actionscript"><span class="hljs-comment">/** 定义模块 math.js **/</span>
+<span class="hljs-keyword">var</span> basicNum = <span class="hljs-number">0</span>;
+<span class="hljs-keyword">var</span> add = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(a, b)</span> </span>&#123;
+    <span class="hljs-keyword">return</span> a + b;
+&#125;;
+export &#123; basicNum, add &#125;;
+
+<span class="hljs-comment">/** 引用模块 **/</span>
+<span class="hljs-meta"><span class="hljs-meta-keyword">import</span> &#123; basicNum, add &#125; from &#x27;./math&#x27;;</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">test</span><span class="hljs-params">(ele)</span> </span>&#123;
+    ele.textContent = add(<span class="hljs-number">99</span> + basicNum);
+&#125;
+复制代码</code></pre></div>
 
 <p>如上例所示，使用<code>import</code>命令的时候，用户需要知道所要加载的变量名或函数名。其实ES6还提供了<code>export default</code>命令，为模块指定默认输出，对应的<code>import</code>语句不需要使用大括号。这也更趋近于ADM的引用写法。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">/** export default **/</span><br><span class="hljs-comment">//定义输出</span><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123; basicNum, add &#125;;<br><span class="hljs-comment">//引入</span><br><span class="hljs-keyword">import</span> math <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./math&#x27;</span>;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">test</span>(<span class="hljs-params">ele</span>) </span>&#123;<br>    ele.textContent = math.add(<span class="hljs-number">99</span> + math.basicNum);<br>&#125;<br>复制代码<br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">/** export default **/</span>
+<span class="hljs-comment">//定义输出</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123; basicNum, add &#125;;
+<span class="hljs-comment">//引入</span>
+<span class="hljs-keyword">import</span> math <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./math&#x27;</span>;
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">test</span>(<span class="hljs-params">ele</span>) </span>&#123;
+    ele.textContent = math.add(<span class="hljs-number">99</span> + math.basicNum);
+&#125;
+复制代码</code></pre></div>
 
 <p>ES6的模块不是对象，<code>import</code>命令会被 JavaScript 引擎静态分析，在编译时就引入模块代码，而不是在代码运行时加载，所以无法实现条件加载。也正因为这个，使得静态分析成为可能。</p>
 <h2 id="五、-ES6-模块与-CommonJS-模块的差异"><a href="#五、-ES6-模块与-CommonJS-模块的差异" class="headerlink" title="五、 ES6 模块与 CommonJS 模块的差异"></a>五、 ES6 模块与 CommonJS 模块的差异</h2><h3 id="1-CommonJS-模块输出的是一个值的拷贝，ES6-模块输出的是值的引用。"><a href="#1-CommonJS-模块输出的是一个值的拷贝，ES6-模块输出的是值的引用。" class="headerlink" title="1. CommonJS 模块输出的是一个值的拷贝，ES6 模块输出的是值的引用。"></a>1. CommonJS 模块输出的是一个值的拷贝，ES6 模块输出的是值的引用。</h3><ul>

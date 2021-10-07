@@ -30,7 +30,7 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/monokai-sublime.min.css" />
     
   
 
@@ -52,6 +52,10 @@
 <link  rel="stylesheet" href="/hexo_blog/css/main.css" />
 
 <!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/hexo_blog/css/scrollbar.css">
+
 
 
   <script id="fluid-configs">
@@ -198,7 +202,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      425 字
+      424 字
     </span>
   
 
@@ -250,7 +254,33 @@
             
             <div class="markdown-body">
               <h1 id="vue源码解读"><a href="#vue源码解读" class="headerlink" title="vue源码解读"></a>vue源码解读</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近在深入学习vue，打算对源码做一些了解</p>
-<h3 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h3><figure class="highlight routeros"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs routeros">├── benchmarks                  性能、基准测试<br>├── dist                        构建打包的输出目录<br>├── examples                    案例目录<br>├── flow                        flow 语法的类型声明<br>├── packages                    一些额外的包，比如：负责服务端渲染的包 vue-server-renderer、配合 vue-loader 使用的的 vue-template-compiler，还有 weex 相关的<br>│   ├── vue-server-renderer<br>│   ├── vue-template-compiler<br>│   ├── weex-template-compiler<br>│   └── weex-vue-framework<br>├── scripts                     所有的配置文件的存放位置，比如 rollup 的配置文件<br>├── src                         vue 源码目录<br>│   ├── compiler                编译器<br>│   ├── core                    运行时的核心包<br>│   │   ├── components          全局组件，比如 keep-alive<br>│   │   ├── config.js           一些默认配置项<br>│   │   ├── global-api          全局 API，比如熟悉的：Vue.use()、Vue.component() 等<br>│   │   ├──<span class="hljs-built_in"> instance </span>           Vue 实例相关的，比如 Vue 构造函数就在这个目录下<br>│   │   ├── observer            响应式原理<br>│   │   ├── util                工具方法<br>│   │   └── vdom                虚拟 DOM 相关，比如熟悉的 patch 算法就在这儿<br>│   ├── platforms               平台相关的编译器代码<br>│   │   ├── web<br>│   │   └── weex<br>│   ├──<span class="hljs-built_in"> server </span>                 服务端渲染相关<br>├── test                        测试目录<br>├── types                       TS 类型声明<br><br></code></pre></div></td></tr></table></figure>
+<h3 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h3><div class="hljs code-wrapper"><pre><code class="hljs routeros">├── benchmarks                  性能、基准测试
+├── dist                        构建打包的输出目录
+├── examples                    案例目录
+├── flow                        flow 语法的类型声明
+├── packages                    一些额外的包，比如：负责服务端渲染的包 vue-server-renderer、配合 vue-loader 使用的的 vue-template-compiler，还有 weex 相关的
+│   ├── vue-server-renderer
+│   ├── vue-template-compiler
+│   ├── weex-template-compiler
+│   └── weex-vue-framework
+├── scripts                     所有的配置文件的存放位置，比如 rollup 的配置文件
+├── src                         vue 源码目录
+│   ├── compiler                编译器
+│   ├── core                    运行时的核心包
+│   │   ├── components          全局组件，比如 keep-alive
+│   │   ├── config.js           一些默认配置项
+│   │   ├── global-api          全局 API，比如熟悉的：Vue.use()、Vue.component() 等
+│   │   ├──<span class="hljs-built_in"> instance </span>           Vue 实例相关的，比如 Vue 构造函数就在这个目录下
+│   │   ├── observer            响应式原理
+│   │   ├── util                工具方法
+│   │   └── vdom                虚拟 DOM 相关，比如熟悉的 patch 算法就在这儿
+│   ├── platforms               平台相关的编译器代码
+│   │   ├── web
+│   │   └── weex
+│   ├──<span class="hljs-built_in"> server </span>                 服务端渲染相关
+├── test                        测试目录
+├── types                       TS 类型声明
+</code></pre></div>
 
 <h3 id="源码学习方法"><a href="#源码学习方法" class="headerlink" title="源码学习方法"></a>源码学习方法</h3><h3 id="flow-类型检测"><a href="#flow-类型检测" class="headerlink" title="flow 类型检测"></a>flow 类型检测</h3><blockquote>
 <p>​    Flow就是JavaScript的静态类型检查工具，由Facebook团队于2014年的Scale Conference上首次提出。该库的目标在于检查JavaScript中的类型错误，开发者通常不需要修改代码即可使用，故使用成本很低。同时，它也提供额外语法支持，使得开发者能更大程度地发挥Flow的作用。总结一句话：将javascript从弱类型语言变成了强类型语言。</p>
@@ -292,9 +322,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/hexo_blog/2021/09/10/%E9%97%AD%E5%8C%85/">
+                      <a href="/hexo_blog/2021/09/13/MOGU/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">闭包</span>
+                        <span class="hidden-mobile">MOGu面经</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     

@@ -30,7 +30,7 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/monokai-sublime.min.css" />
     
   
 
@@ -52,6 +52,10 @@
 <link  rel="stylesheet" href="/hexo_blog/css/main.css" />
 
 <!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/hexo_blog/css/scrollbar.css">
+
 
 
   <script id="fluid-configs">
@@ -198,7 +202,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      787 字
+      788 字
     </span>
   
 
@@ -266,17 +270,111 @@
 
 
 
-<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">//   在http.js中引入axios</span><br><span class="hljs-keyword">import</span> axios <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;axios&#x27;</span>   <span class="hljs-comment">//引入 axios</span><br><span class="hljs-keyword">import</span> QS <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;qs&#x27;</span>; <span class="hljs-comment">// 引入qs模块，用来序列化post类型的数据，某些请求会用得到</span><br><span class="hljs-keyword">import</span> &#123; Message &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;element-ui&#x27;</span>    <span class="hljs-comment">//引入 element-ui 的 Message 模块，用于信息提示</span><br><span class="hljs-keyword">import</span> store <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@/store&#x27;</span>     <span class="hljs-comment">//引入 vuex 中的数据</span><br><span class="hljs-keyword">import</span> &#123; getToken &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@/utils/auth&#x27;</span>   <span class="hljs-comment">//引入拿到的权限tocken</span><br><br><span class="hljs-comment">// create an axios instance   创建axios实例</span><br><span class="hljs-keyword">const</span> service = axios.create(&#123;<br>	配置信息...<br>&#125;)<br><br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">//   在http.js中引入axios</span>
+<span class="hljs-keyword">import</span> axios <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;axios&#x27;</span>   <span class="hljs-comment">//引入 axios</span>
+<span class="hljs-keyword">import</span> QS <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;qs&#x27;</span>; <span class="hljs-comment">// 引入qs模块，用来序列化post类型的数据，某些请求会用得到</span>
+<span class="hljs-keyword">import</span> &#123; Message &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;element-ui&#x27;</span>    <span class="hljs-comment">//引入 element-ui 的 Message 模块，用于信息提示</span>
+<span class="hljs-keyword">import</span> store <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@/store&#x27;</span>     <span class="hljs-comment">//引入 vuex 中的数据</span>
+<span class="hljs-keyword">import</span> &#123; getToken &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@/utils/auth&#x27;</span>   <span class="hljs-comment">//引入拿到的权限tocken</span>
 
-<figure class="highlight awk"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs awk">`配置引入`<br>import Qs from <span class="hljs-string">&#x27;qs&#x27;</span>;<br>export default&#123;<br>  <span class="hljs-regexp">//</span> 请求的接口，在请求的时候，如axios.get(url,config);这里的url会覆盖掉config中的url<br>  url: <span class="hljs-string">&#x27;&#x27;</span>,<br>  <span class="hljs-regexp">//</span> 请求的接口<br>  baseURL: <br>  <span class="hljs-regexp">//</span> 默认请求方法<br>  title: <span class="hljs-string">&#x27;&#x27;</span>,<br>  method: <span class="hljs-string">&#x27;post&#x27;</span>,<br>  <span class="hljs-regexp">//</span> 在发送请求之前对请求数据做处理<br>  transformRequest: [<br>    <span class="hljs-keyword">function</span>(data) &#123;<br>      <span class="hljs-regexp">//</span> 为了避免qs格式化时对内层对象的格式化先把内层的对象转为<br>      <span class="hljs-regexp">//</span> data.strSQL = base64encode(data.strSQL)<br>      <span class="hljs-regexp">//</span> 由于使用的form-data传数据所以要格式化<br>      data = Qs.stringify(data);<br>      return data;<br>    &#125;,<br>  ],<br><br>  <span class="hljs-regexp">//</span> 提前处理返回的数据=<br>  transformResponse: [<br>    <span class="hljs-keyword">function</span>(data) &#123;<br>      return data;<br>    &#125;,<br>  ],<br>  <span class="hljs-regexp">//</span> 请求头信息<br>  headers: &#123;<br>    <br>  &#125;,<br><br>  <span class="hljs-regexp">//</span> 默认parameter参数<br>  params: &#123;<br><br>  &#125;,<br><br>  <span class="hljs-regexp">//</span> 序列化param<br>  paramsSerializer: <span class="hljs-keyword">function</span>(params) &#123;<br>    return Qs.stringify(params);<br>  &#125;,<br><br>  <span class="hljs-regexp">//</span> 默认post参数，使用axios.post(url,&#123;&#125;,config);如果没有额外的也必须要用一个空对象，否则会报错<br>  data: &#123;<br>  &#125;,<br><br>  <span class="hljs-regexp">//</span> 设置超时时间<br>  timeout: <span class="hljs-number">500000000</span>,<br><br>  <span class="hljs-regexp">//</span> 是否跨站点访问控制请求<br>  <span class="hljs-regexp">//</span> withCredentials: false, <span class="hljs-regexp">//</span> default<br>  withCredentials: true, <span class="hljs-regexp">//</span> 自动携带cookie<br><br>  <span class="hljs-regexp">//</span> 返回数据类型<br>  responseType: <span class="hljs-string">&#x27;json&#x27;</span>, <span class="hljs-regexp">//</span> default<br><br>  <span class="hljs-regexp">//</span> 将upload事件注释掉，防止跨域状态下发起option请求<br><br>  <span class="hljs-regexp">//</span> onUploadProgress: <span class="hljs-keyword">function</span>(progressEvent) &#123;<br>  <span class="hljs-regexp">//</span>   <span class="hljs-regexp">//</span> Do whatever you want with the native progress event<br>  <span class="hljs-regexp">//</span> &#125;,<br>  <span class="hljs-regexp">//</span> onDownloadProgress: <span class="hljs-keyword">function</span>(progressEvent) &#123;<br>  <span class="hljs-regexp">//</span>   <span class="hljs-regexp">//</span> Do whatever you want with the native progress event<br>  <span class="hljs-regexp">//</span> &#125;,<br>  maxContentLength: <span class="hljs-number">2000</span>,<br>  validateStatus: <span class="hljs-keyword">function</span>(status) &#123;<br>    return status &gt;= <span class="hljs-number">200</span> &amp;&amp; status &lt; <span class="hljs-number">300</span>; <span class="hljs-regexp">//</span> default<br>  &#125;,<br>  <span class="hljs-regexp">//</span> `maxRedirects` 定义在 node.js 中 follow 的最大重定向数目<br>  <span class="hljs-regexp">//</span> 如果设置为<span class="hljs-number">0</span>，将不会 follow 任何重定向<br>  maxRedirects: <span class="hljs-number">5</span>,<br>&#125;;<br></code></pre></div></td></tr></table></figure>
+<span class="hljs-comment">// create an axios instance   创建axios实例</span>
+<span class="hljs-keyword">const</span> service = axios.create(&#123;
+	配置信息...
+&#125;)
+</code></pre></div>
+
+<div class="hljs code-wrapper"><pre><code class="hljs awk">`配置引入`
+import Qs from <span class="hljs-string">&#x27;qs&#x27;</span>;
+export default&#123;
+  <span class="hljs-regexp">//</span> 请求的接口，在请求的时候，如axios.get(url,config);这里的url会覆盖掉config中的url
+  url: <span class="hljs-string">&#x27;&#x27;</span>,
+  <span class="hljs-regexp">//</span> 请求的接口
+  baseURL: 
+  <span class="hljs-regexp">//</span> 默认请求方法
+  title: <span class="hljs-string">&#x27;&#x27;</span>,
+  method: <span class="hljs-string">&#x27;post&#x27;</span>,
+  <span class="hljs-regexp">//</span> 在发送请求之前对请求数据做处理
+  transformRequest: [
+    <span class="hljs-keyword">function</span>(data) &#123;
+      <span class="hljs-regexp">//</span> 为了避免qs格式化时对内层对象的格式化先把内层的对象转为
+      <span class="hljs-regexp">//</span> data.strSQL = base64encode(data.strSQL)
+      <span class="hljs-regexp">//</span> 由于使用的form-data传数据所以要格式化
+      data = Qs.stringify(data);
+      return data;
+    &#125;,
+  ],
+
+  <span class="hljs-regexp">//</span> 提前处理返回的数据=
+  transformResponse: [
+    <span class="hljs-keyword">function</span>(data) &#123;
+      return data;
+    &#125;,
+  ],
+  <span class="hljs-regexp">//</span> 请求头信息
+  headers: &#123;
+    
+  &#125;,
+
+  <span class="hljs-regexp">//</span> 默认parameter参数
+  params: &#123;
+
+  &#125;,
+
+  <span class="hljs-regexp">//</span> 序列化param
+  paramsSerializer: <span class="hljs-keyword">function</span>(params) &#123;
+    return Qs.stringify(params);
+  &#125;,
+
+  <span class="hljs-regexp">//</span> 默认post参数，使用axios.post(url,&#123;&#125;,config);如果没有额外的也必须要用一个空对象，否则会报错
+  data: &#123;
+  &#125;,
+
+  <span class="hljs-regexp">//</span> 设置超时时间
+  timeout: <span class="hljs-number">500000000</span>,
+
+  <span class="hljs-regexp">//</span> 是否跨站点访问控制请求
+  <span class="hljs-regexp">//</span> withCredentials: false, <span class="hljs-regexp">//</span> default
+  withCredentials: true, <span class="hljs-regexp">//</span> 自动携带cookie
+
+  <span class="hljs-regexp">//</span> 返回数据类型
+  responseType: <span class="hljs-string">&#x27;json&#x27;</span>, <span class="hljs-regexp">//</span> default
+
+  <span class="hljs-regexp">//</span> 将upload事件注释掉，防止跨域状态下发起option请求
+
+  <span class="hljs-regexp">//</span> onUploadProgress: <span class="hljs-keyword">function</span>(progressEvent) &#123;
+  <span class="hljs-regexp">//</span>   <span class="hljs-regexp">//</span> Do whatever you want with the native progress event
+  <span class="hljs-regexp">//</span> &#125;,
+  <span class="hljs-regexp">//</span> onDownloadProgress: <span class="hljs-keyword">function</span>(progressEvent) &#123;
+  <span class="hljs-regexp">//</span>   <span class="hljs-regexp">//</span> Do whatever you want with the native progress event
+  <span class="hljs-regexp">//</span> &#125;,
+  maxContentLength: <span class="hljs-number">2000</span>,
+  validateStatus: <span class="hljs-keyword">function</span>(status) &#123;
+    return status &gt;= <span class="hljs-number">200</span> &amp;&amp; status &lt; <span class="hljs-number">300</span>; <span class="hljs-regexp">//</span> default
+  &#125;,
+  <span class="hljs-regexp">//</span> `maxRedirects` 定义在 node.js 中 follow 的最大重定向数目
+  <span class="hljs-regexp">//</span> 如果设置为<span class="hljs-number">0</span>，将不会 follow 任何重定向
+  maxRedirects: <span class="hljs-number">5</span>,
+&#125;;</code></pre></div>
 
 <p> ▉ 请求拦截器</p>
 <blockquote>
-<figure class="highlight ada"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs ada">axios.interceptors.request.<span class="hljs-keyword">use</span>(<span class="hljs-keyword">function</span> <span class="hljs-title"></span>(config) &#123;<br>    // 在发起请求请做一些业务处理<br>    <span class="hljs-keyword">return</span> <span class="hljs-type">config</span>;<br>  &#125;, <span class="hljs-keyword">function</span> <span class="hljs-title"></span>(error) &#123;<br>    // 对请求失败做处理<br>    <span class="hljs-keyword">return</span> <span class="hljs-type">Promise.reject(error)</span>;<br>  &#125;);<br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code class="hljs ada">axios.interceptors.request.<span class="hljs-keyword">use</span>(<span class="hljs-keyword">function</span> <span class="hljs-title"></span>(config) &#123;
+    // 在发起请求请做一些业务处理
+    <span class="hljs-keyword">return</span> <span class="hljs-type">config</span>;
+  &#125;, <span class="hljs-keyword">function</span> <span class="hljs-title"></span>(error) &#123;
+    // 对请求失败做处理
+    <span class="hljs-keyword">return</span> <span class="hljs-type">Promise.reject(error)</span>;
+  &#125;);</code></pre></div>
 </blockquote>
 <p> ▉ 响应拦截器</p>
 <blockquote>
-<figure class="highlight ada"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs ada">axios.interceptors.response.<span class="hljs-keyword">use</span>(<span class="hljs-keyword">function</span> <span class="hljs-title"></span>(response) &#123;<br>    // 对响应数据做处理<br>    <span class="hljs-keyword">return</span> <span class="hljs-type">response</span>;<br>  &#125;, <span class="hljs-keyword">function</span> <span class="hljs-title"></span>(error) &#123;<br>    // 对响应错误做处理<br>    <span class="hljs-keyword">return</span> <span class="hljs-type">Promise.reject(error)</span>;<br>  &#125;);<br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code class="hljs ada">axios.interceptors.response.<span class="hljs-keyword">use</span>(<span class="hljs-keyword">function</span> <span class="hljs-title"></span>(response) &#123;
+    // 对响应数据做处理
+    <span class="hljs-keyword">return</span> <span class="hljs-type">response</span>;
+  &#125;, <span class="hljs-keyword">function</span> <span class="hljs-title"></span>(error) &#123;
+    // 对响应错误做处理
+    <span class="hljs-keyword">return</span> <span class="hljs-type">Promise.reject(error)</span>;
+  &#125;);</code></pre></div>
 </blockquote>
 
             </div>
@@ -312,9 +410,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/hexo_blog/2021/09/23/vuex%E4%BD%BF%E7%94%A8/">
+                      <a href="/hexo_blog/2021/09/20/position%E5%8F%96%E5%80%BC/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">vuex使用</span>
+                        <span class="hidden-mobile">MOGu面经</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -322,8 +420,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/hexo_blog/2021/09/15/%E4%BA%8C%E5%8F%89%E6%A0%91/">
-                        <span class="hidden-mobile">二叉树</span>
+                      <a href="/hexo_blog/2021/09/15/H5%E6%96%B0%E7%89%B9%E6%80%A7/">
+                        <span class="hidden-mobile">H5新特性</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

@@ -30,7 +30,7 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/monokai-sublime.min.css" />
     
   
 
@@ -52,6 +52,10 @@
 <link  rel="stylesheet" href="/hexo_blog/css/main.css" />
 
 <!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/hexo_blog/css/scrollbar.css">
+
 
 
   <script id="fluid-configs">
@@ -198,7 +202,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      670 字
+      669 字
     </span>
   
 
@@ -253,26 +257,54 @@
 <h3 id="let-命令"><a href="#let-命令" class="headerlink" title="let 命令"></a>let 命令</h3><blockquote>
 <p>用法类似var，但是let只在<code>let</code>命令所在的代码块内有效</p>
 </blockquote>
-<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js">&#123;<br>  <span class="hljs-keyword">let</span> a = <span class="hljs-number">10</span>;<br>  <span class="hljs-keyword">var</span> b = <span class="hljs-number">1</span>;<br>&#125;<br><br>a <span class="hljs-comment">// ReferenceError: a is not defined.</span><br>b <span class="hljs-comment">// 1</span><br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code class="hljs js">&#123;
+  <span class="hljs-keyword">let</span> a = <span class="hljs-number">10</span>;
+  <span class="hljs-keyword">var</span> b = <span class="hljs-number">1</span>;
+&#125;
+
+a <span class="hljs-comment">// ReferenceError: a is not defined.</span>
+b <span class="hljs-comment">// 1</span></code></pre></div>
 
 <blockquote>
 <p>可用于for内部变量循环，var变量在预编译的时候会发生变量提升，而块级作用域的let只在循环内部有效</p>
 <p><code>每一次循环的</code>i<code>其实都是一个新的变量，所以最后输出的是</code>6<code>。你可能会问，如果每一轮循环的变量</code>i<code>都是重新声明的，那它怎么知道上一轮循环的值，从而计算出本轮循环的值？这是因为 JavaScript 引擎内部会记住上一轮循环的值，初始化本轮的变量</code>i<code>时，就在上一轮循环的基础上进行计算。</code></p>
 </blockquote>
-<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-keyword">var</span> a = [];<br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++) &#123;<br>  a[i] = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(i);<br>  &#125;;<br>&#125;<br>a[<span class="hljs-number">6</span>](); <span class="hljs-comment">// 6</span><br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-keyword">var</span> a = [];
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++) &#123;
+  a[i] = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;
+    <span class="hljs-built_in">console</span>.log(i);
+  &#125;;
+&#125;
+a[<span class="hljs-number">6</span>](); <span class="hljs-comment">// 6</span></code></pre></div>
 
 <blockquote>
 <p><code>for</code>循环还有一个特别之处，就是设置循环变量的那部分是一个父作用域，而循环体内部是一个单独的子作用域。</p>
 <p><code>函数内部的变量</code>i<code>与循环变量</code>i<code>不在同一个作用域，有各自单独的作用域（同一个作用域不可使用 </code>let<code> 重复声明同一个变量）。</code></p>
 </blockquote>
-<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">3</span>; i++) &#123;<br>  <span class="hljs-keyword">let</span> i = <span class="hljs-string">&#x27;abc&#x27;</span>;<br>  <span class="hljs-built_in">console</span>.log(i);<br>&#125;<br><span class="hljs-comment">// abc</span><br><span class="hljs-comment">// abc</span><br><span class="hljs-comment">// abc</span><br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">3</span>; i++) &#123;
+  <span class="hljs-keyword">let</span> i = <span class="hljs-string">&#x27;abc&#x27;</span>;
+  <span class="hljs-built_in">console</span>.log(i);
+&#125;
+<span class="hljs-comment">// abc</span>
+<span class="hljs-comment">// abc</span>
+<span class="hljs-comment">// abc</span></code></pre></div>
 
 <blockquote>
 <p>​    暂时性死区</p>
 <p>​    ES6 明确规定，如果区块中存在<code>let</code>和<code>const</code>命令，这个区块对这些命令声明的变量，从一开始就形成了封闭作用域。凡是在声明之前就使用这些变量，就会报错。</p>
 <p>下面代码中，在<code>let</code>命令声明变量<code>tmp</code>之前，都属于变量<code>tmp</code>的“死区”。</p>
 </blockquote>
-<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-keyword">if</span> (<span class="hljs-literal">true</span>) &#123;<br>  <span class="hljs-comment">// TDZ开始</span><br>  tmp = <span class="hljs-string">&#x27;abc&#x27;</span>; <span class="hljs-comment">// ReferenceError</span><br>  <span class="hljs-built_in">console</span>.log(tmp); <span class="hljs-comment">// ReferenceError</span><br><br>  <span class="hljs-keyword">let</span> tmp; <span class="hljs-comment">// TDZ结束</span><br>  <span class="hljs-built_in">console</span>.log(tmp); <span class="hljs-comment">// undefined</span><br><br>  tmp = <span class="hljs-number">123</span>;<br>  <span class="hljs-built_in">console</span>.log(tmp); <span class="hljs-comment">// 123</span><br>&#125;<br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-keyword">if</span> (<span class="hljs-literal">true</span>) &#123;
+  <span class="hljs-comment">// TDZ开始</span>
+  tmp = <span class="hljs-string">&#x27;abc&#x27;</span>; <span class="hljs-comment">// ReferenceError</span>
+  <span class="hljs-built_in">console</span>.log(tmp); <span class="hljs-comment">// ReferenceError</span>
+
+  <span class="hljs-keyword">let</span> tmp; <span class="hljs-comment">// TDZ结束</span>
+  <span class="hljs-built_in">console</span>.log(tmp); <span class="hljs-comment">// undefined</span>
+
+  tmp = <span class="hljs-number">123</span>;
+  <span class="hljs-built_in">console</span>.log(tmp); <span class="hljs-comment">// 123</span>
+&#125;</code></pre></div>
 
 <h3 id="const-命令"><a href="#const-命令" class="headerlink" title="const 命令"></a>const 命令</h3><blockquote>
 <p>​    <code>const</code>声明一个只读的常量。一旦声明，常量的值就不能改变。</p>

@@ -30,7 +30,7 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/monokai-sublime.min.css" />
     
   
 
@@ -52,6 +52,10 @@
 <link  rel="stylesheet" href="/hexo_blog/css/main.css" />
 
 <!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/hexo_blog/css/scrollbar.css">
+
 
 
   <script id="fluid-configs">
@@ -256,10 +260,24 @@
 </ul>
 </li>
 </ul>
-<div class="hljs code-wrapper"><pre><code><figure class="highlight js"><table><tr><td class="gutter hljs"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-keyword">let</span> timer = flase;<br><span class="hljs-built_in">document</span>.addEventListener(<span class="hljs-string">&#x27;scroll&#x27;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">clearTimeout</span>(timer); <span class="hljs-comment">// 清除未执行的定时器（如果之前已经触发过不到300毫秒又触发了一次则清除之前的）重置回初始化状态</span><br>  timer = <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;函数防抖&quot;</span>)<br>  &#125;, <span class="hljs-number">300</span>)<br>&#125;)<br></code></pre></div></td></tr></table></figure></code></pre>
+<div class="hljs code-wrapper"><pre><code><pre><code class="hljs js"><span class="hljs-keyword">let</span> timer = flase;
+<span class="hljs-built_in">document</span>.addEventListener(<span class="hljs-string">&#x27;scroll&#x27;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;
+  <span class="hljs-built_in">clearTimeout</span>(timer); <span class="hljs-comment">// 清除未执行的定时器（如果之前已经触发过不到300毫秒又触发了一次则清除之前的）重置回初始化状态</span>
+  timer = <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;函数防抖&quot;</span>)
+  &#125;, <span class="hljs-number">300</span>)
+&#125;)</code></pre></div></code></pre>
 <ul>
 <li><p><strong>节流：</strong>在制定间隔内任务只执行1次。节流的原理是不管你在一段时间内如何不停地触发事件，只要设置了节流，就会每隔一段时间执行一次。</p>
-<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-keyword">let</span> canRun = <span class="hljs-literal">true</span>;<br><span class="hljs-built_in">document</span>.addEventListener(<span class="hljs-string">&#x27;scroll&#x27;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-keyword">if</span> (!canRun) <span class="hljs-keyword">return</span>;<br>  canRun = <span class="hljs-literal">false</span>;<br>  <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;函数节流&#x27;</span>)<br>    canRun = <span class="hljs-literal">true</span><br>  &#125;, <span class="hljs-number">300</span>)<br>&#125;)<br></code></pre></div></td></tr></table></figure>
+<div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-keyword">let</span> canRun = <span class="hljs-literal">true</span>;
+<span class="hljs-built_in">document</span>.addEventListener(<span class="hljs-string">&#x27;scroll&#x27;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;
+  <span class="hljs-keyword">if</span> (!canRun) <span class="hljs-keyword">return</span>;
+  canRun = <span class="hljs-literal">false</span>;
+  <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;函数节流&#x27;</span>)
+    canRun = <span class="hljs-literal">true</span>
+  &#125;, <span class="hljs-number">300</span>)
+&#125;)</code></pre></div>
 
 
 
@@ -274,7 +292,21 @@
 <p>如： 像仿百度搜索，就应该用防抖，当我连续不断输入时，不会发送请求；当我一段时间内不输入了，才会发送一次请求；如果小于这段时间继续输入的话，时间会重新计算，也不会发送请求。</p>
 </blockquote>
 <p>  <strong>手写简化版🚔</strong></p>
-  <figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">// func是用户传入需要防抖的函数</span><br><span class="hljs-comment">// wait是等待时间</span><br><span class="hljs-keyword">const</span> debounce = <span class="hljs-function">(<span class="hljs-params">func, wait = <span class="hljs-number">50</span></span>) =&gt;</span> &#123;<br>  <span class="hljs-comment">// 缓存一个定时器id</span><br>  <span class="hljs-keyword">let</span> timer = <span class="hljs-number">0</span><br>  <span class="hljs-comment">// 这里返回的函数是每次用户实际调用的防抖函数</span><br>  <span class="hljs-comment">// 如果已经设定过定时器了就清空上一次的定时器</span><br>  <span class="hljs-comment">// 开始一个新的定时器，延迟执行用户传入的方法</span><br>  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">...args</span>) </span>&#123;<br>    <span class="hljs-keyword">if</span> (timer) <span class="hljs-built_in">clearTimeout</span>(timer)<br>    timer = <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>      func.apply(<span class="hljs-built_in">this</span>, args)<br>    &#125;, wait)<br>  &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+  <div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">// func是用户传入需要防抖的函数</span>
+<span class="hljs-comment">// wait是等待时间</span>
+<span class="hljs-keyword">const</span> debounce = <span class="hljs-function">(<span class="hljs-params">func, wait = <span class="hljs-number">50</span></span>) =&gt;</span> &#123;
+  <span class="hljs-comment">// 缓存一个定时器id</span>
+  <span class="hljs-keyword">let</span> timer = <span class="hljs-number">0</span>
+  <span class="hljs-comment">// 这里返回的函数是每次用户实际调用的防抖函数</span>
+  <span class="hljs-comment">// 如果已经设定过定时器了就清空上一次的定时器</span>
+  <span class="hljs-comment">// 开始一个新的定时器，延迟执行用户传入的方法</span>
+  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">...args</span>) </span>&#123;
+    <span class="hljs-keyword">if</span> (timer) <span class="hljs-built_in">clearTimeout</span>(timer)
+    timer = <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> &#123;
+      func.apply(<span class="hljs-built_in">this</span>, args)
+    &#125;, wait)
+  &#125;
+&#125;</code></pre></div>
 
 <blockquote>
 <p>节流函数原理:规定在一个单位时间内，只能触发一次函数。如果这个单位时间内触发多次函数，只有一次生效</p>
@@ -283,7 +315,29 @@
 <p>例:（连续不断动都需要调用时用，设一时间间隔），像dom的拖拽，如果用消抖的话，就会出现卡顿的感觉，因为只在停止的时候执行了一次，这个时候就应该用节流，在一定时间内多次执行，会流畅很多</p>
 </blockquote>
 <p>  <strong>手写简版🚔</strong></p>
-  <figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">// func是用户传入需要防抖的函数</span><br><span class="hljs-comment">// wait是等待时间</span><br><span class="hljs-keyword">const</span> throttle = <span class="hljs-function">(<span class="hljs-params">func, wait = <span class="hljs-number">50</span></span>) =&gt;</span> &#123;<br>  <span class="hljs-comment">// 上一次执行该函数的时间</span><br>  <span class="hljs-keyword">let</span> lastTime = <span class="hljs-number">0</span><br>  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">...args</span>) </span>&#123;<br>    <span class="hljs-comment">// 当前时间</span><br>    <span class="hljs-keyword">let</span> now = +<span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>()<br>    <span class="hljs-comment">// 将当前时间和上一次执行函数时间对比</span><br>    <span class="hljs-comment">// 如果差值大于设置的等待时间就执行函数</span><br>    <span class="hljs-keyword">if</span> (now - lastTime &gt; wait) &#123;<br>      lastTime = now<br>      func.apply(<span class="hljs-built_in">this</span>, args)<br>    &#125;<br>  &#125;<br>&#125;<br><br><span class="hljs-built_in">setInterval</span>(<br>  throttle(<span class="hljs-function">() =&gt;</span> &#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-number">1</span>)<br>  &#125;, <span class="hljs-number">500</span>),<br>  <span class="hljs-number">1</span><br>)<br></code></pre></div></td></tr></table></figure>
+  <div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">// func是用户传入需要防抖的函数</span>
+<span class="hljs-comment">// wait是等待时间</span>
+<span class="hljs-keyword">const</span> throttle = <span class="hljs-function">(<span class="hljs-params">func, wait = <span class="hljs-number">50</span></span>) =&gt;</span> &#123;
+  <span class="hljs-comment">// 上一次执行该函数的时间</span>
+  <span class="hljs-keyword">let</span> lastTime = <span class="hljs-number">0</span>
+  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">...args</span>) </span>&#123;
+    <span class="hljs-comment">// 当前时间</span>
+    <span class="hljs-keyword">let</span> now = +<span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>()
+    <span class="hljs-comment">// 将当前时间和上一次执行函数时间对比</span>
+    <span class="hljs-comment">// 如果差值大于设置的等待时间就执行函数</span>
+    <span class="hljs-keyword">if</span> (now - lastTime &gt; wait) &#123;
+      lastTime = now
+      func.apply(<span class="hljs-built_in">this</span>, args)
+    &#125;
+  &#125;
+&#125;
+
+<span class="hljs-built_in">setInterval</span>(
+  throttle(<span class="hljs-function">() =&gt;</span> &#123;
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-number">1</span>)
+  &#125;, <span class="hljs-number">500</span>),
+  <span class="hljs-number">1</span>
+)</code></pre></div>
 
 
 
