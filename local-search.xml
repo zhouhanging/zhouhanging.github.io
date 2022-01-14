@@ -48,25 +48,6 @@
   
   
   <entry>
-    <title>异步编程</title>
-    <link href="/hexo_blog/2021/10/06/diff%E7%AE%97%E6%B3%95/"/>
-    <url>/hexo_blog/2021/10/06/diff%E7%AE%97%E6%B3%95/</url>
-    
-    <content type="html"><![CDATA[<h1 id="diff算法"><a href="#diff算法" class="headerlink" title="diff算法"></a>diff算法</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>两个树的完全 diff 算法的时间复杂度为 O(n^3) ，但是在前端中，我们很少会跨层级的移动元素，所以我们只需要比较同一层级的元素进行比较，这样就可以将算法的时间复杂度降低为 O(n)。</p><p>算法首先会对新旧两棵树进行一个深度优先的遍历，这样每个节点都会有一个序号。在深度遍历的时候，每遍历到一个节点，我们就将这个节点和新的树中的节点进行比较，如果有差异，则将这个差异记录到一个对象中。</p><p>在对列表元素进行对比的时候，由于 TagName 是重复的，所以我们不能使用这个来对比。我们需要给每一个子节点加上一个 key，列表对比的时候使用 key 来进行比较，这样我们才能够复用老的 DOM 树上的节点。</p><h2 id="diff算法-1"><a href="#diff算法-1" class="headerlink" title="diff算法"></a>diff算法</h2><ul><li>把树形结构按照层级分解，只比较同级元素。</li><li>给列表结构的每个单元添加唯一的<code>key</code>属性，方便比较。</li><li><code>React</code> 只会匹配相同 <code>class</code> 的 <code>component</code>（这里面的<code>class</code>指的是组件的名字）</li><li>合并操作，调用 <code>component</code> 的 <code>setState</code> 方法的时候, <code>React</code> 将其标记为 - <code>dirty</code>.到每一个事件循环结束, <code>React</code> 检查所有标记 <code>dirty</code>的 <code>component</code>重新绘制.</li><li>选择性子树渲染。开发人员可以重写<code>shouldComponentUpdate</code>提高<code>diff</code>的性能</li></ul>]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>js</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>flex 布局</title>
     <link href="/hexo_blog/2021/10/06/flex/"/>
     <url>/hexo_blog/2021/10/06/flex/</url>
@@ -84,6 +65,25 @@
     <tags>
       
       <tag>css</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>异步编程</title>
+    <link href="/hexo_blog/2021/10/06/diff%E7%AE%97%E6%B3%95/"/>
+    <url>/hexo_blog/2021/10/06/diff%E7%AE%97%E6%B3%95/</url>
+    
+    <content type="html"><![CDATA[<h1 id="diff算法"><a href="#diff算法" class="headerlink" title="diff算法"></a>diff算法</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>两个树的完全 diff 算法的时间复杂度为 O(n^3) ，但是在前端中，我们很少会跨层级的移动元素，所以我们只需要比较同一层级的元素进行比较，这样就可以将算法的时间复杂度降低为 O(n)。</p><p>算法首先会对新旧两棵树进行一个深度优先的遍历，这样每个节点都会有一个序号。在深度遍历的时候，每遍历到一个节点，我们就将这个节点和新的树中的节点进行比较，如果有差异，则将这个差异记录到一个对象中。</p><p>在对列表元素进行对比的时候，由于 TagName 是重复的，所以我们不能使用这个来对比。我们需要给每一个子节点加上一个 key，列表对比的时候使用 key 来进行比较，这样我们才能够复用老的 DOM 树上的节点。</p><h2 id="diff算法-1"><a href="#diff算法-1" class="headerlink" title="diff算法"></a>diff算法</h2><ul><li>把树形结构按照层级分解，只比较同级元素。</li><li>给列表结构的每个单元添加唯一的<code>key</code>属性，方便比较。</li><li><code>React</code> 只会匹配相同 <code>class</code> 的 <code>component</code>（这里面的<code>class</code>指的是组件的名字）</li><li>合并操作，调用 <code>component</code> 的 <code>setState</code> 方法的时候, <code>React</code> 将其标记为 - <code>dirty</code>.到每一个事件循环结束, <code>React</code> 检查所有标记 <code>dirty</code>的 <code>component</code>重新绘制.</li><li>选择性子树渲染。开发人员可以重写<code>shouldComponentUpdate</code>提高<code>diff</code>的性能</li></ul>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>js</tag>
       
     </tags>
     
@@ -1100,7 +1100,7 @@
     <link href="/hexo_blog/"/>
     <url>/hexo_blog/</url>
     
-    <content type="html"><![CDATA[<h1 id="我的博客🎋"><a href="#我的博客🎋" class="headerlink" title="我的博客🎋"></a>我的博客🎋</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>分享一些学习工作中的见解或者笔记,希望在每次的分享中能发现巩固所学，领悟更多</p><p><img src="C:/Users/l%27x/Pictures/%E4%B8%8B%E8%BD%BD.jpeg"></p><h3 id="个人信息🎏"><a href="#个人信息🎏" class="headerlink" title="个人信息🎏"></a>个人信息🎏</h3><blockquote><ul><li>周航/女</li><li>本科/重庆理工大学/计算机系</li><li>工作年限/应届生/本科</li><li>技术博客：<a href="https://link.segmentfault.com/?url=https://wscats.github.io/blog">https://wscats.github.io/blog</a> </li><li>Github：<a href="https://github.com/zhouhanging">https://github.com/zhouhanging</a></li><li>邮箱：<a href="mailto:&#x33;&#x34;&#x39;&#x33;&#x33;&#x32;&#x39;&#55;&#x35;&#x36;&#x40;&#x71;&#x71;&#x2e;&#99;&#111;&#x6d;">&#x33;&#x34;&#x39;&#x33;&#x33;&#x32;&#x39;&#55;&#x35;&#x36;&#x40;&#x71;&#x71;&#x2e;&#99;&#111;&#x6d;</a></li><li>实习经历：恒生电子股份有限公司</li><li>期望职位：前端工程师</li><li>期望城市：杭州</li></ul></blockquote><h3 id="技能清单"><a href="#技能清单" class="headerlink" title="技能清单"></a>技能清单</h3><blockquote><p>l 扎实的前端基础，良好的编码能力以及编码习惯</p><p>l 掌握HTML、CSS、JavaScript、ES6</p><p>l 熟悉 Vue 技术栈如 Vue-Router、Vuex及相关流行库的使用 </p><p>l 掌握常见的数据结构和算法</p><p>l 掌握 TCP、HTTP 网络协议，了解一些浏览器的渲染原理、性能优化</p></blockquote><h3 id="自我评价"><a href="#自我评价" class="headerlink" title="自我评价"></a>自我评价</h3><blockquote><ol><li><p>对前端技术具有浓厚的兴趣，喜欢逛github，掘金等技术论坛；</p></li><li><p>具备良好的审美能力，有良好的代码编程习惯；</p></li><li><p>学习适应能力强，愿意不断学习新知识丰富自己；</p></li><li><p>抗压能力强，有信心在不同的工作强度下进行开发工作；</p></li><li><p>性格随和，具有良好的团队合作精神。</p></li><li><p>我热爱这个行业，对新鲜事物充满好奇心，关注前沿技术，善于学习和独立分析解决疑难，善于沟通，团队协作，贴近用户。酷爱创意，追求设计感，个人性格开朗乐观，有着较强的学习能力。</p></li></ol></blockquote>]]></content>
+    <content type="html"><![CDATA[<h1 id="我的博客🎋"><a href="#我的博客🎋" class="headerlink" title="我的博客🎋"></a>我的博客🎋</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>分享一些学习工作中的见解或者笔记,希望在每次的分享中能发现巩固所学，领悟更多</p><p><img src="C:/Users/l%27x/Pictures/%E4%B8%8B%E8%BD%BD.jpeg"></p><h3 id="个人信息🎏"><a href="#个人信息🎏" class="headerlink" title="个人信息🎏"></a>个人信息🎏</h3><blockquote><ul><li>周航/女</li><li>本科/重庆理工大学/计算机系</li><li>工作年限/应届生/本科</li><li>技术博客：<a href="https://link.segmentfault.com/?url=https://wscats.github.io/blog">https://wscats.github.io/blog</a> </li><li>Github：<a href="https://github.com/zhouhanging">https://github.com/zhouhanging</a></li><li>邮箱：<a href="mailto:&#51;&#x34;&#57;&#x33;&#x33;&#50;&#x39;&#x37;&#53;&#x36;&#64;&#x71;&#113;&#x2e;&#x63;&#x6f;&#x6d;">&#51;&#x34;&#57;&#x33;&#x33;&#50;&#x39;&#x37;&#53;&#x36;&#64;&#x71;&#113;&#x2e;&#x63;&#x6f;&#x6d;</a></li><li>实习经历：恒生电子股份有限公司</li><li>期望职位：前端工程师</li><li>期望城市：杭州</li></ul></blockquote><h3 id="技能清单"><a href="#技能清单" class="headerlink" title="技能清单"></a>技能清单</h3><blockquote><p>l 扎实的前端基础，良好的编码能力以及编码习惯</p><p>l 掌握HTML、CSS、JavaScript、ES6</p><p>l 熟悉 Vue 技术栈如 Vue-Router、Vuex及相关流行库的使用 </p><p>l 掌握常见的数据结构和算法</p><p>l 掌握 TCP、HTTP 网络协议，了解一些浏览器的渲染原理、性能优化</p></blockquote><h3 id="自我评价"><a href="#自我评价" class="headerlink" title="自我评价"></a>自我评价</h3><blockquote><ol><li><p>对前端技术具有浓厚的兴趣，喜欢逛github，掘金等技术论坛；</p></li><li><p>具备良好的审美能力，有良好的代码编程习惯；</p></li><li><p>学习适应能力强，愿意不断学习新知识丰富自己；</p></li><li><p>抗压能力强，有信心在不同的工作强度下进行开发工作；</p></li><li><p>性格随和，具有良好的团队合作精神。</p></li><li><p>我热爱这个行业，对新鲜事物充满好奇心，关注前沿技术，善于学习和独立分析解决疑难，善于沟通，团队协作，贴近用户。酷爱创意，追求设计感，个人性格开朗乐观，有着较强的学习能力。</p></li></ol></blockquote>]]></content>
     
   </entry>
   

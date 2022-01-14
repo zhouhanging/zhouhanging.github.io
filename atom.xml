@@ -60,25 +60,6 @@
   </entry>
   
   <entry>
-    <title>异步编程</title>
-    <link href="https://zhouhang-hello.gitee.io/hexo_blog/2021/10/06/diff%E7%AE%97%E6%B3%95/"/>
-    <id>https://zhouhang-hello.gitee.io/hexo_blog/2021/10/06/diff%E7%AE%97%E6%B3%95/</id>
-    <published>2021-10-06T02:00:00.000Z</published>
-    <updated>2021-10-11T16:16:49.369Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="diff算法"><a href="#diff算法" class="headerlink" title="diff算法"></a>diff算法</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>两个树的完全 diff 算法的时间复杂度为 O(n^3) ，但是在前端中，我们很少会跨层级的移动元素，所以我们只需要比较同一层级的元素进行比较，这样就可以将算法的时间复杂度降低为 O(n)。</p><p>算法首先会对新旧两棵树进行一个深度优先的遍历，这样每个节点都会有一个序号。在深度遍历的时候，每遍历到一个节点，我们就将这个节点和新的树中的节点进行比较，如果有差异，则将这个差异记录到一个对象中。</p><p>在对列表元素进行对比的时候，由于 TagName 是重复的，所以我们不能使用这个来对比。我们需要给每一个子节点加上一个 key，列表对比的时候使用 key 来进行比较，这样我们才能够复用老的 DOM 树上的节点。</p><h2 id="diff算法-1"><a href="#diff算法-1" class="headerlink" title="diff算法"></a>diff算法</h2><ul><li>把树形结构按照层级分解，只比较同级元素。</li><li>给列表结构的每个单元添加唯一的<code>key</code>属性，方便比较。</li><li><code>React</code> 只会匹配相同 <code>class</code> 的 <code>component</code>（这里面的<code>class</code>指的是组件的名字）</li><li>合并操作，调用 <code>component</code> 的 <code>setState</code> 方法的时候, <code>React</code> 将其标记为 - <code>dirty</code>.到每一个事件循环结束, <code>React</code> 检查所有标记 <code>dirty</code>的 <code>component</code>重新绘制.</li><li>选择性子树渲染。开发人员可以重写<code>shouldComponentUpdate</code>提高<code>diff</code>的性能</li></ul>]]></content>
-    
-    
-    <summary type="html">在前端中，我们很少会跨层级的移动元素，所以我们只需要比较同一层级的元素进行比较 - js</summary>
-    
-    
-    
-    
-    <category term="js" scheme="https://zhouhang-hello.gitee.io/hexo_blog/tags/js/"/>
-    
-  </entry>
-  
-  <entry>
     <title>flex 布局</title>
     <link href="https://zhouhang-hello.gitee.io/hexo_blog/2021/10/06/flex/"/>
     <id>https://zhouhang-hello.gitee.io/hexo_blog/2021/10/06/flex/</id>
@@ -99,6 +80,25 @@
     
     
     <category term="css" scheme="https://zhouhang-hello.gitee.io/hexo_blog/tags/css/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>异步编程</title>
+    <link href="https://zhouhang-hello.gitee.io/hexo_blog/2021/10/06/diff%E7%AE%97%E6%B3%95/"/>
+    <id>https://zhouhang-hello.gitee.io/hexo_blog/2021/10/06/diff%E7%AE%97%E6%B3%95/</id>
+    <published>2021-10-06T02:00:00.000Z</published>
+    <updated>2021-10-11T16:16:49.369Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="diff算法"><a href="#diff算法" class="headerlink" title="diff算法"></a>diff算法</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>两个树的完全 diff 算法的时间复杂度为 O(n^3) ，但是在前端中，我们很少会跨层级的移动元素，所以我们只需要比较同一层级的元素进行比较，这样就可以将算法的时间复杂度降低为 O(n)。</p><p>算法首先会对新旧两棵树进行一个深度优先的遍历，这样每个节点都会有一个序号。在深度遍历的时候，每遍历到一个节点，我们就将这个节点和新的树中的节点进行比较，如果有差异，则将这个差异记录到一个对象中。</p><p>在对列表元素进行对比的时候，由于 TagName 是重复的，所以我们不能使用这个来对比。我们需要给每一个子节点加上一个 key，列表对比的时候使用 key 来进行比较，这样我们才能够复用老的 DOM 树上的节点。</p><h2 id="diff算法-1"><a href="#diff算法-1" class="headerlink" title="diff算法"></a>diff算法</h2><ul><li>把树形结构按照层级分解，只比较同级元素。</li><li>给列表结构的每个单元添加唯一的<code>key</code>属性，方便比较。</li><li><code>React</code> 只会匹配相同 <code>class</code> 的 <code>component</code>（这里面的<code>class</code>指的是组件的名字）</li><li>合并操作，调用 <code>component</code> 的 <code>setState</code> 方法的时候, <code>React</code> 将其标记为 - <code>dirty</code>.到每一个事件循环结束, <code>React</code> 检查所有标记 <code>dirty</code>的 <code>component</code>重新绘制.</li><li>选择性子树渲染。开发人员可以重写<code>shouldComponentUpdate</code>提高<code>diff</code>的性能</li></ul>]]></content>
+    
+    
+    <summary type="html">在前端中，我们很少会跨层级的移动元素，所以我们只需要比较同一层级的元素进行比较 - js</summary>
+    
+    
+    
+    
+    <category term="js" scheme="https://zhouhang-hello.gitee.io/hexo_blog/tags/js/"/>
     
   </entry>
   
