@@ -1,0 +1,302 @@
+/* ==================== 暖色调温馨特效 ==================== */
+
+/* 1. 首页 Banner 渐变遮罩优化 */
+.index-banner {
+    position: relative;
+}
+
+.index-banner::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(139, 111, 94, 0.3) 0%,
+        rgba(193, 123, 74, 0.2) 50%,
+        rgba(232, 160, 101, 0.3) 100%
+    );
+    pointer-events: none;
+}
+
+/* 2. 卡片悬浮阴影效果 */
+.post-card {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.post-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(139, 111, 94, 0.15);
+}
+
+/* 3. 文章列表卡片美化 */
+.index-card {
+    background: linear-gradient(145deg, #fffbf7 0%, #fff9f5 100%);
+    border: 1px solid rgba(232, 223, 213, 0.5);
+    border-radius: 16px;
+    transition: all 0.3s ease;
+}
+
+.index-card:hover {
+    border-color: rgba(193, 123, 74, 0.3);
+    box-shadow: 0 8px 24px rgba(193, 123, 74, 0.1);
+}
+
+/* 4. 标题下划线动画 */
+.post-title {
+    position: relative;
+    display: inline-block;
+}
+
+.post-title::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #c17b4a, #e8a065);
+    transition: width 0.4s ease;
+    border-radius: 2px;
+}
+
+.index-card:hover .post-title::after,
+.post-card:hover .post-title::after {
+    width: 100%;
+}
+
+/* 5. 标签云悬浮效果 */
+.tag-cloud a {
+    transition: all 0.3s ease;
+    border-radius: 20px;
+    padding: 4px 12px;
+}
+
+.tag-cloud a:hover {
+    background: linear-gradient(135deg, #c17b4a, #e8a065) !important;
+    color: #fff !important;
+    transform: scale(1.1);
+}
+
+/* 6. 导航栏菜单悬浮效果 */
+.navbar-nav a {
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.navbar-nav a::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #e8a065, #c17b4a);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.navbar-nav a:hover::before {
+    width: 100%;
+}
+
+/* 7. 滚动条美化 */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(232, 223, 213, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #c17b4a, #9a8b7d);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #e8a065, #c17b4a);
+}
+
+/* 8. 按钮样式优化 */
+.btn {
+    background: linear-gradient(135deg, #c17b4a 0%, #d4935f 100%);
+    border: none;
+    border-radius: 25px;
+    padding: 10px 28px;
+    color: #fff;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(193, 123, 74, 0.3);
+}
+
+.btn:hover {
+    background: linear-gradient(135deg, #d4935f 0%, #e8a065 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(193, 123, 74, 0.4);
+    color: #fff;
+}
+
+/* 9. 文章引用块美化 */
+blockquote {
+    border-left: 4px solid #c17b4a;
+    background: linear-gradient(90deg, rgba(193, 123, 74, 0.08) 0%, transparent 100%);
+    padding: 16px 20px;
+    border-radius: 0 12px 12px 0;
+    font-style: normal;
+}
+
+blockquote p {
+    margin-bottom: 0;
+    color: #5a4d42;
+}
+
+/* 10. 代码块美化 */
+pre {
+    border-radius: 12px;
+    border: 1px solid rgba(232, 223, 213, 0.5);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+code {
+    background: rgba(193, 123, 74, 0.1);
+    padding: 2px 8px;
+    border-radius: 6px;
+    color: #c17b4a;
+}
+
+pre code {
+    background: transparent;
+    padding: 0;
+    color: inherit;
+}
+
+/* 11. 图片悬浮放大效果 */
+.post-content img {
+    transition: all 0.4s ease;
+    border-radius: 12px;
+}
+
+.post-content img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* 12. 打字机效果样式 */
+.typed-text {
+    background: linear-gradient(90deg, #fff, #fff5ed, #fff);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient-flow 3s ease infinite;
+}
+
+@keyframes gradient-flow {
+    0% { background-position: 100% 0; }
+    50% { background-position: 0% 0; }
+    100% { background-position: 100% 0; }
+}
+
+/* 13. 页面淡入动画 */
+.main-content {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 14. 阅读进度条暖色 */
+#nprogress .bar {
+    background: linear-gradient(90deg, #c17b4a, #e8a065) !important;
+}
+
+#nprogress .peg {
+    box-shadow: 0 0 10px #e8a065 !important;
+}
+
+/* 15. 分类卡片渐变 */
+.category-item {
+    background: linear-gradient(145deg, #fffbf7 0%, #fff5ed 100%);
+    border-radius: 16px;
+    transition: all 0.3s ease;
+}
+
+.category-item:hover {
+    background: linear-gradient(145deg, #fff5ed 0%, #ffe8d6 100%);
+    transform: translateY(-4px);
+}
+
+/* 16. 友链卡片样式 */
+.link-card {
+    background: linear-gradient(145deg, #fffbf7 0%, #fff9f5 100%);
+    border: 1px solid rgba(232, 223, 213, 0.5);
+    border-radius: 16px;
+    transition: all 0.3s ease;
+}
+
+.link-card:hover {
+    border-color: rgba(193, 123, 74, 0.4);
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 12px 24px rgba(193, 123, 74, 0.12);
+}
+
+/* 17. 返回顶部按钮 */
+.scroll-top-btn {
+    background: linear-gradient(135deg, #c17b4a, #e8a065);
+    border-radius: 50%;
+    box-shadow: 0 4px 15px rgba(193, 123, 74, 0.4);
+}
+
+.scroll-top-btn:hover {
+    background: linear-gradient(135deg, #d4935f, #c17b4a);
+}
+
+/* 18. 表格样式优化 */
+table {
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+table thead {
+    background: linear-gradient(135deg, rgba(193, 123, 74, 0.1), rgba(232, 160, 101, 0.1));
+}
+
+table tr:hover {
+    background: rgba(255, 245, 237, 0.5);
+}
+
+/* 19. 分页按钮 */
+.pagination .page-item.active .page-link {
+    background: linear-gradient(135deg, #c17b4a, #e8a065);
+    border-color: #c17b4a;
+    border-radius: 20px;
+}
+
+.pagination .page-link {
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.pagination .page-link:hover {
+    background: rgba(193, 123, 74, 0.1);
+    border-color: #c17b4a;
+    color: #c17b4a;
+}
+
+/* 20. 加载动画 */
+.loading-spinner {
+    border-top-color: #c17b4a;
+    border-right-color: rgba(193, 123, 74, 0.3);
+    border-bottom-color: rgba(232, 160, 101, 0.3);
+}
